@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>Student RPG</name>
-    <url>https://somrlik.me</url>
+    <url>https://gitlab.fel.cvut.cz/syrovkar/studentrpg/wikis/home</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
