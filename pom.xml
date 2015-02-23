@@ -23,6 +23,13 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+        <!--
+        <dependency>
+            <groupId>org.luaj</groupId>
+            <artifactId>luaj-jse</artifactId>
+            <version>3.0</version>
+        </dependency>
+        -->
     </dependencies>
 
     <build>
@@ -40,7 +47,7 @@
                     <archive>
                         <manifest>
                             <!-- Jar file entry point -->
-                            <mainClass>cz.cvut.fel.syrovkar.studentRPG.StudentQuest</mainClass>
+                            <mainClass>cz.cvut.fel.syrovkar.studentRPG.StudentRPG</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
