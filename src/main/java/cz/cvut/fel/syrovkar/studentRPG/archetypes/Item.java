@@ -44,6 +44,16 @@ public class Item implements CanHaveAttributes {
     }
 
     @Override
+    public void setAttributeByName(String name, Object value) {
+        AttribHelper.setAttributeByName(this, name, value);
+    }
+
+    @Override
+    public void removeAttribute(String name) {
+        AttribHelper.removeAttribute(this, name);
+    }
+
+    @Override
     public String toString() {
         return "Item{" +
                 "name='" + name + '\'' +

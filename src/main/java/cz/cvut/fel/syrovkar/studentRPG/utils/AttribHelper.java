@@ -27,7 +27,26 @@ public class AttribHelper {
             }
         }
         return null;
+    }
 
+    /**
+     * Sets attribute of given name.
+     *
+     * @param attributedObject An Object that can have attributes
+     * @param name             Name of attribute
+     * @param value            Value to set to attribute
+     */
+    public static void setAttributeByName(CanHaveAttributes attributedObject, String name, Object value) {
+        HashSet<Attribute> attributes = attributedObject.getAttributes();
+
+        for (Attribute attribute : attributes) {
+            if (attribute.getName().equals(name)) {
+                attribute.setValue(value);
+                return;
+            }
+        }
+
+        LoggingHelper.warning("Attribute with name '" + name + "' cannot be changed, because it does not exist.");
     }
 
     /**
@@ -35,7 +54,7 @@ public class AttribHelper {
      *
      * @param attributableObject An Object that can have attributes
      * @param name               Name of attribute
-     * @param value              value fo attribute
+     * @param value              Value of attribute
      */
     public static void addAttribute(CanHaveAttributes attributableObject, String name, Object value) {
 
@@ -44,5 +63,17 @@ public class AttribHelper {
         if (!attributeList.add(new Attribute(name, value)))
             LoggingHelper.warning("Attribute of same name '" + name + "' already exists. Ignoring new attribute.");
 
+    }
+
+    /**
+     * Helper for removing attributes
+     *
+     * @param attributableObject An Object that can have attributes
+     * @param name               Name of attribute
+     */
+    public static void removeAttribute(CanHaveAttributes attributableObject, String name) {
+        HashSet<Attribute> attributes = attributableObject.getAttributes();
+
+        attributes.remove(new Attribute(name, 0));
     }
 }

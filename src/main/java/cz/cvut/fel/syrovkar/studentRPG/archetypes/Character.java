@@ -52,8 +52,18 @@ public abstract class Character implements CanHaveAttributes {
     }
 
     @Override
+    public void setAttributeByName(String name, Object value) {
+        AttribHelper.setAttributeByName(this, name, value);
+    }
+
+    @Override
     public void addAttribute(String name, Object value) {
         AttribHelper.addAttribute(this, name, value);
+    }
+
+    @Override
+    public void removeAttribute(String name) {
+        AttribHelper.removeAttribute(this, name);
     }
 
     @Override

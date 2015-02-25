@@ -35,4 +35,14 @@ public class Location implements CanHaveAttributes {
     public void addAttribute(String name, Object value) {
         AttribHelper.addAttribute(this, name, value);
     }
+
+    @Override
+    public void setAttributeByName(String name, Object value) {
+        AttribHelper.setAttributeByName(this, name, value);
+    }
+
+    @Override
+    public void removeAttribute(String name) {
+        AttribHelper.removeAttribute(this, name);
+    }
 }

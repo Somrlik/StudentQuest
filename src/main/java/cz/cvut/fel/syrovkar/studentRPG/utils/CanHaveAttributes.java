@@ -19,12 +19,20 @@ public interface CanHaveAttributes {
     public HashSet<Attribute> getAttributes();
 
     /**
-     * Gets value of attribute by given name
+     * Gets value of attribute of given name
      *
      * @param name Name of attribute
      * @return Value fo attribute
      */
     public Object getAttributeByName(String name);
+
+    /**
+     * Sets value of attribute of given name.
+     *
+     * @param name  Name of attribute
+     * @param value Value of attribute
+     */
+    public void setAttributeByName(String name, Object value);
 
     /**
      * Adds an attribute
@@ -33,5 +41,12 @@ public interface CanHaveAttributes {
      * @param value value of attribute
      */
     public void addAttribute(String name, Object value);
+
+    /**
+     * Removes attribute of given name.
+     *
+     * @param name Name of attribute
+     */
+    public void removeAttribute(String name);
 
 }
