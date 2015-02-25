@@ -1,7 +1,5 @@
 package cz.cvut.fel.syrovkar.studentRPG;
 
-import cz.cvut.fel.syrovkar.studentRPG.init.Init;
-
 import java.util.List;
 
 /**
@@ -16,7 +14,6 @@ public class GameRegistry {
     private List<Item> items;
 
     public GameRegistry() {
-        new Init();
     }
 
 
