@@ -3,8 +3,7 @@ package cz.cvut.fel.syrovkar.studentRPG.archetypes;
 import cz.cvut.fel.syrovkar.studentRPG.utils.AttribHelper;
 import cz.cvut.fel.syrovkar.studentRPG.utils.CanHaveAttributes;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 /**
  * Created by Karel on 25. 2. 2015.
@@ -13,11 +12,11 @@ public class Location implements CanHaveAttributes {
 
     String name;
 
-    List<Attribute> attributes;
+    HashSet<Attribute> attributes;
 
     public Location(String name) {
         this.name = name;
-        this.attributes = new ArrayList<Attribute>();
+        this.attributes = new HashSet<Attribute>();
     }
 
     @Override
@@ -26,12 +25,7 @@ public class Location implements CanHaveAttributes {
     }
 
     @Override
-    public void setAttributes(List<Attribute> attributes) {
-
-    }
-
-    @Override
-    public List<Attribute> getAttributes() {
+    public HashSet<Attribute> getAttributes() {
         return attributes;
     }
 

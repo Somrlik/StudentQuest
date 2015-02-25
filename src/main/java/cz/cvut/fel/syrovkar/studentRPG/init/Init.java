@@ -13,5 +13,8 @@ public class Init {
 
     /* For the time being, everything is stored in here */
 
+    public void init() {
+
+    }
 
 }

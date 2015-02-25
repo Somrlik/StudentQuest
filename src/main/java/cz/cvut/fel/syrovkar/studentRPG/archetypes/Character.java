@@ -3,8 +3,7 @@ package cz.cvut.fel.syrovkar.studentRPG.archetypes;
 import cz.cvut.fel.syrovkar.studentRPG.utils.AttribHelper;
 import cz.cvut.fel.syrovkar.studentRPG.utils.CanHaveAttributes;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 /**
  * Created by Karel on 23. 2. 2015.
@@ -12,32 +11,42 @@ import java.util.List;
 public abstract class Character implements CanHaveAttributes {
     private String name;
 
-    private List<Attribute> attributes;
+    private HashSet<Attribute> attributes;
 
+    /**
+     * Creates a new Character
+     *
+     * @param name Name of character
+     */
     public Character(String name) {
         this.name = name;
-        this.attributes = new ArrayList<Attribute>();
+        this.attributes = new HashSet<Attribute>();
     }
 
+    /**
+     * @return Name of character
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets new name for character
+     *
+     * @param name New name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    public List<Attribute> getAttributes() {
+    @Override
+    public HashSet<Attribute> getAttributes() {
         return attributes;
     }
 
     @Override
     public Object getAttributeByName(String name) {
         return AttribHelper.getAttributeByName(this, name);
-    }
-
-    public void setAttributes(List<Attribute> attributes) {
-        this.attributes = attributes;
     }
 
     @Override

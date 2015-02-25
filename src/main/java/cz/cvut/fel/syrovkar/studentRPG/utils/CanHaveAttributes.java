@@ -2,19 +2,34 @@ package cz.cvut.fel.syrovkar.studentRPG.utils;
 
 import cz.cvut.fel.syrovkar.studentRPG.archetypes.Attribute;
 
-import java.util.List;
+import java.util.HashSet;
 
 /**
  * Created by Karel on 24. 2. 2015.
  */
 public interface CanHaveAttributes {
 
-    public List<Attribute> getAttributes();
+    /**
+     * Used only by engine. Do not use.
+     *
+     * @return Do not use
+     */
+    public HashSet<Attribute> getAttributes();
 
+    /**
+     * Gets value of attribute by given name
+     *
+     * @param name Name of attribute
+     * @return Value fo attribute
+     */
     public Object getAttributeByName(String name);
 
-    public void setAttributes(List<Attribute> attributes);
-
-    public void addAttribute(String name, Object attribute);
+    /**
+     * Adds an attribute
+     *
+     * @param name  Name of attribute
+     * @param value value of attribute
+     */
+    public void addAttribute(String name, Object value);
 
 }
