@@ -6,6 +6,8 @@ import cz.cvut.fel.syrovkar.studentRPG.utils.CanHaveAttributes;
 import java.util.HashSet;
 
 /**
+ * Basic Location class.
+ *
  * Created by Karel on 25. 2. 2015.
  */
 public class Location implements CanHaveAttributes {

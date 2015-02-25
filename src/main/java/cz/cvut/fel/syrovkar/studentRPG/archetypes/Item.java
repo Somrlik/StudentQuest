@@ -6,6 +6,8 @@ import cz.cvut.fel.syrovkar.studentRPG.utils.CanHaveAttributes;
 import java.util.HashSet;
 
 /**
+ * Basic Item class.
+ *
  * Created by Karel on 23. 2. 2015.
  */
 public class Item implements CanHaveAttributes {

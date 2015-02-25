@@ -4,6 +4,8 @@ import cz.cvut.fel.syrovkar.studentRPG.archetypes.Attribute;
 import cz.cvut.fel.syrovkar.studentRPG.utils.LoggingHelper;
 
 /**
+ * Holds main information and technical initialization of engine.
+ *
  * Created by Karel on 19. 2. 2015.
  */
 public class StudentRPG {

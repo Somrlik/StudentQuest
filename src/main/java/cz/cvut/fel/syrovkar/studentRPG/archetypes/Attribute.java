@@ -2,6 +2,13 @@ package cz.cvut.fel.syrovkar.studentRPG.archetypes;
 
 /**
  * Created by Karel on 23. 2. 2015.
+ *
+ * Attribute serves as a container for different properties of actors and entities.
+ *
+ * It is defined as a pair of 'name' and 'value'. 'value' can be of any type.
+ *
+ * The name of an Attribute is unique, therefore attribute named 'Foo' equals to other attribute named 'Foo'.
+ *
  */
 public class Attribute {
 

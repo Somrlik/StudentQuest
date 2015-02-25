@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class hold all classes of all actors, mainly for reference and instantination purposes.
+ *
  * Created by Karel on 24. 2. 2015.
  */
 public class GameRegistry {

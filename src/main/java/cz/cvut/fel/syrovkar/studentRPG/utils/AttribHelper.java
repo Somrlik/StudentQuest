@@ -5,6 +5,8 @@ import cz.cvut.fel.syrovkar.studentRPG.archetypes.Attribute;
 import java.util.HashSet;
 
 /**
+ * Helper for extracting and inserting attributes to actors.
+ *
  * Created by Karel on 24. 2. 2015.
  */
 public class AttribHelper {
