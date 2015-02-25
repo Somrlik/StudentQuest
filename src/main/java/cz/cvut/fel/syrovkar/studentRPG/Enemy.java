@@ -1,13 +1,11 @@
 package cz.cvut.fel.syrovkar.studentRPG;
 
-import java.util.List;
-
 /**
  * Created by Karel on 24. 2. 2015.
  */
-public class Enemy extends Character {
+public class Enemy extends cz.cvut.fel.syrovkar.studentRPG.archetypes.Character {
 
-    public Enemy(String name, List<Attribute> attributes) {
-        super(name, attributes);
+    public Enemy(String name) {
+        super(name);
     }
 }

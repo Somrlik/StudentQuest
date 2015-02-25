@@ -1,5 +1,7 @@
 package cz.cvut.fel.syrovkar.studentRPG;
 
+import cz.cvut.fel.syrovkar.studentRPG.archetypes.Item;
+
 import java.util.List;
 
 /**
@@ -7,7 +9,7 @@ import java.util.List;
  */
 public class GameRegistry {
 
-    private List<Character> characters;
+    private List<cz.cvut.fel.syrovkar.studentRPG.archetypes.Character> characters;
 
     private List<Enemy> enemies;
 

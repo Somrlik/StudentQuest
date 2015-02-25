@@ -1,6 +1,6 @@
 package cz.cvut.fel.syrovkar.studentRPG.utils;
 
-import cz.cvut.fel.syrovkar.studentRPG.Attribute;
+import cz.cvut.fel.syrovkar.studentRPG.archetypes.Attribute;
 
 import java.util.List;
 
@@ -21,4 +21,10 @@ public class AttribHelper {
 
     }
 
+    public static void addAttribute(CanHaveAttributes attributableObject, String name, Object value) {
+        List<Attribute> attributeList = attributableObject.getAttributes();
+
+        attributeList.add(new Attribute(name, value));
+
+    }
 }

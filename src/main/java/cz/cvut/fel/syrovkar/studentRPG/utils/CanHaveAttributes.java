@@ -1,6 +1,6 @@
 package cz.cvut.fel.syrovkar.studentRPG.utils;
 
-import cz.cvut.fel.syrovkar.studentRPG.Attribute;
+import cz.cvut.fel.syrovkar.studentRPG.archetypes.Attribute;
 
 import java.util.List;
 
@@ -14,5 +14,7 @@ public interface CanHaveAttributes {
     public Object getAttributeByName(String name);
 
     public void setAttributes(List<Attribute> attributes);
+
+    public void addAttribute(String name, Object attribute);
 
 }

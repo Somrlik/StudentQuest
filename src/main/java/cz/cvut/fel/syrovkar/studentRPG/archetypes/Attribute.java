@@ -1,4 +1,4 @@
-package cz.cvut.fel.syrovkar.studentRPG;
+package cz.cvut.fel.syrovkar.studentRPG.archetypes;
 
 /**
  * Created by Karel on 23. 2. 2015.

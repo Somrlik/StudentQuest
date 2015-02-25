@@ -1,22 +1,22 @@
-package cz.cvut.fel.syrovkar.studentRPG;
+package cz.cvut.fel.syrovkar.studentRPG.archetypes;
 
 import cz.cvut.fel.syrovkar.studentRPG.utils.AttribHelper;
 import cz.cvut.fel.syrovkar.studentRPG.utils.CanHaveAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Karel on 23. 2. 2015.
  */
-public class Item implements CanHaveAttributes {
-
+public abstract class Character implements CanHaveAttributes {
     private String name;
 
     private List<Attribute> attributes;
 
-    public Item(String name, List<Attribute> attributes) {
+    public Character(String name) {
         this.name = name;
-        this.attributes = attributes;
+        this.attributes = new ArrayList<Attribute>();
     }
 
     public String getName() {
@@ -41,8 +41,13 @@ public class Item implements CanHaveAttributes {
     }
 
     @Override
+    public void addAttribute(String name, Object value) {
+        AttribHelper.addAttribute(this, name, value);
+    }
+
+    @Override
     public String toString() {
-        return "Item{" +
+        return "Character{" +
                 "name='" + name + '\'' +
                 ", attributes=" + attributes.toString() +
                 '}';
