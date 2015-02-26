@@ -1,14 +1,13 @@
 package cz.cvut.fel.syrovkar.studentRPG.archetypes;
 
 /**
- * Created by Karel on 23. 2. 2015.
- *
  * Attribute serves as a container for different properties of actors and entities.
  *
  * It is defined as a pair of 'name' and 'value'. 'value' can be of any type.
  *
  * The name of an Attribute is unique, therefore attribute named 'Foo' equals to other attribute named 'Foo'.
  *
+ * Created by Karel on 23. 2. 2015.
  */
 public class Attribute {
 
@@ -59,10 +58,6 @@ public class Attribute {
         this.name = name;
     }
 
-    /**
-     * Used only for debugging.
-     * @return String representation of attribute
-     */
     @Override
     public String toString() {
         return "Attribute{" +
@@ -73,7 +68,7 @@ public class Attribute {
 
     /**
      * Attribute with 'name' equals to other attribute with the same name.
-     * For comparison of values, use getAttributeByName()
+     * For comparison of values, use getValueByAttrName()
      *
      * @param o What to compare with
      * @return If they are equal true, otherwise false
@@ -85,9 +80,8 @@ public class Attribute {
 
         Attribute attribute = (Attribute) o;
 
-        if (!name.equals(attribute.name)) return false;
+        return name.equals(attribute.name);
 
-        return true;
     }
 
     /**

@@ -18,7 +18,7 @@ public class AttribHelper {
      * @param name             Name of attribute
      * @return Value of attribute
      */
-    public static Object getAttributeByName(CanHaveAttributes attributedObject, String name) {
+    public static Object getValueByAttrName(CanHaveAttributes attributedObject, String name) {
         HashSet<Attribute> attributeList = attributedObject.getAttributes();
 
         for (Attribute attribute : attributeList) {
@@ -36,7 +36,7 @@ public class AttribHelper {
      * @param name             Name of attribute
      * @param value            Value to set to attribute
      */
-    public static void setAttributeByName(CanHaveAttributes attributedObject, String name, Object value) {
+    public static void setValueByAttrName(CanHaveAttributes attributedObject, String name, Object value) {
         HashSet<Attribute> attributes = attributedObject.getAttributes();
 
         for (Attribute attribute : attributes) {
@@ -46,7 +46,7 @@ public class AttribHelper {
             }
         }
 
-        LoggingHelper.warning("Attribute with name '" + name + "' cannot be changed, because it does not exist.");
+        LoggingHelper.LOGGER.warning("Attribute with name '" + name + "' cannot be changed, because it does not exist.");
     }
 
     /**
@@ -61,7 +61,7 @@ public class AttribHelper {
         HashSet<Attribute> attributeList = attributableObject.getAttributes();
 
         if (!attributeList.add(new Attribute(name, value)))
-            LoggingHelper.warning("Attribute of same name '" + name + "' already exists. Ignoring new attribute.");
+            LoggingHelper.LOGGER.warning("Attribute of same name '" + name + "' already exists. Ignoring new attribute.");
 
     }
 
@@ -75,5 +75,19 @@ public class AttribHelper {
         HashSet<Attribute> attributes = attributableObject.getAttributes();
 
         attributes.remove(new Attribute(name, 0));
+    }
+
+
+    /**
+     * Helper for checking existence of an attribute
+     *
+     * @param attributableObject An object that can have attributes
+     * @param name               Name of attribute
+     * @return true if the attribute exists, false otherwise
+     */
+    public static boolean hasAttribute(CanHaveAttributes attributableObject, String name) {
+        HashSet<Attribute> attributes = attributableObject.getAttributes();
+
+        return attributes.contains(new Attribute(name, 0));
     }
 }

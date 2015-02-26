@@ -47,13 +47,13 @@ public abstract class Character implements CanHaveAttributes {
     }
 
     @Override
-    public Object getAttributeByName(String name) {
-        return AttribHelper.getAttributeByName(this, name);
+    public Object getValueByAttrName(String name) {
+        return AttribHelper.getValueByAttrName(this, name);
     }
 
     @Override
-    public void setAttributeByName(String name, Object value) {
-        AttribHelper.setAttributeByName(this, name, value);
+    public void setValueByAttrName(String name, Object value) {
+        AttribHelper.setValueByAttrName(this, name, value);
     }
 
     @Override
@@ -64,6 +64,11 @@ public abstract class Character implements CanHaveAttributes {
     @Override
     public void removeAttribute(String name) {
         AttribHelper.removeAttribute(this, name);
+    }
+
+    @Override
+    public boolean hasAttribute(String name) {
+        return AttribHelper.hasAttribute(this, name);
     }
 
     @Override

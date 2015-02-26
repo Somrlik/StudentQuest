@@ -12,7 +12,7 @@ public class StudentRPG {
 
     public static void main(String[] args) {
 
-        LoggingHelper.info("Running the stuff.");
+        LoggingHelper.LOGGER.info("Running the stuff.");
 
         Player plr = new Player();
         plr.addAttribute("Health", 20);
@@ -20,9 +20,14 @@ public class StudentRPG {
         plr.addAttribute("Strenght", 10);
         System.out.println(plr.toString());
 
+        plr.removeAttribute("Strenght");
+        System.out.println(plr.toString());
+
         Attribute atr1 = new Attribute("Blah", 0);
         Attribute atr2 = new Attribute("Blah", 20);
         System.out.println(atr1.equals(atr2));
+
+        System.out.println(plr.hasAttribute("Health"));
 
 
 

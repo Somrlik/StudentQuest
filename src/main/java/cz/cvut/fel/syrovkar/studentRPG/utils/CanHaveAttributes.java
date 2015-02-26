@@ -24,7 +24,7 @@ public interface CanHaveAttributes {
      * @param name Name of attribute
      * @return Value fo attribute
      */
-    public Object getAttributeByName(String name);
+    public Object getValueByAttrName(String name);
 
     /**
      * Sets value of attribute of given name.
@@ -32,7 +32,7 @@ public interface CanHaveAttributes {
      * @param name  Name of attribute
      * @param value Value of attribute
      */
-    public void setAttributeByName(String name, Object value);
+    public void setValueByAttrName(String name, Object value);
 
     /**
      * Adds an attribute
@@ -48,5 +48,13 @@ public interface CanHaveAttributes {
      * @param name Name of attribute
      */
     public void removeAttribute(String name);
+
+    /**
+     * Finds out, if an actor has attribute of given name.
+     *
+     * @param name Name of attribute
+     * @return true if attribute is present, false otherwise
+     */
+    public boolean hasAttribute(String name);
 
 }
