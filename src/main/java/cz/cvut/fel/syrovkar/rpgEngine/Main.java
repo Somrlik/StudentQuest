@@ -1,7 +1,10 @@
 package cz.cvut.fel.syrovkar.rpgEngine;
 
 import cz.cvut.fel.syrovkar.rpgEngine.discovery.ModLoader;
+import cz.cvut.fel.syrovkar.rpgEngine.renderer.Renderer;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.LoggingHelper;
+
+import javax.swing.*;
 
 /**
  * Holds main information and technical initialization of engine.
@@ -17,6 +20,16 @@ public class Main {
         // Necessary, don't move / delete
         Game game = new Game();
 
+        // Thread for the game
+        Thread gameThread = new Thread(game);
+        gameThread.start();
+
+        // Thread for the renderer
+        Renderer renderer = new Renderer();
+        SwingUtilities.invokeLater(renderer);
+
+        // And the main thread for loading stuff in the meantime.
+
         // Finds all mods subscribed with @Mod
         ModLoader.findMods();
 
@@ -24,7 +37,6 @@ public class Main {
         game.init();
 
         System.out.println(Game.gameRegistry.toString());
-
 
     }
 }
