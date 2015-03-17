@@ -17,6 +17,8 @@ public class Game implements Runnable {
 
     private boolean running = false;
 
+    private static boolean modsLoaded = false;
+
     public Game() {
         this.running = true;
     }
@@ -32,6 +34,10 @@ public class Game implements Runnable {
         }
     }
 
+    public static boolean isModsLoaded() {
+        return modsLoaded;
+    }
+
     /**
      * Tick the game engine.
      */
@@ -41,6 +47,7 @@ public class Game implements Runnable {
 
     public void init() {
         gameRegistry.invokeInitOnMods();
+        this.modsLoaded = true;
     }
 
 }
