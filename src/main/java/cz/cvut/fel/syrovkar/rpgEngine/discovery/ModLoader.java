@@ -27,6 +27,11 @@ public class ModLoader {
         Reflections reflections = new Reflections();
         Set<Class<?>> modClasses = reflections.getTypesAnnotatedWith(Mod.class);
 
+        if (modClasses == null) {
+            LoggingHelper.LOGGER.info("No mods found.");
+            return;
+        }
+
         for (Class<?> clazz : modClasses) {
             try {
                 LoggingHelper.LOGGER.info("Loading mod " + clazz.toString());

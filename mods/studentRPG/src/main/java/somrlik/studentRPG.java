@@ -22,7 +22,7 @@ public class studentRPG {
         Game.gameRegistry.addItem(new Item("DrumBlam"));
 
         Game.player.addAttribute("Sex", "Male");
-        Game.player.addAttribute("Age", "20");
+        Game.player.addAttribute("Age", 20);
 
         LoggingHelper.LOGGER.info("StudentRPG loaded");
     }
