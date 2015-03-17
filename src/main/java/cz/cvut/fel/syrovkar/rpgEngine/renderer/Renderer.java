@@ -2,6 +2,7 @@ package cz.cvut.fel.syrovkar.rpgEngine.renderer;
 
 /**
  * Basic GUI class.
+ * TODO Handle changes using events?
  * <p/>
  * Created by Karel on 16. 3. 2015.
  */

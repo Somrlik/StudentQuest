@@ -24,6 +24,7 @@ public class Window {
     }
 
     public void update() {
+        // TODO Events???
         if (Game.isModsLoaded()) {
             root.add(new JLabel("Mods loaded."));
             //root.pack();
