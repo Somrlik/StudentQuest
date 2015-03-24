@@ -1,6 +1,5 @@
 package cz.cvut.fel.syrovkar.rpgEngine;
 
-import cz.cvut.fel.syrovkar.rpgEngine.discovery.ModLoader;
 import cz.cvut.fel.syrovkar.rpgEngine.renderer.Renderer;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.LoggingHelper;
 
@@ -29,9 +28,6 @@ public class Main {
         SwingUtilities.invokeLater(renderer);
 
         // And the main thread for loading stuff in the meantime.
-
-        // Finds all mods subscribed with @Mod
-        ModLoader.findMods();
 
         // Inits all mods and the whole game.
         game.init();

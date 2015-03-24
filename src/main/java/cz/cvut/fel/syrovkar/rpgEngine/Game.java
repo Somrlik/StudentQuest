@@ -46,8 +46,6 @@ public class Game implements Runnable {
     }
 
     public void init() {
-        gameRegistry.invokeInitOnMods();
-        this.modsLoaded = true;
     }
 
 }
