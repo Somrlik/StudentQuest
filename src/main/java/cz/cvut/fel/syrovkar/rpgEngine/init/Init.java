@@ -1,5 +1,8 @@
 package cz.cvut.fel.syrovkar.rpgEngine.init;
 
+import cz.cvut.fel.syrovkar.rpgEngine.Game;
+import cz.cvut.fel.syrovkar.rpgEngine.Player;
+
 /**
  * Initializes all actor classes into GameRegistry.
  *
@@ -15,7 +18,14 @@ public class Init {
 
     /* For the time being, everything is stored in here */
 
-    public void init() {
+    public static void init() {
+
+        Player player = Game.gameRegistry.getPlayer();
+
+        player.addAttribute("Sex", "Male");
+
+        player.setX(120);
+        player.setY(120);
 
     }
 

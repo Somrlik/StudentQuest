@@ -1,13 +1,14 @@
 package cz.cvut.fel.syrovkar.rpgEngine;
 
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Direction;
-import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Entity;
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Item;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.Canvas;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.MainWindow;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.PlayerInteraction;
+import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
+import cz.cvut.fel.syrovkar.rpgEngine.init.Init;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Central hub for controlling the engine.
@@ -16,22 +17,17 @@ import java.util.ArrayList;
  */
 public class Game implements Runnable {
 
-    ArrayList<Entity> entities;
+    public static Canvas canvas;
 
-    Canvas canvas;
-
-    public Player player;
+    public static GameRegistry gameRegistry;
 
     public static volatile boolean isRunning = false;
 
     public Game() {
-        entities = new ArrayList<Entity>();
-        addEntity(new Entity(10, 40));
-        addEntity(new Entity(20, 30));
         isRunning = true;
-        this.canvas = MainWindow.canvas;
-        player = new Player();
-        addEntity(player);
+        canvas = MainWindow.canvas;
+        gameRegistry = new GameRegistry();
+        Init.init();
     }
 
     private double delta = 1;
@@ -74,8 +70,14 @@ public class Game implements Runnable {
 
             screen.drawString("FPS: " + Double.toString(1 / delta), 10, 10);
 
-            for (Entity e : entities) {
-                e.draw(screen, delta);
+            gameRegistry.getPlayer().draw(screen, delta);
+
+            for (Item i : gameRegistry.getItems()) {
+                i.draw(screen, delta);
+            }
+
+            for (cz.cvut.fel.syrovkar.rpgEngine.archetypes.Character ch : gameRegistry.getCharacters()) {
+                ch.draw(screen, delta);
             }
 
             canvas.update();
@@ -83,27 +85,17 @@ public class Game implements Runnable {
 
     }
 
-    public void addEntity(Entity e) {
-        entities.add(e);
-    }
-
-    public ArrayList<Entity> getEntities() {
-        return entities;
-    }
-
     private void gameLogic(double delta) {
         playerLogic(delta);
     }
 
     private void playerLogic(double delta) {
-        if (PlayerInteraction.isUpPressed) player.move(Direction.UP, delta);
-        if (PlayerInteraction.isDownPressed) player.move(Direction.DOWN, delta);
-        if (PlayerInteraction.isRightPressed) player.move(Direction.RIGHT, delta);
-        if (PlayerInteraction.isLeftPressed) player.move(Direction.LEFT, delta);
-        if (!(!PlayerInteraction.isRightPressed && !PlayerInteraction.isLeftPressed)) player.stopInY(delta);
-        if (!(!PlayerInteraction.isUpPressed && !PlayerInteraction.isDownPressed)) player.stopInX(delta);
+        if (PlayerInteraction.isUpPressed) gameRegistry.getPlayer().move(Direction.UP, delta);
+        if (PlayerInteraction.isDownPressed) gameRegistry.getPlayer().move(Direction.DOWN, delta);
+        if (PlayerInteraction.isRightPressed) gameRegistry.getPlayer().move(Direction.RIGHT, delta);
+        if (PlayerInteraction.isLeftPressed) gameRegistry.getPlayer().move(Direction.LEFT, delta);
         if (!(PlayerInteraction.isRightPressed || PlayerInteraction.isDownPressed || PlayerInteraction.isLeftPressed || PlayerInteraction.isUpPressed))
-            player.slowDown(delta);
+            gameRegistry.getPlayer().slowDown(delta);
     }
 
 }

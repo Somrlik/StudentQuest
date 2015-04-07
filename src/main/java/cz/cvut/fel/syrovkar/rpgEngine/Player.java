@@ -1,6 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine;
 
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Character;
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Direction;
 
 /**
  * Basic Player class.
@@ -13,5 +14,22 @@ public class Player extends Character {
         super("Player");
     }
 
+    @Override
+    public void move(Direction direction, double delta) {
+        switch (direction) {
+            case UP:
+                yVelocity = -64;
+                break;
+            case DOWN:
+                yVelocity = 64;
+                break;
+            case LEFT:
+                xVelocity = -64;
+                break;
+            case RIGHT:
+                xVelocity = 64;
+                break;
+        }
+    }
 
 }

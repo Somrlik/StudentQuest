@@ -35,20 +35,6 @@ public class LivingEntity extends Entity {
     }
 
     public void move(Direction direction, double delta) {
-        switch (direction) {
-            case UP:
-                yVelocity = -64;
-                break;
-            case DOWN:
-                yVelocity = 64;
-                break;
-            case LEFT:
-                xVelocity = -64;
-                break;
-            case RIGHT:
-                xVelocity = 64;
-                break;
-        }
     }
 
 }

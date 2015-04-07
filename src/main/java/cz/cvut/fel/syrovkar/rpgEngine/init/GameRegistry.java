@@ -60,4 +60,12 @@ public class GameRegistry {
     public Player getPlayer() {
         return player;
     }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
 }
