@@ -10,7 +10,7 @@ import java.util.HashSet;
  *
  * Created by Karel on 23. 2. 2015.
  */
-public abstract class Character implements CanHaveAttributes {
+public abstract class Character extends LivingEntity implements CanHaveAttributes {
     private String name;
 
     private HashSet<Attribute> attributes;
@@ -21,6 +21,7 @@ public abstract class Character implements CanHaveAttributes {
      * @param name Name of character
      */
     public Character(String name) {
+        super(0, 0);
         this.name = name;
         this.attributes = new HashSet<Attribute>();
     }

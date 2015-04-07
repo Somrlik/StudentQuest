@@ -10,13 +10,14 @@ import java.util.HashSet;
  *
  * Created by Karel on 23. 2. 2015.
  */
-public class Item implements CanHaveAttributes {
+public class Item extends Entity implements CanHaveAttributes {
 
     private String name;
 
     private HashSet<Attribute> attributes;
 
     public Item(String name) {
+        super(0, 0);
         this.name = name;
         this.attributes = new HashSet<Attribute>();
     }

@@ -1,6 +1,6 @@
 package cz.cvut.fel.syrovkar.rpgEngine;
 
-import cz.cvut.fel.syrovkar.rpgEngine.renderer.Renderer;
+import cz.cvut.fel.syrovkar.rpgEngine.gui.MainWindow;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.LoggingHelper;
 
 import javax.swing.*;
@@ -16,23 +16,16 @@ public class Main {
 
         LoggingHelper.LOGGER.info("Running the stuff.");
 
-        // Necessary, don't move / delete
-        Game game = new Game();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new MainWindow();
+            }
+        });
 
-        // Thread for the game
+        Game game = new Game();
         Thread gameThread = new Thread(game);
         gameThread.start();
-
-        // Thread for the renderer
-        Renderer renderer = new Renderer();
-        SwingUtilities.invokeLater(renderer);
-
-        // And the main thread for loading stuff in the meantime.
-
-        // Inits all mods and the whole game.
-        game.init();
-
-        System.out.println(Game.gameRegistry.toString());
-
     }
+
 }
