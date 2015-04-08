@@ -20,8 +20,8 @@ public abstract class Character extends LivingEntity implements CanHaveAttribute
      *
      * @param name Name of character
      */
-    public Character(String name) {
-        super(0, 0);
+    public Character(String name, int x, int y, int xSize, int ySize) {
+        super(x, y, xSize, ySize);
         this.name = name;
         this.attributes = new HashSet<Attribute>();
     }

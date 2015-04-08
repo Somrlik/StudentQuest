@@ -31,7 +31,7 @@ public class GameRegistry {
 
         items = new ArrayList<Item>();
 
-        player = new Player();
+        player = new Player(0, 0, 40, 40);
 
     }
 

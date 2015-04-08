@@ -1,5 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.gui;
 
+import cz.cvut.fel.syrovkar.rpgEngine.reference.Constants;
+
 import javax.swing.*;
 
 /**
@@ -21,7 +23,7 @@ public class MainWindow {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setResizable(false);
-        frame.setSize(800, 600);
+        frame.setSize(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
 
         System.out.println("Created GUI on EDT? " +
                 SwingUtilities.isEventDispatchThread());

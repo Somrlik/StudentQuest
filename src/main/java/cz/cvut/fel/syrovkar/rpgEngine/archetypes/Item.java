@@ -16,8 +16,8 @@ public class Item extends Entity implements CanHaveAttributes {
 
     private HashSet<Attribute> attributes;
 
-    public Item(String name) {
-        super(0, 0);
+    public Item(String name, int x, int y, int xSize, int ySize) {
+        super(x, y, xSize, ySize);
         this.name = name;
         this.attributes = new HashSet<Attribute>();
     }

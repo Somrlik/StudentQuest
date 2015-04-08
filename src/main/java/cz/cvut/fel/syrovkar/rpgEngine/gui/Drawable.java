@@ -9,12 +9,21 @@ public interface Drawable {
 
     public void draw(Graphics g, double delta);
 
-    public int getX();
+    public double getX();
 
-    public void setX(int x);
+    public double getY();
 
-    public int getY();
+    public void setX(double x);
 
-    public void setY(int y);
+    public void setY(double y);
+
+    public double getxSize();
+
+    public void setxSize(double xSize);
+
+    public double getySize();
+
+    public void setySize(double ySize);
+
 
 }

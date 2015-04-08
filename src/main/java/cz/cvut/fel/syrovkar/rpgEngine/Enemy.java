@@ -8,6 +8,6 @@ package cz.cvut.fel.syrovkar.rpgEngine;
 public class Enemy extends cz.cvut.fel.syrovkar.rpgEngine.archetypes.Character {
 
     public Enemy(String name) {
-        super(name);
+        super(name, 0, 0, 40, 40);
     }
 }

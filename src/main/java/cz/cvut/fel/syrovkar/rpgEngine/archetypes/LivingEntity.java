@@ -9,16 +9,17 @@ public class LivingEntity extends Entity {
     protected double xVelocity;
     protected double yVelocity;
 
-    public LivingEntity(int x, int y) {
-        super(x, y);
+    public LivingEntity(int x, int y, int xSize, int ySize) {
+        super(x, y, xSize, ySize);
         xVelocity = 0;
         yVelocity = 0;
     }
 
     public void draw(Graphics g, double delta) {
+        super.draw(g, delta);
         x += xVelocity * (delta);
         y += yVelocity * (delta);
-        g.drawString("Entity with speed " + Double.toString(xVelocity) + " " + Double.toString(yVelocity), (int) x, (int) y);
+        g.drawString("Entity with speed " + Double.toString(xVelocity) + " " + Double.toString(yVelocity), (int) x, (int) y + 10);
     }
 
     public void slowDown(double delta) {

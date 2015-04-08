@@ -8,9 +8,17 @@ import java.util.HashSet;
 
 public class CanHaveAttributesTest extends TestCase {
 
+    Item item;
+
+    @Override
+    public void setUp() throws Exception {
+        super.setUp();
+        Item item = new Item("Item", 0, 0, 20, 20);
+    }
+
     @SuppressWarnings("AssertEqualsBetweenInconvertibleTypes")
     public void testGetValueByAttrName() throws Exception {
-        Item item = new Item("Item");
+
         item.addAttribute("Test", 0);
 
         assertEquals(item.getValueByAttrName("Test"), 0);
@@ -18,7 +26,6 @@ public class CanHaveAttributesTest extends TestCase {
 
     @SuppressWarnings("AssertEqualsBetweenInconvertibleTypes")
     public void testSetValueByAttrName() throws Exception {
-        Item item = new Item("Test");
         item.addAttribute("Test", 0);
 
         item.setValueByAttrName("Test", 1);
@@ -28,7 +35,6 @@ public class CanHaveAttributesTest extends TestCase {
     }
 
     public void testAddAttribute() throws Exception {
-        Item item = new Item("Test Item");
         item.addAttribute("Test", 0);
 
         HashSet<Attribute> attributes = item.getAttributes();
@@ -36,7 +42,6 @@ public class CanHaveAttributesTest extends TestCase {
     }
 
     public void testRemoveAttribute() throws Exception {
-        Item item = new Item("Test");
         item.addAttribute("Test", 0);
         item.removeAttribute("Test");
 
@@ -44,8 +49,6 @@ public class CanHaveAttributesTest extends TestCase {
     }
 
     public void testHasAttribute() throws Exception {
-        Item item = new Item("Test");
-
         item.addAttribute("Test", 0);
 
         assertTrue(item.hasAttribute("Test"));

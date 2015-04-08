@@ -10,8 +10,8 @@ import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Direction;
  */
 public class Player extends Character {
 
-    public Player() {
-        super("Player");
+    public Player(int x, int y, int xSize, int ySize) {
+        super("Player", x, y, xSize, ySize);
     }
 
     @Override

@@ -7,6 +7,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.gui.MainWindow;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.PlayerInteraction;
 import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 import cz.cvut.fel.syrovkar.rpgEngine.init.Init;
+import cz.cvut.fel.syrovkar.rpgEngine.reference.Constants;
 
 import java.awt.*;
 
@@ -23,11 +24,14 @@ public class Game implements Runnable {
 
     public static volatile boolean isRunning = false;
 
+    private Player player;
+
     public Game() {
         isRunning = true;
         canvas = MainWindow.canvas;
         gameRegistry = new GameRegistry();
         Init.init();
+        player = gameRegistry.getPlayer();
     }
 
     private double delta = 1;
@@ -66,7 +70,7 @@ public class Game implements Runnable {
         Graphics2D screen = canvas.getDrawingGraphics();
 
         if (screen != null) {
-            screen.clearRect(0, 0, 800, 600);
+            screen.clearRect(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
 
             screen.drawString("FPS: " + Double.toString(1 / delta), 10, 10);
 
@@ -90,12 +94,20 @@ public class Game implements Runnable {
     }
 
     private void playerLogic(double delta) {
-        if (PlayerInteraction.isUpPressed) gameRegistry.getPlayer().move(Direction.UP, delta);
-        if (PlayerInteraction.isDownPressed) gameRegistry.getPlayer().move(Direction.DOWN, delta);
-        if (PlayerInteraction.isRightPressed) gameRegistry.getPlayer().move(Direction.RIGHT, delta);
-        if (PlayerInteraction.isLeftPressed) gameRegistry.getPlayer().move(Direction.LEFT, delta);
+
+        /* MOVING */
+
+        if (PlayerInteraction.isDownPressed) player.move(Direction.DOWN, delta);
+        if (PlayerInteraction.isUpPressed) player.move(Direction.UP, delta);
+        if (PlayerInteraction.isRightPressed) player.move(Direction.RIGHT, delta);
+        if (PlayerInteraction.isLeftPressed) player.move(Direction.LEFT, delta);
+
+        if (!(PlayerInteraction.isDownPressed || PlayerInteraction.isUpPressed)) player.stopInY(delta);
+        if (!(PlayerInteraction.isRightPressed || PlayerInteraction.isLeftPressed)) player.stopInX(delta);
+
         if (!(PlayerInteraction.isRightPressed || PlayerInteraction.isDownPressed || PlayerInteraction.isLeftPressed || PlayerInteraction.isUpPressed))
             gameRegistry.getPlayer().slowDown(delta);
+
     }
 
 }
