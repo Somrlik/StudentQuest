@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 /**
+ * Drawing Canvas.
+ *
  * Created by Karel on 24. 3. 2015.
  */
 
@@ -18,7 +20,7 @@ public class Canvas extends java.awt.Canvas {
         panel.setFocusable(true);
         //panel.add(this);
 
-        setBounds(0, 0, 800, 600);
+        //setBounds(0, 0, 800, 600);
 
         setIgnoreRepaint(true);
 

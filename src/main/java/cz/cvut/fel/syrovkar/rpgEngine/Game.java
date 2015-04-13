@@ -70,11 +70,11 @@ public class Game implements Runnable {
         Graphics2D screen = canvas.getDrawingGraphics();
 
         if (screen != null) {
-            screen.clearRect(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
+            screen.clearRect(-1, -1, Constants.WINDOW_WIDTH + 1, Constants.WINDOW_HEIGHT + 1);
 
             screen.drawString("FPS: " + Double.toString(1 / delta), 10, 10);
 
-            gameRegistry.getPlayer().draw(screen, delta);
+            player.draw(screen, delta);
 
             for (Item i : gameRegistry.getItems()) {
                 i.draw(screen, delta);
@@ -108,7 +108,28 @@ public class Game implements Runnable {
         if (!(PlayerInteraction.isRightPressed || PlayerInteraction.isDownPressed || PlayerInteraction.isLeftPressed || PlayerInteraction.isUpPressed))
             gameRegistry.getPlayer().slowDown(delta);
 
-    }
+        /* BORDER COLLISION */
 
+        if (player.getX() < -1) {
+            player.stopInX(delta);
+            player.setX(0);
+        }
+
+        if (player.getY() < -1) {
+            player.stopInX(delta);
+            player.setY(0);
+        }
+
+        if ((player.getX() + player.getxSize() > canvas.getWidth() + 1)) {
+            player.stopInX(delta);
+            player.setX(canvas.getWidth() - player.getxSize());
+        }
+        if ((player.getY() + player.getySize() > canvas.getHeight() + 1)) {
+            player.stopInY(delta);
+            player.setY(canvas.getHeight() - player.getySize());
+        }
+
+
+    }
 }
 
