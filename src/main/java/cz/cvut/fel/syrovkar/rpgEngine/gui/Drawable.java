@@ -25,5 +25,5 @@ public interface Drawable {
 
     public void setySize(double ySize);
 
-
+    public boolean hasTexture();
 }

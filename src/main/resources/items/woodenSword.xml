@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<item>
+    <name>Wooden sword</name>
+    <id>woodenSword</id>
+    <texture>items/woodenSword.png</texture>
+
+    <attributes>
+        <attribute>
+            <name>Price</name>
+            <value>20</value>
+        </attribute>
+        <attribute>
+            <name>Attack</name>
+            <value>5</value>
+        </attribute>
+    </attributes>
+
+</item>

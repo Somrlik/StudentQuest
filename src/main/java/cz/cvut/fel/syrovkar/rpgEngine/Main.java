@@ -26,6 +26,8 @@ public class Main {
         Game game = new Game();
         Thread gameThread = new Thread(game);
         gameThread.start();
+
+
     }
 
 }

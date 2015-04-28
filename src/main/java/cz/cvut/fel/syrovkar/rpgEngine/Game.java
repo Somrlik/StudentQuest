@@ -1,13 +1,14 @@
 package cz.cvut.fel.syrovkar.rpgEngine;
 
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Direction;
-import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Item;
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Location;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.Canvas;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.MainWindow;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.PlayerInteraction;
 import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 import cz.cvut.fel.syrovkar.rpgEngine.init.Init;
 import cz.cvut.fel.syrovkar.rpgEngine.reference.Constants;
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Player;
 
 import java.awt.*;
 
@@ -23,6 +24,10 @@ public class Game implements Runnable {
     public static GameRegistry gameRegistry;
 
     public static volatile boolean isRunning = false;
+
+    public static volatile boolean isReady = false;
+
+    private static Location currentLocation;
 
     private Player player;
 
@@ -44,6 +49,12 @@ public class Game implements Runnable {
 
         while (isRunning) {
 
+            if (!isReady) {
+                if (canvas.getDrawingGraphics() == null) {
+                    continue;
+                } else isReady = true;
+            }
+
             time = System.nanoTime();
 
             gameLogic(delta);
@@ -52,7 +63,7 @@ public class Game implements Runnable {
 
             timeDiff = System.nanoTime() - time;
 
-            timeDiff /= 1e9; //za sekundu
+            timeDiff /= 1e9; // in seconds
 
             delta = timeDiff;
 
@@ -69,23 +80,24 @@ public class Game implements Runnable {
 */
         Graphics2D screen = canvas.getDrawingGraphics();
 
-        if (screen != null) {
-            screen.clearRect(-1, -1, Constants.WINDOW_WIDTH + 1, Constants.WINDOW_HEIGHT + 1);
+        screen.clearRect(-1, -1, Constants.WINDOW_WIDTH + 1, Constants.WINDOW_HEIGHT + 1);
 
-            screen.drawString("FPS: " + Double.toString(1 / delta), 10, 10);
+        screen.drawString("FPS: " + Double.toString(1 / delta), 10, 10);
 
-            player.draw(screen, delta);
+        player.draw(screen, delta);
 
-            for (Item i : gameRegistry.getItems()) {
-                i.draw(screen, delta);
-            }
-
-            for (cz.cvut.fel.syrovkar.rpgEngine.archetypes.Character ch : gameRegistry.getCharacters()) {
-                ch.draw(screen, delta);
-            }
-
-            canvas.update();
+        /*
+        for (ItemArchetype i : gameRegistry.getItemsArchetypes()) {
+            i.draw(screen, delta);
         }
+
+        for (cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Character ch : gameRegistry.getCharacters()) {
+            ch.draw(screen, delta);
+        }
+        */
+
+        canvas.update();
+
 
     }
 

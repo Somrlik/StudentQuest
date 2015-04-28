@@ -1,9 +1,9 @@
 package cz.cvut.fel.syrovkar.rpgEngine.init;
 
-import cz.cvut.fel.syrovkar.rpgEngine.Player;
-import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Character;
-import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Item;
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.EnemyArchetype;
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.ItemArchetype;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Location;
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,59 +15,60 @@ import java.util.List;
  */
 public class GameRegistry {
 
-    private List<Character> characters;
-
     private List<Location> locations;
 
-    private List<Item> items;
+    private List<ItemArchetype> itemsArchetypes;
+
+    private List<EnemyArchetype> enemyArchetypes;
 
     private Player player;
 
-    public GameRegistry() {
+    private boolean isReady = false;
 
-        characters = new ArrayList<Character>();
+    public GameRegistry() {
 
         locations = new ArrayList<Location>();
 
-        items = new ArrayList<Item>();
+        itemsArchetypes = new ArrayList<ItemArchetype>();
+
+        enemyArchetypes = new ArrayList<EnemyArchetype>();
 
         player = new Player(20, 20, 40, 40);
 
-    }
-
-    public void addCharacter(Character character) {
-        characters.add(character);
     }
 
     public void addLocation(Location location) {
         locations.add(location);
     }
 
-    public void addItem(Item item) {
-        items.add(item);
+    public void addItemArchetype(ItemArchetype item) {
+        itemsArchetypes.add(item);
     }
 
-    @Override
-    public String toString() {
-        return "GameRegistry{" +
-                ", characters=" + characters +
-                ", locations=" + locations +
-                ", items=" + items +
-                ", player=" + player +
-                '}';
+    public void addEnemyArchetype(EnemyArchetype enemy) {
+        enemyArchetypes.add(enemy);
     }
 
     public Player getPlayer() {
         return player;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<ItemArchetype> getItemsArchetypes() {
+        return itemsArchetypes;
     }
 
-    public List<Character> getCharacters() {
-        return characters;
+    public List<EnemyArchetype> getEnemyArchetypes() {
+        return enemyArchetypes;
     }
 
-
+    @Override
+    public String toString() {
+        return "GameRegistry{" +
+                "locations=" + locations +
+                ", itemsArchetypes=" + itemsArchetypes +
+                ", enemyArchetypes=" + enemyArchetypes +
+                ", player=" + player +
+                ", isReady=" + isReady +
+                '}';
+    }
 }

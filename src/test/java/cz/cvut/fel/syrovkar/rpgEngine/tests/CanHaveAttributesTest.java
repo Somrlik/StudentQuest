@@ -1,7 +1,8 @@
 package cz.cvut.fel.syrovkar.rpgEngine.tests;
 
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Attribute;
-import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Item;
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.ItemArchetype;
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Item;
 import junit.framework.TestCase;
 
 import java.util.HashSet;
@@ -13,7 +14,7 @@ public class CanHaveAttributesTest extends TestCase {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        Item item = new Item("Item", 0, 0, 20, 20);
+        Item item = new Item("Item", new ItemArchetype("Item", "item", null, null), 0, 0, 20, 20);
     }
 
     @SuppressWarnings("AssertEqualsBetweenInconvertibleTypes")

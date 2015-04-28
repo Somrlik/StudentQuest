@@ -1,5 +1,6 @@
-package cz.cvut.fel.syrovkar.rpgEngine.archetypes;
+package cz.cvut.fel.syrovkar.rpgEngine.worldobjects;
 
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Attribute;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.AttribHelper;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.CanHaveAttributes;
 
@@ -20,9 +21,8 @@ public abstract class Character extends LivingEntity implements CanHaveAttribute
      *
      * @param name Name of character
      */
-    public Character(String name, int x, int y, int xSize, int ySize) {
-        super(x, y, xSize, ySize);
-        this.name = name;
+    public Character(String name, String id, int x, int y, int xSize, int ySize) {
+        super(name, id, x, y, xSize, ySize);
         this.attributes = new HashSet<Attribute>();
     }
 

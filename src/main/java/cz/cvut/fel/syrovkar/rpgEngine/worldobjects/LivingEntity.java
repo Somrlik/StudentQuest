@@ -1,4 +1,6 @@
-package cz.cvut.fel.syrovkar.rpgEngine.archetypes;
+package cz.cvut.fel.syrovkar.rpgEngine.worldobjects;
+
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Direction;
 
 import java.awt.*;
 
@@ -9,8 +11,8 @@ public class LivingEntity extends Entity {
     protected double xVelocity;
     protected double yVelocity;
 
-    public LivingEntity(int x, int y, int xSize, int ySize) {
-        super(x, y, xSize, ySize);
+    public LivingEntity(String name, String id, int x, int y, int xSize, int ySize) {
+        super(name, id, x, y, xSize, ySize);
         xVelocity = 0;
         yVelocity = 0;
     }

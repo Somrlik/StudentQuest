@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enemy>
+    <name>Goblin</name>
+    <id>goblin</id>
+
+    <attributes>
+        <attribute>
+            <name>Health</name>
+            <value>20</value>
+        </attribute>
+        <attribute>
+            <name>Attack</name>
+            <value>2</value>
+        </attribute>
+    </attributes>
+
+    <drops>
+        <gold>
+            <amount-min>0</amount-min>
+            <amount-max>10</amount-max>
+        </gold>
+        <drop>
+            <id>woodenSword</id>
+            <probability>0.2</probability>
+        </drop>
+    </drops>
+
+</enemy>

@@ -3,23 +3,25 @@ package cz.cvut.fel.syrovkar.rpgEngine.archetypes;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.AttribHelper;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.CanHaveAttributes;
 
+import java.awt.*;
 import java.util.HashSet;
 
 /**
- * Basic Item class.
- *
- * Created by Karel on 23. 2. 2015.
+ * Created by Karel on 28. 4. 2015.
  */
-public class Item extends Entity implements CanHaveAttributes {
+public class BasicArchetype implements CanHaveAttributes {
 
     private String name;
+    private String id;
+    private Image texture;
 
     private HashSet<Attribute> attributes;
 
-    public Item(String name, int x, int y, int xSize, int ySize) {
-        super(x, y, xSize, ySize);
+    public BasicArchetype(String name, String id, Image texture, HashSet<Attribute> attributes) {
         this.name = name;
-        this.attributes = new HashSet<Attribute>();
+        this.id = id;
+        this.texture = texture;
+        this.attributes = attributes;
     }
 
     public String getName() {
@@ -30,6 +32,23 @@ public class Item extends Entity implements CanHaveAttributes {
         this.name = name;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Image getTexture() {
+        return texture;
+    }
+
+    public void setTexture(Image texture) {
+        this.texture = texture;
+    }
+
+    @Override
     public HashSet<Attribute> getAttributes() {
         return attributes;
     }
@@ -40,13 +59,13 @@ public class Item extends Entity implements CanHaveAttributes {
     }
 
     @Override
-    public void addAttribute(String name, Object value) {
-        AttribHelper.addAttribute(this, name, value);
+    public void setValueByAttrName(String name, Object value) {
+        AttribHelper.setValueByAttrName(this, name, value);
     }
 
     @Override
-    public void setValueByAttrName(String name, Object value) {
-        AttribHelper.setValueByAttrName(this, name, value);
+    public void addAttribute(String name, Object value) {
+        AttribHelper.addAttribute(this, name, value);
     }
 
     @Override
@@ -59,11 +78,5 @@ public class Item extends Entity implements CanHaveAttributes {
         return AttribHelper.hasAttribute(this, name);
     }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", attributes=" + attributes.toString() +
-                '}';
-    }
+
 }

@@ -1,5 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.archetypes;
 
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Entity;
+
 import java.util.ArrayList;
 
 /**
