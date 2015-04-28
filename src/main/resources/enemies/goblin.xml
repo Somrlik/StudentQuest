@@ -2,6 +2,7 @@
 <enemy>
     <name>Goblin</name>
     <id>goblin</id>
+    <texture></texture>
 
     <attributes>
         <attribute>
@@ -15,10 +16,10 @@
     </attributes>
 
     <drops>
-        <gold>
-            <amount-min>0</amount-min>
-            <amount-max>10</amount-max>
-        </gold>
+        <drop>
+            <id>gold</id>
+            <probability>0.5</probability>
+        </drop>
         <drop>
             <id>woodenSword</id>
             <probability>0.2</probability>

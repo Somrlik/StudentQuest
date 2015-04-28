@@ -1,6 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.archetypes;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -8,7 +9,12 @@ import java.util.HashSet;
  */
 public class EnemyArchetype extends BasicArchetype {
 
-    public EnemyArchetype(String name, String id, Image texture, HashSet<Attribute> attributes) {
+    ArrayList<EnemyDrop> drops;
+
+    public EnemyArchetype(String name, String id, Image texture, HashSet<Attribute> attributes, ArrayList<EnemyDrop> dropList) {
         super(name, id, texture, attributes);
+
+        drops = dropList;
+
     }
 }

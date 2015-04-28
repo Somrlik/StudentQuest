@@ -1,5 +1,8 @@
 package cz.cvut.fel.syrovkar.rpgEngine.init;
 
+import cz.cvut.fel.syrovkar.rpgEngine.utils.FileHelper;
+import cz.cvut.fel.syrovkar.rpgEngine.utils.xmlHelpers.WorldParser;
+
 /**
  * Initializes all actor classes into GameRegistry.
  *
@@ -16,6 +19,9 @@ public class Init {
     /* For the time being, everything is stored in here */
 
     public static void init() {
+
+        WorldParser.parse(FileHelper.getFileFromURI("world.xml"));
+
         ItemsInit.init();
         EnemiesInit.init();
         LocationsInit.init();

@@ -7,7 +7,7 @@ import org.w3c.dom.Document;
  * <p/>
  * Created by Karel on 28. 4. 2015.
  */
-public class BasicParser {
+public class EntityParse {
 
     public static void parse(Document doc, String name, String id,
                              Integer posX, Integer posY,

@@ -32,7 +32,7 @@
 
     <enemies>
         <enemy>
-            <name>goblin</name>
+            <id>goblin</id>
             <pos-x>30</pos-x>
             <pos-y>60</pos-y>
         </enemy>

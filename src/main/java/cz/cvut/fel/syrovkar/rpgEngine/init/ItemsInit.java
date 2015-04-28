@@ -14,8 +14,4 @@ public class ItemsInit {
             ItemsParser.parse(f);
         }
     }
-
-    private static void parse(File file) {
-        System.out.println(file.toString());
-    }
 }

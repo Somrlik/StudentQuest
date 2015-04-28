@@ -2,7 +2,7 @@ package cz.cvut.fel.syrovkar.rpgEngine.init;
 
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.EnemyArchetype;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.ItemArchetype;
-import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Location;
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.WorldMap;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Player;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class GameRegistry {
 
-    private List<Location> locations;
+    private WorldMap world;
 
     private List<ItemArchetype> itemsArchetypes;
 
@@ -23,11 +23,10 @@ public class GameRegistry {
 
     private Player player;
 
-    private boolean isReady = false;
+    //private boolean isReady = false;
 
     public GameRegistry() {
 
-        locations = new ArrayList<Location>();
 
         itemsArchetypes = new ArrayList<ItemArchetype>();
 
@@ -37,8 +36,12 @@ public class GameRegistry {
 
     }
 
-    public void addLocation(Location location) {
-        locations.add(location);
+    public void setWorld(WorldMap wm) {
+        this.world = wm;
+    }
+
+    public WorldMap getWorld() {
+        return this.world;
     }
 
     public void addItemArchetype(ItemArchetype item) {
@@ -64,11 +67,9 @@ public class GameRegistry {
     @Override
     public String toString() {
         return "GameRegistry{" +
-                "locations=" + locations +
                 ", itemsArchetypes=" + itemsArchetypes +
                 ", enemyArchetypes=" + enemyArchetypes +
                 ", player=" + player +
-                ", isReady=" + isReady +
                 '}';
     }
 }

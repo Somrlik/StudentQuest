@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<item>
+    <name>Gold</name>
+    <id>gold</id>
+    <texture>items/gold.png</texture>
+
+    <attributes>
+        <attribute>
+            <name>Price</name>
+            <value>1</value>
+        </attribute>
+    </attributes>
+
+</item>
