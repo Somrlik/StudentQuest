@@ -4,7 +4,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.utils.FileHelper;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.xmlHelpers.WorldParser;
 
 /**
- * Initializes all actor classes into GameRegistry.
+ * Initializes all Archetypes and Locations into GameRegistry.
  *
  * Created by Karel on 24. 2. 2015.
  */
@@ -18,6 +18,9 @@ public class Init {
 
     /* For the time being, everything is stored in here */
 
+    /**
+     * Init all the things.
+     */
     public static void init() {
 
         WorldParser.parse(FileHelper.getFileFromURI("world.xml"));

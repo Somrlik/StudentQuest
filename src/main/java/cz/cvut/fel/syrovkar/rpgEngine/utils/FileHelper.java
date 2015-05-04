@@ -8,10 +8,18 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * Some useful helper for loading files.
+ *
  * Created by Karel on 28. 4. 2015.
  */
 public class FileHelper {
 
+    /**
+     * Gets File from URI.
+     *
+     * @param URI URI of the file.
+     * @return File resource, null on failure
+     */
     public static File getFileFromURI(String URI) {
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 
@@ -32,6 +40,12 @@ public class FileHelper {
         }
     }
 
+    /**
+     * Gets list of all files from directory
+     *
+     * @param directory URI of directory
+     * @return List of Files, null on failure
+     */
     public static List<File> getFilesFromDirectory(String directory) {
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 

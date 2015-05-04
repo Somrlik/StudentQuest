@@ -8,10 +8,18 @@ import org.w3c.dom.NodeList;
 import java.util.HashSet;
 
 /**
+ * Parses attributes from NodeList.
+ *
  * Created by Karel on 28. 4. 2015.
  */
 public class AttributesParser {
 
+    /**
+     * Parses Attribute s from NodeList of nodes.
+     *
+     * @param nodeList NodeList beginning with "&lt;attributes&gt;"
+     * @return HashSet of attributes parsed
+     */
     public static HashSet<Attribute> parse(NodeList nodeList) {
 
         nodeList = nodeList.item(0).getChildNodes();

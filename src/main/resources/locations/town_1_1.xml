@@ -4,14 +4,10 @@
     <id>town11</id>
     <map-x>5</map-x>
     <map-y>5</map-y>
-    <map-up-location>none</map-up-location>
-    <map-down-location>none</map-down-location>
-    <map-left-location>none</map-left-location>
-    <map-right-location>none</map-right-location>
 
     <entities>
         <entity> <!-- Static stuff -->
-            <name>tree</name>
+            <name>tree1</name>
             <texture>trees/tree71.png</texture>
             <collision>true</collision>
             <pos-x>30</pos-x>
@@ -20,7 +16,7 @@
             <siz-y>30</siz-y>
         </entity>
         <entity>
-            <name>tree</name>
+            <name>tree2</name>
             <texture>trees/tree70.png</texture>
             <collision>true</collision>
             <pos-x>200</pos-x>
@@ -32,17 +28,21 @@
 
     <enemies>
         <enemy>
-            <id>goblin</id>
-            <pos-x>30</pos-x>
-            <pos-y>60</pos-y>
+            <archetype>goblin</archetype>
+            <pos-x>300</pos-x>
+            <pos-y>600</pos-y>
+            <siz-x>40</siz-x>
+            <siz-y>40</siz-y>
         </enemy>
     </enemies>
 
     <items>
         <item>
-            <id>woodenSword</id>
+            <archetype>woodenSword</archetype>
             <pos-x>200</pos-x>
             <pos-y>400</pos-y>
+            <siz-x>20</siz-x>
+            <siz-y>20</siz-y>
         </item>
     </items>
 </location>

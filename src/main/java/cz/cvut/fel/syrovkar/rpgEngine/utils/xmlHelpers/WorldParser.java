@@ -13,10 +13,19 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * Parses world.xml
+ *
  * Created by Karel on 28. 4. 2015.
  */
 public class WorldParser {
 
+    /**
+     * What world do we live in? Parses world.xml file.
+     * <p/>
+     * For more info on how to make such a xml file, see "examples/".
+     *
+     * @param file usually world.xml
+     */
     public static void parse(File file) {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -36,7 +45,7 @@ public class WorldParser {
         }
         doc.getDocumentElement().normalize();
 
-        int i = 0, j = 0;
+        int i = -1, j = -1;
 
         NodeList nl = doc.getElementsByTagName("world-x");
         if (nl != null) i = Integer.parseInt(nl.item(0).getTextContent());

@@ -17,9 +17,18 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
+ * Parses .xml files that contain Archetypes of Enemies.
+ *
  * Created by Karel on 28. 4. 2015.
  */
 public class EnemyParser {
+    /**
+     * Parses .xml with EnemyArchetype.
+     * <p/>
+     * For more info on how to make such a xml file, see "examples/".
+     *
+     * @param file .xml file with EnemyArchetype
+     */
     public static void parse(File file) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -56,7 +65,10 @@ public class EnemyParser {
                 File textureFile = FileHelper.getFileFromURI("textures/" + textureURL);
                 if (textureFile == null) {
                     System.out.println("Error loading image " + textureURL);
-                } else texture = ImageIO.read(textureFile);
+                } else {
+                    System.out.println("Loaded texture from " + textureURL);
+                    texture = ImageIO.read(textureFile);
+                }
             }
 
             Game.gameRegistry.addEnemyArchetype(new EnemyArchetype(name, id, texture, attributes, drops));

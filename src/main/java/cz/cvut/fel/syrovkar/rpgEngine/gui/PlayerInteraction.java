@@ -3,6 +3,10 @@ package cz.cvut.fel.syrovkar.rpgEngine.gui;
 import java.awt.event.*;
 
 /**
+ * Class for managing inputs on all devices.
+ *
+ * Listens for input on Swing/AWT event thread.
+ *
  * Created by Karel on 7. 4. 2015.
  */
 public class PlayerInteraction implements MouseListener, KeyListener, MouseMotionListener, MouseWheelListener {

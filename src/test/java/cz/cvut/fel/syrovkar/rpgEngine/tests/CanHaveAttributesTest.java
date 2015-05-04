@@ -14,7 +14,7 @@ public class CanHaveAttributesTest extends TestCase {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        Item item = new Item("Item", new ItemArchetype("Item", "item", null, null), 0, 0, 20, 20);
+        Item item = new Item(new ItemArchetype("Item", "item", null, null), 0, 0, 20, 20);
     }
 
     @SuppressWarnings("AssertEqualsBetweenInconvertibleTypes")

@@ -27,7 +27,13 @@ public class Main {
         Thread gameThread = new Thread(game);
         gameThread.start();
 
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        System.out.println(Game.gameRegistry.getWorld().getLocationAt(5, 5).toString());
     }
 
 }

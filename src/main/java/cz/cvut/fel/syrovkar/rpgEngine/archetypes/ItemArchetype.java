@@ -4,6 +4,8 @@ import java.awt.*;
 import java.util.HashSet;
 
 /**
+ * Extends BasicArchetype for Items.
+ *
  * Created by Karel on 28. 4. 2015.
  */
 public class ItemArchetype extends BasicArchetype {

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
+ * Adds drops into BasicArchetype
+ *
  * Created by Karel on 28. 4. 2015.
  */
 public class EnemyArchetype extends BasicArchetype {

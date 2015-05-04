@@ -3,8 +3,8 @@ package cz.cvut.fel.syrovkar.rpgEngine.worldobjects;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Direction;
 
 /**
- * Basic Player class.
- * <p/>
+ * Player class.
+ *
  * Created by Karel on 26. 2. 2015.
  */
 public class Player extends Character {

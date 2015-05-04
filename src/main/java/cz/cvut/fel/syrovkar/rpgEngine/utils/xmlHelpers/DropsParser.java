@@ -8,10 +8,18 @@ import org.w3c.dom.NodeList;
 import java.util.ArrayList;
 
 /**
+ * Wrapper for droppings.
+ *
  * Created by Karel on 28. 4. 2015.
  */
 public class DropsParser {
 
+    /**
+     * Parses Drops from NodeList of nodes.
+     *
+     * @param nodeList NodeList beginning with "&lt;drops&gt;"
+     * @return ArrayList of parsed drops
+     */
     public static ArrayList<EnemyDrop> parse(NodeList nodeList) {
 
         nodeList = nodeList.item(0).getChildNodes();

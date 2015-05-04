@@ -8,6 +8,9 @@ import cz.cvut.fel.syrovkar.rpgEngine.gui.PlayerInteraction;
 import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 import cz.cvut.fel.syrovkar.rpgEngine.init.Init;
 import cz.cvut.fel.syrovkar.rpgEngine.reference.Constants;
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Enemy;
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Entity;
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Item;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Player;
 
 import java.awt.*;
@@ -19,18 +22,36 @@ import java.awt.*;
  */
 public class Game implements Runnable {
 
+    /**
+     * Used for rendering the Game
+     */
     public static Canvas canvas;
 
+    /**
+     * Encases all locations, archetypes and the player
+     */
     public static GameRegistry gameRegistry;
 
+    /**
+     * True if the Game Thread is running
+     */
     public static volatile boolean isRunning = false;
 
+    /**
+     * True if the Canvas is Ready to be drawn on.
+     */
     public static volatile boolean isReady = false;
 
-    private static Location currentLocation;
+    /**
+     * Current location of the Player
+     */
+    public static Location currentLocation;
 
     private Player player;
 
+    /**
+     * Runs the Game. Do not use.
+     */
     public Game() {
         isRunning = true;
         canvas = MainWindow.canvas;
@@ -47,6 +68,9 @@ public class Game implements Runnable {
         long time;
         double timeDiff;
 
+        /**
+         * Game mainloop.
+         */
         while (isRunning) {
 
             if (!isReady) {
@@ -70,6 +94,9 @@ public class Game implements Runnable {
         }
     }
 
+    /**
+     * Updates the whole game logic and screen. Computes the time between frames for possibility of FIM.
+     */
     private void update() {
 /*
         int k = 0;
@@ -86,25 +113,36 @@ public class Game implements Runnable {
 
         player.draw(screen, delta);
 
-        /*
-        for (ItemArchetype i : gameRegistry.getItemsArchetypes()) {
+        for (Entity e : currentLocation.getEntities()) {
+            e.draw(screen, delta);
+        }
+
+        for (Enemy e : currentLocation.getEnemies()) {
+            e.draw(screen, delta);
+        }
+
+        for (Item i : currentLocation.getItems()) {
             i.draw(screen, delta);
         }
 
-        for (cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Character ch : gameRegistry.getCharacters()) {
-            ch.draw(screen, delta);
-        }
-        */
-
         canvas.update();
-
 
     }
 
+    /**
+     * Does logical stuff.
+     *
+     * @param delta Time difference between frames of the Game
+     */
     private void gameLogic(double delta) {
         playerLogic(delta);
     }
 
+    /**
+     * Does playerLogic and interaction
+     *
+     * @param delta Time difference between frames of the Game
+     */
     private void playerLogic(double delta) {
 
         /* MOVING */

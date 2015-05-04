@@ -1,6 +1,8 @@
 package cz.cvut.fel.syrovkar.rpgEngine.init;
 
 import cz.cvut.fel.syrovkar.rpgEngine.Game;
+import cz.cvut.fel.syrovkar.rpgEngine.utils.FileHelper;
+import cz.cvut.fel.syrovkar.rpgEngine.utils.xmlHelpers.PlayerParser;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Player;
 
 /**
@@ -10,13 +12,14 @@ import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Player;
  */
 public class PlayerInit {
 
+    /**
+     * Parses "player.xml"
+     */
     public static void init() {
 
         Player player = Game.gameRegistry.getPlayer();
 
-        player.addAttribute("Sex", "Male");
+        PlayerParser.parse(FileHelper.getFileFromURI("player.xml"));
 
-        player.setX(120);
-        player.setY(120);
     }
 }

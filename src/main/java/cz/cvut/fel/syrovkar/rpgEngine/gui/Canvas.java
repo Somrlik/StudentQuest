@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 /**
- * Drawing Canvas.
+ * Drawing Canvas, based on AWT's Canvas. Supports double buffering.
  *
  * Created by Karel on 24. 3. 2015.
  */
@@ -13,6 +13,9 @@ import java.awt.image.BufferStrategy;
 public class Canvas extends java.awt.Canvas {
     BufferStrategy strategy = null;
 
+    /**
+     * @param frame Parent JFrame to display the Canvas
+     */
     public Canvas(JFrame frame) {
         JPanel panel = (JPanel) frame.getContentPane();
 
@@ -40,6 +43,9 @@ public class Canvas extends java.awt.Canvas {
 
     }
 
+    /**
+     * Tries to create double buffering for the Canvas
+     */
     public void startDoubleBuffer() {
         // create the buffering strategy which will allow AWT
         // to manage our accelerated graphics
@@ -47,10 +53,18 @@ public class Canvas extends java.awt.Canvas {
         strategy = getBufferStrategy();
     }
 
+    /**
+     * Called by Swing itself
+     */
     public void update() {
         strategy.show();
     }
 
+    /**
+     * Used to get the Graphics to draw on.
+     *
+     * @return Graphics of the canvas
+     */
     public Graphics2D getDrawingGraphics() {
         if (strategy == null) {
             return null;

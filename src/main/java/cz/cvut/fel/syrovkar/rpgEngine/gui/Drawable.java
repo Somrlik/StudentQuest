@@ -3,27 +3,70 @@ package cz.cvut.fel.syrovkar.rpgEngine.gui;
 import java.awt.*;
 
 /**
+ * Specifies if an object can be drawn on Canvas.
+ *
  * Created by Karel on 1. 4. 2015.
  */
 public interface Drawable {
 
-    public void draw(Graphics g, double delta);
+    /**
+     * What do you want to draw?
+     *
+     * @param g     Graphics to draw on
+     * @param delta Time delay between frames
+     */
+    void draw(Graphics g, double delta);
 
-    public double getX();
+    /**
+     * @return X coordinate of Drawable object
+     */
+    double getX();
 
-    public double getY();
+    /**
+     * @return Y coordinate of Drawable object
+     */
+    double getY();
 
-    public void setX(double x);
+    /**
+     * Set new X coordinate
+     *
+     * @param x New X
+     */
+    void setX(double x);
 
-    public void setY(double y);
+    /**
+     * Set new Y coordinate
+     *
+     * @param y New Y
+     */
+    void setY(double y);
 
-    public double getxSize();
+    /**
+     * @return Size on X axis.
+     */
+    double getxSize();
 
-    public void setxSize(double xSize);
+    /**
+     * Set size on X axis.
+     *
+     * @param xSize New size on X axis
+     */
+    void setxSize(double xSize);
 
-    public double getySize();
+    /**
+     * @return Size on Y axis
+     */
+    double getySize();
 
-    public void setySize(double ySize);
+    /**
+     * set size on Y axis
+     *
+     * @param ySize new size on y  axis
+     */
+    void setySize(double ySize);
 
-    public boolean hasTexture();
+    /**
+     * @return true if it has a texture, false otherwise
+     */
+     boolean hasTexture();
 }

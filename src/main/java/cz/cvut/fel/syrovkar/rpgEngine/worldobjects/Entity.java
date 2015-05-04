@@ -9,6 +9,14 @@ import java.awt.*;
 import java.util.HashSet;
 
 /**
+ * This is an all encompassing general class for everything on the Canvas.
+ *
+ * This class is used for static things on the Canvas.
+ *
+ * Displaying one Entity by itslef  on the screen is a great feat, it is usually easier to just edit the .xml files.
+ *
+ * For more info on how to edit such a xml file, see "examples/".
+ *
  * Created by Karel on 24. 3. 2015.
  */
 public class Entity implements Drawable, CanHaveAttributes {
@@ -29,8 +37,18 @@ public class Entity implements Drawable, CanHaveAttributes {
 
     protected Image texture = null;
 
-    private HashSet<Attribute> attributes;
+    private HashSet<Attribute> attributes = new HashSet<Attribute>();
 
+    /**
+     * Cosntructs a new Entity.
+     *
+     * @param name  Its name
+     * @param id    ID of the entity
+     * @param x     its x coordinate
+     * @param y     its y coordinate
+     * @param xSize its x size
+     * @param ySize its y size
+     */
     public Entity(String name, String id, double x, double y, double xSize, double ySize) {
         this.name = name;
         this.id = id;
@@ -40,17 +58,27 @@ public class Entity implements Drawable, CanHaveAttributes {
         this.ySize = ySize;
     }
 
+    /**
+     * @return The name of entity
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @return An Unique ID
+     */
     public String getId() {
         return id;
     }
 
     @Override
     public void draw(Graphics g, double delta) {
-        g.fillRect((int) x, (int) y, (int) xSize, (int) ySize);
+
+        if (hasTexture) {
+            g.drawImage(texture, (int) x, (int) y, (int) xSize, (int) ySize, null);
+        } else g.fillRect((int) x, (int) y, (int) xSize, (int) ySize);
+
         g.drawString("Entity on " + x + y, (int) x, (int) y);
     }
 
@@ -99,16 +127,32 @@ public class Entity implements Drawable, CanHaveAttributes {
         return this.hasTexture;
     }
 
+    /**
+     * Sets texure for this Entity and then resizes it to fit the bounding box.
+     *
+     * @param tex Texture
+     */
     public void setTexture(Image tex) {
+        if (tex == null) {
+            System.out.println("Failed to load texture for " + this.getId());
+            return;
+        }
         texture = tex.getScaledInstance((int) this.xSize, (int) this.ySize, Image.SCALE_DEFAULT);
         System.out.println("Loaded texture for " + this.getId());
         this.hasTexture = true;
     }
 
+    /**
+     * @return True if collision is on, false otherwise
+     */
     public boolean collides() {
         return collides;
     }
 
+    /**
+     * Sests collision
+     * @param collides True if you want collision, false otherwise
+     */
     public void setCollides(boolean collides) {
         this.collides = collides;
     }
@@ -143,5 +187,19 @@ public class Entity implements Drawable, CanHaveAttributes {
         return AttribHelper.hasAttribute(this, name);
     }
 
-
+    @Override
+    public String toString() {
+        return "Entity{" +
+                "name='" + name + '\'' +
+                ", id='" + id + '\'' +
+                ", x=" + x +
+                ", y=" + y +
+                ", xSize=" + xSize +
+                ", ySize=" + ySize +
+                ", collides=" + collides +
+                ", hasTexture=" + hasTexture +
+                ", texture=" + texture +
+                ", attributes=" + attributes +
+                '}';
+    }
 }
