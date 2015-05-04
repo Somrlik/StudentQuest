@@ -3,6 +3,7 @@ package cz.cvut.fel.syrovkar.rpgEngine.gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.util.logging.Logger;
 
 /**
  * Drawing Canvas, based on AWT's Canvas. Supports double buffering.
@@ -11,6 +12,9 @@ import java.awt.image.BufferStrategy;
  */
 
 public class Canvas extends java.awt.Canvas {
+
+    private static final Logger LOG = Logger.getLogger(Canvas.class.getName());
+
     BufferStrategy strategy = null;
 
     /**
@@ -21,15 +25,11 @@ public class Canvas extends java.awt.Canvas {
 
         panel.setPreferredSize(new Dimension(800, 600));
         panel.setFocusable(true);
-        //panel.add(this);
-
-        //setBounds(0, 0, 800, 600);
 
         setIgnoreRepaint(true);
 
         requestFocus();
 
-        // listeners
         PlayerInteraction interaction = new PlayerInteraction();
 
         addMouseListener(interaction);
@@ -37,10 +37,8 @@ public class Canvas extends java.awt.Canvas {
         addMouseWheelListener(interaction);
         addKeyListener(interaction);
 
-        System.out.println("Created GUI on EDT? " +
+        LOG.info("Created GUI on EDT? " +
                 SwingUtilities.isEventDispatchThread());
-
-
     }
 
     /**

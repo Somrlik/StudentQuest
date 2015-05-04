@@ -15,6 +15,7 @@ import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.logging.Logger;
 
 /**
  * Parses .xml files that contain Archetypes of Enemies.
@@ -22,6 +23,9 @@ import java.util.HashSet;
  * Created by Karel on 28. 4. 2015.
  */
 public class EnemyParser {
+
+    private static final Logger LOG = Logger.getLogger(EnemyParser.class.getName());
+
     /**
      * Parses .xml with EnemyArchetype.
      * <p/>
@@ -31,6 +35,9 @@ public class EnemyParser {
      */
     public static void parse(File file) {
         try {
+
+            LOG.finer("Parsing EnemyArchetype file " + file.getName());
+
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(file);
@@ -56,7 +63,8 @@ public class EnemyParser {
             if (nl != null) drops = DropsParser.parse(nl);
 
             if (name.isEmpty() || id.isEmpty()) {
-                throw (new IllegalStateException("Empty name or id."));
+                LOG.severe("No ID or name, skipping...");
+                return;
             }
 
             // Texture loading
@@ -64,9 +72,9 @@ public class EnemyParser {
             if (!textureURL.isEmpty()) {
                 File textureFile = FileHelper.getFileFromURI("textures/" + textureURL);
                 if (textureFile == null) {
-                    System.out.println("Error loading image " + textureURL);
+                    LOG.severe("Error loading texture for " + name + " from file " + textureURL);
                 } else {
-                    System.out.println("Loaded texture from " + textureURL);
+                    LOG.finest("Loaded texture for " + name + " from file " + textureURL);
                     texture = ImageIO.read(textureFile);
                 }
             }
@@ -74,7 +82,7 @@ public class EnemyParser {
             Game.gameRegistry.addEnemyArchetype(new EnemyArchetype(name, id, texture, attributes, drops));
 
         } catch (Exception e) {
-            System.out.println("Parsing of " + file.getName() + " failed.");
+            LOG.severe("Parsing of " + file.getName() + " failed.");
             e.printStackTrace();
         }
     }

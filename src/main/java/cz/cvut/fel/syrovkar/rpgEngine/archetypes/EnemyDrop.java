@@ -1,11 +1,15 @@
 package cz.cvut.fel.syrovkar.rpgEngine.archetypes;
 
+import java.util.logging.Logger;
+
 /**
  * Used for storing drops of an Enemy in game.
  *
  * Created by Karel on 28. 4. 2015.
  */
 public class EnemyDrop {
+
+    private static final Logger LOG = Logger.getLogger(EnemyDrop.class.getName());
 
     private double probability;
 
@@ -20,6 +24,8 @@ public class EnemyDrop {
     public EnemyDrop(double probability, String archetypeId) {
         this.probability = probability;
         this.drop = archetypeId;
+
+        LOG.finest("New drop: ");
     }
 
     /**
@@ -37,5 +43,13 @@ public class EnemyDrop {
      */
     public String getDropArchetypeId() {
         return drop;
+    }
+
+    @Override
+    public String toString() {
+        return "EnemyDrop{" +
+                "probability=" + probability +
+                ", drop='" + drop + '\'' +
+                '}';
     }
 }

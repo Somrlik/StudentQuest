@@ -1,12 +1,14 @@
 package cz.cvut.fel.syrovkar.rpgEngine.worldobjects;
 
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Attribute;
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.CollisionBox;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.Drawable;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.AttribHelper;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.CanHaveAttributes;
 
 import java.awt.*;
 import java.util.HashSet;
+import java.util.logging.Logger;
 
 /**
  * This is an all encompassing general class for everything on the Canvas.
@@ -20,6 +22,8 @@ import java.util.HashSet;
  * Created by Karel on 24. 3. 2015.
  */
 public class Entity implements Drawable, CanHaveAttributes {
+
+    private static final Logger LOG = Logger.getLogger(Entity.class.getName());
 
     private final String name;
 
@@ -39,6 +43,8 @@ public class Entity implements Drawable, CanHaveAttributes {
 
     private HashSet<Attribute> attributes = new HashSet<Attribute>();
 
+    protected CollisionBox hitbox = null;
+
     /**
      * Cosntructs a new Entity.
      *
@@ -56,6 +62,8 @@ public class Entity implements Drawable, CanHaveAttributes {
         this.y = y;
         this.xSize = xSize;
         this.ySize = ySize;
+
+        this.hitbox = new CollisionBox(x, y, xSize, ySize);
     }
 
     /**
@@ -134,11 +142,11 @@ public class Entity implements Drawable, CanHaveAttributes {
      */
     public void setTexture(Image tex) {
         if (tex == null) {
-            System.out.println("Failed to load texture for " + this.getId());
+            LOG.warning("Failed to load texture for " + this.getId());
             return;
         }
         texture = tex.getScaledInstance((int) this.xSize, (int) this.ySize, Image.SCALE_DEFAULT);
-        System.out.println("Loaded texture for " + this.getId());
+        LOG.finest("Loaded texture for " + this.getId());
         this.hasTexture = true;
     }
 
@@ -155,6 +163,12 @@ public class Entity implements Drawable, CanHaveAttributes {
      */
     public void setCollides(boolean collides) {
         this.collides = collides;
+    }
+
+    public void collideWith(Entity e) {
+        if (this.hitbox.collidesWith(e.hitbox)) {
+            System.out.println("Collision!");
+        }
     }
 
     @Override

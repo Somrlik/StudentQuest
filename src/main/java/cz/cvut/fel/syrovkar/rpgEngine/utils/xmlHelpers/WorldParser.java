@@ -11,6 +11,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 /**
  * Parses world.xml
@@ -18,6 +19,8 @@ import java.io.IOException;
  * Created by Karel on 28. 4. 2015.
  */
 public class WorldParser {
+
+    private static final Logger LOG = Logger.getLogger(WorldParser.class.getName());
 
     /**
      * What world do we live in? Parses world.xml file.
@@ -28,22 +31,27 @@ public class WorldParser {
      */
     public static void parse(File file) {
 
+        LOG.finer("Parsing world: " + file.getName());
+
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = null;
         try {
             builder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
+            LOG.severe("Failed to load DocumentBuilder for " + file.getName());
             e.printStackTrace();
         }
         Document doc = null;
         try {
             doc = builder.parse(file);
+            doc.getDocumentElement().normalize();
         } catch (SAXException e) {
+            LOG.severe("Failed to parse " + file.getName() + " : " + e.getMessage());
             e.printStackTrace();
         } catch (IOException e) {
+            LOG.severe("Failed to parse " + file.getName() + " : " + e.getMessage());
             e.printStackTrace();
         }
-        doc.getDocumentElement().normalize();
 
         int i = -1, j = -1;
 
@@ -53,9 +61,9 @@ public class WorldParser {
         nl = doc.getElementsByTagName("world-y");
         if (nl != null) j = Integer.parseInt(nl.item(0).getTextContent());
 
-        WorldMap wm = new WorldMap(i * j);
+        LOG.finest("Parsed with i,j:" + i + "," + j);
 
-        System.out.println("World has size of " + i + "x" + j);
+        WorldMap wm = new WorldMap(i * j);
 
         Game.gameRegistry.setWorld(wm);
 

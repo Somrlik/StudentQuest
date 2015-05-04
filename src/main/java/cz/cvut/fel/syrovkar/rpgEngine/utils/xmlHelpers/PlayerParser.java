@@ -8,6 +8,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.util.logging.Logger;
 
 /**
  * Parses player.xml
@@ -16,12 +17,16 @@ import java.io.File;
  */
 public class PlayerParser {
 
+    private static final Logger LOG = Logger.getLogger(PlayerParser.class.getName());
+
     /**
      * Parses Player .xml file.
      *
      * @param file Usually player.xml
      */
     public static void parse(File file) {
+
+        LOG.finest("Parsing Payer file " + file.getName());
 
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -46,13 +51,14 @@ public class PlayerParser {
 
             Location spawnLocation = Game.gameRegistry.getWorld().getLocationWithId(spawn);
             if (spawnLocation == null) {
-                throw new IllegalStateException("Wrong spawn point in player.xml");
+                LOG.severe("Unable to set player's spawn point... Trying to exit...");
+                return;
             }
             spawnLocation.setIsPlayerHere(true);
             Game.currentLocation = spawnLocation;
 
         } catch (Exception e) {
-            System.out.println("Parsing of " + file.getName() + " failed.");
+            LOG.severe("Parsing of " + file.getName() + " failed.");
             e.printStackTrace();
         }
     }

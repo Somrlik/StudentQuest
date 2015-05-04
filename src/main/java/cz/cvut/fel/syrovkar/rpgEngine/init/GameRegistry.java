@@ -7,6 +7,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * This class hold all Archetypes, mainly for reference and instantination purposes.
@@ -16,6 +17,8 @@ import java.util.List;
  * Created by Karel on 24. 2. 2015.
  */
 public class GameRegistry {
+
+    private static final Logger LOG = Logger.getLogger(GameRegistry.class.getName());
 
     private WorldMap world;
 

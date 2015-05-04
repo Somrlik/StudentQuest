@@ -6,6 +6,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.HashSet;
+import java.util.logging.Logger;
 
 /**
  * Parses attributes from NodeList.
@@ -14,6 +15,8 @@ import java.util.HashSet;
  */
 public class AttributesParser {
 
+    private static final Logger LOG = Logger.getLogger(AttributesParser.class.getName());
+
     /**
      * Parses Attribute s from NodeList of nodes.
      *
@@ -21,6 +24,8 @@ public class AttributesParser {
      * @return HashSet of attributes parsed
      */
     public static HashSet<Attribute> parse(NodeList nodeList) {
+
+        LOG.finer("Parsing attributes...");
 
         nodeList = nodeList.item(0).getChildNodes();
 
@@ -38,6 +43,9 @@ public class AttributesParser {
 
             }
         }
+
+        LOG.finest("Added attributes " + attributes.toString());
+
         return attributes;
     }
 }

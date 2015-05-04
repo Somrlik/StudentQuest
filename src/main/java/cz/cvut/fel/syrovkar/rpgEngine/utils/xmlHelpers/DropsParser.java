@@ -6,6 +6,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 /**
  * Wrapper for droppings.
@@ -14,6 +15,8 @@ import java.util.ArrayList;
  */
 public class DropsParser {
 
+    private static final Logger LOG = Logger.getLogger(DropsParser.class.getName());
+
     /**
      * Parses Drops from NodeList of nodes.
      *
@@ -21,6 +24,8 @@ public class DropsParser {
      * @return ArrayList of parsed drops
      */
     public static ArrayList<EnemyDrop> parse(NodeList nodeList) {
+
+        LOG.finer("Parsing drops...");
 
         nodeList = nodeList.item(0).getChildNodes();
 
@@ -39,6 +44,9 @@ public class DropsParser {
 
             }
         }
+
+        LOG.finest("Found these drops: " + enemyDrops.toString());
+
         return enemyDrops;
     }
 

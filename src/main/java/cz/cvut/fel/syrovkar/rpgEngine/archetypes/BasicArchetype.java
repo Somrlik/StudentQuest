@@ -5,6 +5,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.utils.CanHaveAttributes;
 
 import java.awt.*;
 import java.util.HashSet;
+import java.util.logging.Logger;
 
 /**
  * Basic archetype serves as a basic wrapper for each class of Enemy, Item or something else requiring archetypes.
@@ -15,6 +16,8 @@ import java.util.HashSet;
  * Created by Karel on 28. 4. 2015.
  */
 public class BasicArchetype implements CanHaveAttributes {
+
+    private static final Logger LOG = Logger.getLogger(BasicArchetype.class.getName());
 
     private String name;
     private String id;

@@ -1,10 +1,10 @@
 package cz.cvut.fel.syrovkar.rpgEngine.worldobjects;
 
 /**
- * Helps with orientation of Entities.
+ * Just for nicer turning.
  *
- * Created by Karel on 26. 3. 2015.
+ * Created by Karel on 24. 3. 2015.
  */
 public enum Direction {
-    UP, DOWN, LEFT, RIGHT
+    LEFT, RIGHT, UP, DOWN
 }

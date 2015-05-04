@@ -1,8 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.worldobjects;
 
-import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Direction;
-
 import java.awt.*;
+import java.util.logging.Logger;
 
 /**
  * Used for interactive Entities in the Location.
@@ -10,6 +9,9 @@ import java.awt.*;
  * Created by Karel on 1. 4. 2015.
  */
 public class LivingEntity extends Entity {
+
+    private static final Logger LOG = Logger.getLogger(LivingEntity.class.getName());
+
     protected double xVelocity;
     protected double yVelocity;
 

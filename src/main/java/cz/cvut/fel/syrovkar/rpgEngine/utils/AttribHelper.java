@@ -3,6 +3,7 @@ package cz.cvut.fel.syrovkar.rpgEngine.utils;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Attribute;
 
 import java.util.HashSet;
+import java.util.logging.Logger;
 
 /**
  * Helper for extracting and inserting attributes to actors.
@@ -10,6 +11,8 @@ import java.util.HashSet;
  * Created by Karel on 24. 2. 2015.
  */
 public class AttribHelper {
+
+    private static final Logger LOG = Logger.getLogger(AttribHelper.class.getName());
 
     /**
      * Helper for getting attributes

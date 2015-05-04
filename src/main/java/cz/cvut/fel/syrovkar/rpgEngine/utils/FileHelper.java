@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Some useful helper for loading files.
@@ -13,6 +14,8 @@ import java.util.List;
  * Created by Karel on 28. 4. 2015.
  */
 public class FileHelper {
+
+    private static final Logger LOG = Logger.getLogger(FileHelper.class.getName());
 
     /**
      * Gets File from URI.
@@ -26,14 +29,14 @@ public class FileHelper {
         URL url = classLoader.getResource(URI);
 
         if (url == null) {
-            System.out.println("Error loading file " + URI);
+            LOG.warning("Error loading file " + URI);
             return null;
         } else {
             File dir = null;
             try {
                 dir = new File(url.toURI());
             } catch (URISyntaxException e) {
-                System.out.println("Error opening url: " + url);
+                LOG.warning("Error opening url: " + url);
                 e.printStackTrace();
             }
             return dir;
@@ -52,23 +55,23 @@ public class FileHelper {
         URL url = classLoader.getResource(directory);
 
         if (url == null) {
-            System.out.println("Error loading files from directory: " + directory);
+            LOG.warning("Error loading files from directory: " + directory);
             return null;
         } else {
             File dir = null;
             try {
                 dir = new File(url.toURI());
             } catch (URISyntaxException e) {
-                System.out.println("Error opening url: " + url);
+                LOG.warning("Error opening url: " + url);
                 e.printStackTrace();
             }
             ArrayList<File> files = new ArrayList<File>();
             try {
-                if (dir.listFiles() == null) return null;
+                if ((dir != null ? dir.listFiles() : new File[0]) == null) return null;
                 Collections.addAll(files, dir.listFiles());
                 return files;
             } catch (NullPointerException e) {
-                System.out.println("Error loading resources from directory " + directory);
+                LOG.warning("Error loading resources from directory " + directory);
                 return null;
             }
         }

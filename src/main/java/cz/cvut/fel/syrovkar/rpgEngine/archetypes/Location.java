@@ -5,6 +5,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Entity;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Item;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 /**
  * Location holds all:
@@ -19,6 +20,8 @@ import java.util.ArrayList;
  * Created by Karel on 25. 2. 2015.
  */
 public class Location {
+
+    private static final Logger LOG = Logger.getLogger(Location.class.getName());
 
     String name;
 
@@ -41,6 +44,8 @@ public class Location {
     public Location(String name, String id) {
         this.name = name;
         this.id = id;
+
+        LOG.finer("Created new Location: " + this.toString());
     }
 
     /**

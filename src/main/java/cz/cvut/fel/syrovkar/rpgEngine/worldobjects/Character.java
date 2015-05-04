@@ -3,6 +3,7 @@ package cz.cvut.fel.syrovkar.rpgEngine.worldobjects;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Attribute;
 
 import java.util.HashSet;
+import java.util.logging.Logger;
 
 /**
  * Basic character class.
@@ -10,6 +11,9 @@ import java.util.HashSet;
  * Created by Karel on 23. 2. 2015.
  */
 public abstract class Character extends LivingEntity {
+
+    private static final Logger LOG = Logger.getLogger(Character.class.getName());
+
     private String name;
 
     private HashSet<Attribute> attributes;

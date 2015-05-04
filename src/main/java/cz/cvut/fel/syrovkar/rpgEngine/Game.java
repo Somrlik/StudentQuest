@@ -1,6 +1,5 @@
 package cz.cvut.fel.syrovkar.rpgEngine;
 
-import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Direction;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Location;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.Canvas;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.MainWindow;
@@ -8,12 +7,10 @@ import cz.cvut.fel.syrovkar.rpgEngine.gui.PlayerInteraction;
 import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 import cz.cvut.fel.syrovkar.rpgEngine.init.Init;
 import cz.cvut.fel.syrovkar.rpgEngine.reference.Constants;
-import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Enemy;
-import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Entity;
-import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Item;
-import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Player;
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.*;
 
 import java.awt.*;
+import java.util.logging.Logger;
 
 /**
  * Central hub for controlling the engine.
@@ -21,6 +18,8 @@ import java.awt.*;
  * Created by Karel on 24. 2. 2015.
  */
 public class Game implements Runnable {
+
+    private static final Logger LOG = Logger.getLogger(Game.class.getName());
 
     /**
      * Used for rendering the Game
@@ -55,8 +54,17 @@ public class Game implements Runnable {
     public Game() {
         isRunning = true;
         canvas = MainWindow.canvas;
+
+        LOG.info("Creating GameRegistry...");
+
         gameRegistry = new GameRegistry();
+
+        LOG.info("GameRegistry created, starting Init...");
+
         Init.init();
+
+        LOG.info("Init done...");
+
         player = gameRegistry.getPlayer();
     }
 
@@ -71,6 +79,9 @@ public class Game implements Runnable {
         /**
          * Game mainloop.
          */
+
+        LOG.info("Running Game mainloop...");
+
         while (isRunning) {
 
             if (!isReady) {
@@ -92,6 +103,8 @@ public class Game implements Runnable {
             delta = timeDiff;
 
         }
+
+        LOG.info("Mainloop ended...");
     }
 
     /**
@@ -135,6 +148,12 @@ public class Game implements Runnable {
      * @param delta Time difference between frames of the Game
      */
     private void gameLogic(double delta) {
+
+        // Collision
+        for (Entity e : currentLocation.getEntities()) {
+            player.collideWith(e);
+        }
+
         playerLogic(delta);
     }
 

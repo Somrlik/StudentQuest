@@ -18,6 +18,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.awt.*;
 import java.io.File;
+import java.util.logging.Logger;
 
 /**
  * Parses .xml files with locations.
@@ -25,6 +26,8 @@ import java.io.File;
  * Created by Karel on 28. 4. 2015.
  */
 public class LocationsParser {
+
+    private static final Logger LOG = Logger.getLogger(LocationsParser.class.getName());
 
     /**
      * Parses .xml with Location.
@@ -35,6 +38,9 @@ public class LocationsParser {
      */
     public static void parse(File file) {
         try {
+
+            LOG.finer("Parsing Location file " + file.getName());
+
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(file);
@@ -62,6 +68,7 @@ public class LocationsParser {
 
             //* entities parsing
 
+            LOG.finest("Parsing entities...");
             nl = doc.getElementsByTagName("entities");
 
             if (nl != null) {
@@ -93,19 +100,24 @@ public class LocationsParser {
                         if (!textureURL.isEmpty()) {
                             File textureFile = FileHelper.getFileFromURI("textures/" + textureURL);
                             if (textureFile == null) {
-                                System.out.println("Error loading image " + textureURL);
+                                LOG.severe("Error loading texture for " + entityName + " from file " + textureURL);
                             } else texture = ImageIO.read(textureFile);
                         }
 
                         e.setTexture(texture);
 
                         loc.addEntity(e);
+
+                        LOG.finest("Added Entity " + e.toString());
                     }
                 }
 
             }
+            LOG.finest("Entitites done...");
 
             //* enemies parsing
+
+            LOG.finest("Parsing enemies...");
 
             nl = doc.getElementsByTagName("enemies");
 
@@ -139,8 +151,12 @@ public class LocationsParser {
                 }
 
             }
+            LOG.finest("Enemies done...");
+
 
             //* items parsing
+
+            LOG.finest("Parsing Items...");
 
             nl = doc.getElementsByTagName("items");
 
@@ -174,8 +190,10 @@ public class LocationsParser {
                 }
             }
 
+            LOG.finest("Items done...");
+
         } catch (Exception e) {
-            System.out.println("Parsing of " + file.getName() + " failed.");
+            LOG.severe("Parsing of " + file.getName() + " failed.");
             e.printStackTrace();
         }
     }

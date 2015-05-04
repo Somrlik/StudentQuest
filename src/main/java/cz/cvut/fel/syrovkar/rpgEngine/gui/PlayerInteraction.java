@@ -1,6 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.gui;
 
 import java.awt.event.*;
+import java.util.logging.Logger;
 
 /**
  * Class for managing inputs on all devices.
@@ -10,6 +11,8 @@ import java.awt.event.*;
  * Created by Karel on 7. 4. 2015.
  */
 public class PlayerInteraction implements MouseListener, KeyListener, MouseMotionListener, MouseWheelListener {
+
+    private static final Logger LOG = Logger.getLogger(PlayerInteraction.class.getName());
 
     public static boolean isUpPressed = false;
     public static boolean isDownPressed = false;
@@ -31,15 +34,19 @@ public class PlayerInteraction implements MouseListener, KeyListener, MouseMotio
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
                 isUpPressed = true;
+                LOG.finest("Pressed UP");
                 break;
             case KeyEvent.VK_DOWN:
                 isDownPressed = true;
+                LOG.finest("Pressed DOWN");
                 break;
             case KeyEvent.VK_LEFT:
                 isLeftPressed = true;
+                LOG.finest("Pressed LEFT");
                 break;
             case KeyEvent.VK_RIGHT:
                 isRightPressed = true;
+                LOG.finest("Pressed RIGHT");
                 break;
         }
     }
@@ -49,14 +56,18 @@ public class PlayerInteraction implements MouseListener, KeyListener, MouseMotio
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
                 isUpPressed = false;
+                LOG.finest("Released UP");
                 break;
             case KeyEvent.VK_DOWN:
+                LOG.finest("Released DOWN");
                 isDownPressed = false;
                 break;
             case KeyEvent.VK_LEFT:
+                LOG.finest("Released LEFT");
                 isLeftPressed = false;
                 break;
             case KeyEvent.VK_RIGHT:
+                LOG.finest("Released RIGHT");
                 isRightPressed = false;
                 break;
         }

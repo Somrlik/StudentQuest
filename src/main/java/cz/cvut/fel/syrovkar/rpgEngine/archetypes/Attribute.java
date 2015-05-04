@@ -1,5 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.archetypes;
 
+import java.util.logging.Logger;
+
 /**
  * Attribute serves as a container for different properties of actors and entities.
  *
@@ -10,6 +12,8 @@ package cz.cvut.fel.syrovkar.rpgEngine.archetypes;
  * Created by Karel on 23. 2. 2015.
  */
 public class Attribute {
+
+    private static final Logger LOG = Logger.getLogger(Attribute.class.getName());
 
     private String name;
 
