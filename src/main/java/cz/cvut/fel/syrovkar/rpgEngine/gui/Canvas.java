@@ -37,7 +37,7 @@ public class Canvas extends java.awt.Canvas {
         addMouseWheelListener(interaction);
         addKeyListener(interaction);
 
-        LOG.info("Created GUI on EDT? " +
+        LOG.info("Created GUI on EDT? Should be false: " +
                 SwingUtilities.isEventDispatchThread());
     }
 

@@ -64,8 +64,6 @@ public class LocationsParser {
             nl = doc.getElementsByTagName("map-y");
             if (nl != null) mapY = Integer.parseInt(nl.item(0).getTextContent());
 
-            Game.gameRegistry.getWorld().setLocationAt(mapX, mapY, loc);
-
             //* entities parsing
 
             LOG.finest("Parsing entities...");
@@ -191,6 +189,8 @@ public class LocationsParser {
             }
 
             LOG.finest("Items done...");
+
+            Game.gameRegistry.getWorld().setLocationAt(mapX, mapY, loc);
 
         } catch (Exception e) {
             LOG.severe("Parsing of " + file.getName() + " failed.");

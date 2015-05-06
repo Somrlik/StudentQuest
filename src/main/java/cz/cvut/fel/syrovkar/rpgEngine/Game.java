@@ -87,7 +87,10 @@ public class Game implements Runnable {
             if (!isReady) {
                 if (canvas.getDrawingGraphics() == null) {
                     continue;
-                } else isReady = true;
+                } else {
+                    LOG.info("Canvas is ready...");
+                    isReady = true;
+                }
             }
 
             time = System.nanoTime();
@@ -149,12 +152,17 @@ public class Game implements Runnable {
      */
     private void gameLogic(double delta) {
 
+        playerLogic(delta);
+
         // Collision
         for (Entity e : currentLocation.getEntities()) {
             player.collideWith(e);
         }
 
-        playerLogic(delta);
+        // Picking up items
+        for (Item i : currentLocation.getItems()) {
+            player.collideWith(i);
+        }
     }
 
     /**
@@ -166,18 +174,42 @@ public class Game implements Runnable {
 
         /* MOVING */
 
-        if (PlayerInteraction.isDownPressed) player.move(Direction.DOWN, delta);
-        if (PlayerInteraction.isUpPressed) player.move(Direction.UP, delta);
         if (PlayerInteraction.isRightPressed) player.move(Direction.RIGHT, delta);
         if (PlayerInteraction.isLeftPressed) player.move(Direction.LEFT, delta);
+        if (PlayerInteraction.isDownPressed) player.move(Direction.DOWN, delta);
+        if (PlayerInteraction.isUpPressed) player.move(Direction.UP, delta);
 
+        if (PlayerInteraction.isRightPressed || PlayerInteraction.isLeftPressed) {
+            if (player.getyVelocity() != 0) {
+                player.stopInY(delta);
+                if (PlayerInteraction.isRightPressed) player.move(Direction.RIGHT, delta);
+                if (PlayerInteraction.isLeftPressed) player.move(Direction.LEFT, delta);
+            }
+        } else if (PlayerInteraction.isDownPressed || PlayerInteraction.isUpPressed) {
+            if (player.getxVelocity() != 0) {
+                player.stopInX(delta);
+                if (PlayerInteraction.isDownPressed) player.move(Direction.DOWN, delta);
+                if (PlayerInteraction.isUpPressed) player.move(Direction.UP, delta);
+            }
+        }
+/*
+        if (player.getxVelocity() == 0) {
+
+        }
+        else if (player.getyVelocity() == 0) {
+        }
+/*
+        if (player.getxVelocity() != 0) player.stopInX(delta);
+        if (player.getyVelocity() != 0) player.stopInY(delta);
+
+        // stopping the player
         if (!(PlayerInteraction.isDownPressed || PlayerInteraction.isUpPressed)) player.stopInY(delta);
         if (!(PlayerInteraction.isRightPressed || PlayerInteraction.isLeftPressed)) player.stopInX(delta);
-
+*/
         if (!(PlayerInteraction.isRightPressed || PlayerInteraction.isDownPressed || PlayerInteraction.isLeftPressed || PlayerInteraction.isUpPressed))
             gameRegistry.getPlayer().slowDown(delta);
 
-        /* BORDER COLLISION */
+        /* LOCATIONS SWITCHING */
 
         if (player.getX() < -1) {
             player.stopInX(delta);
@@ -199,6 +231,12 @@ public class Game implements Runnable {
         }
 
 
+    }
+
+    public static synchronized void exit() {
+
+
+        isRunning = false;
     }
 }
 

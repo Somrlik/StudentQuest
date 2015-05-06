@@ -26,7 +26,7 @@ public class LivingEntity extends Entity {
         super.draw(g, delta);
         x += xVelocity * (delta);
         y += yVelocity * (delta);
-        g.drawString("Entity with speed " + Double.toString(xVelocity) + " " + Double.toString(yVelocity), (int) x, (int) y + 10);
+        //g.drawString("Entity with speed " + Double.toString(xVelocity) + " " + Double.toString(yVelocity), (int) x, (int) y + 10);
     }
 
     /**
@@ -63,5 +63,20 @@ public class LivingEntity extends Entity {
      */
     public void move(Direction direction, double delta) {
     }
+
+    public double getxVelocity() {
+        return xVelocity;
+    }
+
+    public double getyVelocity() {
+        return yVelocity;
+    }
+
+    @Override
+    public boolean collideWith(Entity e) {
+        return this.hitbox.collidesWith(e.hitbox);
+    }
+
+
 
 }

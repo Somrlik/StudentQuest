@@ -87,7 +87,7 @@ public class Entity implements Drawable, CanHaveAttributes {
             g.drawImage(texture, (int) x, (int) y, (int) xSize, (int) ySize, null);
         } else g.fillRect((int) x, (int) y, (int) xSize, (int) ySize);
 
-        g.drawString("Entity on " + x + y, (int) x, (int) y);
+        //g.drawString("Entity on " + x + y, (int) x, (int) y);
     }
 
     @Override
@@ -165,10 +165,8 @@ public class Entity implements Drawable, CanHaveAttributes {
         this.collides = collides;
     }
 
-    public void collideWith(Entity e) {
-        if (this.hitbox.collidesWith(e.hitbox)) {
-            System.out.println("Collision!");
-        }
+    public boolean collideWith(Entity e) {
+        return false;
     }
 
     @Override

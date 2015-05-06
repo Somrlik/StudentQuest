@@ -45,7 +45,7 @@ public class Location {
         this.name = name;
         this.id = id;
 
-        LOG.finer("Created new Location: " + this.toString());
+        //LOG.finer("Created new Location: " + this.toString());
     }
 
     /**
