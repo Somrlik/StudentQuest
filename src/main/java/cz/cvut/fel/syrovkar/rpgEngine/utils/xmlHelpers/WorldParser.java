@@ -43,8 +43,10 @@ public class WorldParser {
         }
         Document doc = null;
         try {
-            doc = builder.parse(file);
-            doc.getDocumentElement().normalize();
+            doc = builder != null ? builder.parse(file) : null;
+            if (doc != null) {
+                doc.getDocumentElement().normalize();
+            }
         } catch (SAXException e) {
             LOG.severe("Failed to parse " + file.getName() + " : " + e.getMessage());
             e.printStackTrace();
@@ -55,15 +57,16 @@ public class WorldParser {
 
         int i = -1, j = -1;
 
-        NodeList nl = doc.getElementsByTagName("world-x");
-        if (nl != null) i = Integer.parseInt(nl.item(0).getTextContent());
+        NodeList nl;
+        nl = doc.getElementsByTagName("world-x");
+        if (nl.item(0) != null) i = Integer.parseInt(nl.item(0).getTextContent());
 
         nl = doc.getElementsByTagName("world-y");
-        if (nl != null) j = Integer.parseInt(nl.item(0).getTextContent());
+        if (nl.item(0) != null) j = Integer.parseInt(nl.item(0).getTextContent());
 
         LOG.finest("Parsed with i,j:" + i + "," + j);
 
-        WorldMap wm = new WorldMap(i * j);
+        WorldMap wm = new WorldMap(i, j);
 
         Game.gameRegistry.setWorld(wm);
 

@@ -2,7 +2,7 @@
 <enemy>
     <name>Goblin</name>
     <id>goblin</id>
-    <texture></texture>
+    <!-- <texture></texture> -->
 
     <attributes>
         <attribute>

@@ -38,13 +38,13 @@ public class PlayerParser {
             int posX = -1, posY = -1;
 
             NodeList nl = doc.getElementsByTagName("spawn");
-            if (nl != null) spawn = nl.item(0).getTextContent();
+            if (nl.item(0) != null) spawn = nl.item(0).getTextContent();
 
             nl = doc.getElementsByTagName("pos-x");
-            if (nl != null) posX = Integer.parseInt(nl.item(0).getTextContent());
+            if (nl.item(0) != null) posX = Integer.parseInt(nl.item(0).getTextContent());
 
             nl = doc.getElementsByTagName("pos-y");
-            if (nl != null) posY = Integer.parseInt(nl.item(0).getTextContent());
+            if (nl.item(0) != null) posY = Integer.parseInt(nl.item(0).getTextContent());
 
             Game.gameRegistry.getPlayer().setX(posX);
             Game.gameRegistry.getPlayer().setY(posY);

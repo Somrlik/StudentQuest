@@ -48,19 +48,19 @@ public class EnemyParser {
             ArrayList<EnemyDrop> drops = null;
 
             NodeList nl = doc.getElementsByTagName("name");
-            if (nl != null) name = nl.item(0).getTextContent();
+            if (nl.item(0) != null) name = nl.item(0).getTextContent();
 
             nl = doc.getElementsByTagName("id");
-            if (nl != null) id = nl.item(0).getTextContent();
+            if (nl.item(0) != null) id = nl.item(0).getTextContent();
 
             nl = doc.getElementsByTagName("texture");
-            if (nl != null) textureURL = nl.item(0).getTextContent();
+            if (nl.item(0) != null) textureURL = nl.item(0).getTextContent();
 
             nl = doc.getElementsByTagName("attributes");
-            if (nl != null) attributes = AttributesParser.parse(nl);
+            if (nl.item(0) != null) attributes = AttributesParser.parse(nl);
 
             nl = doc.getElementsByTagName("drops");
-            if (nl != null) drops = DropsParser.parse(nl);
+            if (nl.item(0) != null) drops = DropsParser.parse(nl);
 
             if (name.isEmpty() || id.isEmpty()) {
                 LOG.severe("No ID or name, skipping...");

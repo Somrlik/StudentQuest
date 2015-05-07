@@ -49,20 +49,20 @@ public class LocationsParser {
             String name = "", id = "";
 
             NodeList nl = doc.getElementsByTagName("name");
-            if (nl != null) name = nl.item(0).getTextContent();
+            if (nl.item(0) != null) name = nl.item(0).getTextContent();
 
             nl = doc.getElementsByTagName("id");
-            if (nl != null) id = nl.item(0).getTextContent();
+            if (nl.item(0) != null) id = nl.item(0).getTextContent();
 
             Location loc = new Location(name, id);
 
             int mapX = -1, mapY = -1;
 
             nl = doc.getElementsByTagName("map-x");
-            if (nl != null) mapX = Integer.parseInt(nl.item(0).getTextContent());
+            if (nl.item(0) != null) mapX = Integer.parseInt(nl.item(0).getTextContent());
 
             nl = doc.getElementsByTagName("map-y");
-            if (nl != null) mapY = Integer.parseInt(nl.item(0).getTextContent());
+            if (nl.item(0) != null) mapY = Integer.parseInt(nl.item(0).getTextContent());
 
             //* entities parsing
 
@@ -119,7 +119,7 @@ public class LocationsParser {
 
             nl = doc.getElementsByTagName("enemies");
 
-            if (nl != null) {
+            if (nl.item(0) != null) {
                 nl = nl.item(0).getChildNodes();
 
                 for (int temp = 0; temp < nl.getLength(); temp++) {
@@ -158,7 +158,7 @@ public class LocationsParser {
 
             nl = doc.getElementsByTagName("items");
 
-            if (nl != null) {
+            if (nl.item(0) != null) {
                 nl = nl.item(0).getChildNodes();
 
                 for (int temp = 0; temp < nl.getLength(); temp++) {
