@@ -95,6 +95,17 @@ public class GameRegistry {
         return enemyArchetypes;
     }
 
+    /**
+     * @param id Id of ItemArchetype
+     * @return Registered ItemArchetype with said id
+     */
+    public ItemArchetype getItemArchetypeById(String id) {
+        for (ItemArchetype ia : itemsArchetypes) {
+            if (ia.getId().equals(id)) return ia;
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "GameRegistry{" +

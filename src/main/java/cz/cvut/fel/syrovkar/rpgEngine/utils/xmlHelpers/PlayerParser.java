@@ -1,6 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.utils.xmlHelpers;
 
 import cz.cvut.fel.syrovkar.rpgEngine.Game;
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Attribute;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Location;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.FileHelper;
 import org.w3c.dom.Document;
@@ -11,6 +12,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.awt.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.logging.Logger;
 
 /**
@@ -49,6 +51,10 @@ public class PlayerParser {
             nl = doc.getElementsByTagName("pos-y");
             if (nl.item(0) != null) posY = Integer.parseInt(nl.item(0).getTextContent());
 
+            HashSet<Attribute> attributes = null;
+            nl = doc.getElementsByTagName("attributes");
+            if (nl.item(0) != null) attributes = AttributesParser.parse(nl);
+
             String textureURL = "";
             nl = doc.getElementsByTagName("texture");
             if (nl.item(0) != null) textureURL = nl.item(0).getTextContent();
@@ -67,6 +73,12 @@ public class PlayerParser {
             Game.gameRegistry.getPlayer().setTexture(texture);
             Game.gameRegistry.getPlayer().setX(posX);
             Game.gameRegistry.getPlayer().setY(posY);
+
+            if (attributes != null) {
+                for (Attribute a : attributes) {
+                    Game.gameRegistry.getPlayer().setValueByAttrName(a.getName(), a.getValue());
+                }
+            }
 
             Location spawnLocation = Game.gameRegistry.getWorld().getLocationWithId(spawn);
             if (spawnLocation == null) {

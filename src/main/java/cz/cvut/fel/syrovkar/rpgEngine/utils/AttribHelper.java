@@ -21,7 +21,7 @@ public class AttribHelper {
      * @param name             Name of attribute
      * @return Value of attribute
      */
-    public static Object getValueByAttrName(CanHaveAttributes attributedObject, String name) {
+    public static String getValueByAttrName(CanHaveAttributes attributedObject, String name) {
         HashSet<Attribute> attributeList = attributedObject.getAttributes();
 
         for (Attribute attribute : attributeList) {
@@ -39,7 +39,7 @@ public class AttribHelper {
      * @param name             Name of attribute
      * @param value            Value to set to attribute
      */
-    public static void setValueByAttrName(CanHaveAttributes attributedObject, String name, Object value) {
+    public static void setValueByAttrName(CanHaveAttributes attributedObject, String name, String value) {
         HashSet<Attribute> attributes = attributedObject.getAttributes();
 
         for (Attribute attribute : attributes) {
@@ -59,7 +59,7 @@ public class AttribHelper {
      * @param name               Name of attribute
      * @param value              Value of attribute
      */
-    public static void addAttribute(CanHaveAttributes attributableObject, String name, Object value) {
+    public static void addAttribute(CanHaveAttributes attributableObject, String name, String value) {
 
         HashSet<Attribute> attributeList = attributableObject.getAttributes();
 
@@ -77,7 +77,7 @@ public class AttribHelper {
     public static void removeAttribute(CanHaveAttributes attributableObject, String name) {
         HashSet<Attribute> attributes = attributableObject.getAttributes();
 
-        attributes.remove(new Attribute(name, 0));
+        attributes.remove(new Attribute(name, ""));
     }
 
 
@@ -91,6 +91,6 @@ public class AttribHelper {
     public static boolean hasAttribute(CanHaveAttributes attributableObject, String name) {
         HashSet<Attribute> attributes = attributableObject.getAttributes();
 
-        return attributes.contains(new Attribute(name, 0));
+        return attributes.contains(new Attribute(name, ""));
     }
 }

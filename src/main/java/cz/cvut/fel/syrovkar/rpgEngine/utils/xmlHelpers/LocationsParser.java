@@ -149,6 +149,7 @@ public class LocationsParser {
                         }
 
                         Enemy enemy = new Enemy(enemyArchetype, posX, posY, sizX, sizY);
+                        enemy.setCollides(true);
 
                         loc.addEnemy(enemy);
                     }

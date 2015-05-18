@@ -7,7 +7,7 @@ import java.util.logging.Logger;
  *
  * Created by Karel on 26. 2. 2015.
  */
-public class Player extends Character {
+public class Player extends LivingEntity {
 
     private static final Logger LOG = Logger.getLogger(Player.class.getName());
 

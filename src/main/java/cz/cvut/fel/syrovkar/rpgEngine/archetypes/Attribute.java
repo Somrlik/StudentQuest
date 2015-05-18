@@ -17,7 +17,7 @@ public class Attribute {
 
     private String name;
 
-    private Object value;
+    private String value;
 
     /**
      * Constructs an Attribute
@@ -25,7 +25,7 @@ public class Attribute {
      * @param name  Name of attribute
      * @param value Value of attribute
      */
-    public Attribute(String name, Object value) {
+    public Attribute(String name, String value) {
         this.name = name;
         this.value = value;
     }
@@ -33,7 +33,7 @@ public class Attribute {
     /**
      * @return Value of attribute
      */
-    public Object getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -42,7 +42,7 @@ public class Attribute {
      *
      * @param value New value of attribute
      */
-    public void setValue(Object value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -66,7 +66,7 @@ public class Attribute {
     public String toString() {
         return "Attribute{" +
                 "name='" + name + '\'' +
-                ", value=" + value.toString() +
+                ", value=" + value +
                 '}';
     }
 

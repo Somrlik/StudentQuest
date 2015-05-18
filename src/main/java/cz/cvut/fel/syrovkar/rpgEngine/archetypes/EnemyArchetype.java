@@ -1,5 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.archetypes;
 
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.ai.EnemyAI;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,14 +16,27 @@ public class EnemyArchetype extends BasicArchetype {
 
     private static final Logger LOG = Logger.getLogger(EnemyArchetype.class.getName());
 
-    ArrayList<EnemyDrop> drops;
+    private EnemyAI itsAI;
 
-    public EnemyArchetype(String name, String id, Image texture, HashSet<Attribute> attributes, ArrayList<EnemyDrop> dropList) {
+    protected ArrayList<EnemyDrop> drops;
+
+    public EnemyArchetype(String name, String id, Image texture, HashSet<Attribute> attributes, ArrayList<EnemyDrop> dropList, EnemyAI itsAI) {
         super(name, id, texture, attributes);
 
         drops = dropList;
 
+        this.itsAI = itsAI;
+
+
         LOG.finer("Created new EnemyArchetype: " + this.toString());
+    }
+
+    public ArrayList<EnemyDrop> getDrops() {
+        return drops;
+    }
+
+    public EnemyAI getItsAI() {
+        return itsAI;
     }
 
     @Override

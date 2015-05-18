@@ -4,4 +4,20 @@
     <pos-x>400</pos-x>
     <pos-y>400</pos-y>
     <texture>player.png</texture>
+
+    <attributes>
+        <attribute>
+            <name>Max Health</name>
+            <value>20</value>
+        </attribute>
+        <attribute>
+            <name>Health</name>
+            <value>20</value>
+        </attribute>
+        <attribute>
+            <name>Attack</name>
+            <value>2</value>
+        </attribute>
+    </attributes>
+
 </player>

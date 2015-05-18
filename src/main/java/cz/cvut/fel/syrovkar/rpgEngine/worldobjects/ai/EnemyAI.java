@@ -15,12 +15,16 @@ public class EnemyAI {
 
     protected LivingEntity itsEntity = null;
 
-    public EnemyAI(LivingEntity itsEntity) {
-        this.itsEntity = itsEntity;
-    }
-
     public Player getPlayer() {
         return Game.gameRegistry.getPlayer();
+    }
+
+    public LivingEntity getItsEntity() {
+        return itsEntity;
+    }
+
+    public void setItsEntity(LivingEntity itsEntity) {
+        this.itsEntity = itsEntity;
     }
 
     public void doSomething(double delta) {

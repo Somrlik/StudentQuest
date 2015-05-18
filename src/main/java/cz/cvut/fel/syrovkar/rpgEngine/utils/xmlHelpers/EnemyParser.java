@@ -5,6 +5,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Attribute;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.EnemyArchetype;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.EnemyDrop;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.FileHelper;
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.ai.WalkerEnemyAI;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -79,7 +80,9 @@ public class EnemyParser {
                 }
             }
 
-            Game.gameRegistry.addEnemyArchetype(new EnemyArchetype(name, id, texture, attributes, drops));
+            //if not ai, then walker ai
+
+            Game.gameRegistry.addEnemyArchetype(new EnemyArchetype(name, id, texture, attributes, drops, new WalkerEnemyAI()));
 
         } catch (Exception e) {
             LOG.severe("Parsing of " + file.getName() + " failed.");

@@ -24,7 +24,7 @@ public interface CanHaveAttributes {
      * @param name Name of attribute
      * @return Value fo attribute
      */
-    public Object getValueByAttrName(String name);
+    public String getValueByAttrName(String name);
 
     /**
      * Sets value of attribute of given name.
@@ -32,7 +32,7 @@ public interface CanHaveAttributes {
      * @param name  Name of attribute
      * @param value Value of attribute
      */
-    public void setValueByAttrName(String name, Object value);
+    public void setValueByAttrName(String name, String value);
 
     /**
      * Adds an attribute
@@ -40,7 +40,7 @@ public interface CanHaveAttributes {
      * @param name  Name of attribute
      * @param value value of attribute
      */
-    public void addAttribute(String name, Object value);
+    public void addAttribute(String name, String value);
 
     /**
      * Removes attribute of given name.

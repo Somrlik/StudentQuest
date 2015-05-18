@@ -2,7 +2,8 @@
 <enemy>
     <name>Goblin</name>
     <id>goblin</id>
-    <texture>enemy/</texture>
+    <texture>enemy/goblin.png</texture>
+    <ai>EnemyWalkerAI</ai>
 
     <attributes>
         <attribute>

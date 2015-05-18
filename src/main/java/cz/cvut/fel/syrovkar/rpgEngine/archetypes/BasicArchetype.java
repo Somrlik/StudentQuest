@@ -85,17 +85,17 @@ public class BasicArchetype implements CanHaveAttributes {
     }
 
     @Override
-    public Object getValueByAttrName(String name) {
+    public String getValueByAttrName(String name) {
         return AttribHelper.getValueByAttrName(this, name);
     }
 
     @Override
-    public void setValueByAttrName(String name, Object value) {
+    public void setValueByAttrName(String name, String value) {
         AttribHelper.setValueByAttrName(this, name, value);
     }
 
     @Override
-    public void addAttribute(String name, Object value) {
+    public void addAttribute(String name, String value) {
         AttribHelper.addAttribute(this, name, value);
     }
 

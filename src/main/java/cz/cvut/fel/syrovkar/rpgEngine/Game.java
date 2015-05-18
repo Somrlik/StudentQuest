@@ -167,6 +167,8 @@ public class Game implements Runnable {
 
         playerLogic(delta);
 
+        enemyLogic(delta);
+
         // Collision
         for (Entity e : currentLocation.getEntities()) {
             player.collideWith(e, delta);
@@ -177,6 +179,12 @@ public class Game implements Runnable {
             player.collideWith(i, delta);
         }
 
+    }
+
+    private void enemyLogic(double delta) {
+        for (Enemy enemy : currentLocation.getEnemies()) {
+            enemy.updateAI(delta);
+        }
     }
 
     /**
