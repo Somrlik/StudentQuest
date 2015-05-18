@@ -18,9 +18,9 @@ public class EnemiesInit {
     /**
      * Parses all resources in "enemies/"
      */
-    public static void init() {
+    public static void init(GameRegistry gameRegistry) {
         for (File f : FileHelper.getFilesFromDirectory("enemies/")) {
-            EnemyParser.parse(f);
+            EnemyParser.parse(f, gameRegistry);
         }
     }
 

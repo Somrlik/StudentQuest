@@ -26,31 +26,32 @@ public class Init {
     /**
      * Init all the things.
      */
-    public static void init() {
+    public static void init(GameRegistry gameRegistry) {
 
         LOG.info("Init started...");
 
         LOG.fine("World init started...");
-        WorldParser.parse(FileHelper.getFileFromURI("world.xml"));
+        WorldParser.parse(FileHelper.getFileFromURI("world.xml"), gameRegistry);
         LOG.fine("World init ended...");
 
         LOG.fine("Items init started...");
-        ItemsInit.init();
+        ItemsInit.init(gameRegistry);
         LOG.fine("Items init ended...");
 
         LOG.fine("Enemies init started...");
-        EnemiesInit.init();
+        EnemiesInit.init(gameRegistry);
         LOG.fine("Enemies init ended...");
 
         LOG.fine("Locations init started...");
-        LocationsInit.init();
+        LocationsInit.init(gameRegistry);
         LOG.fine("Locations init ended...");
 
         LOG.fine("Player init started...");
-        PlayerInit.init();
+        PlayerInit.init(gameRegistry);
         LOG.fine("Player init ended...");
 
         LOG.info("Init done...");
+
     }
 
 }

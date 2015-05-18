@@ -6,7 +6,6 @@ import cz.cvut.fel.syrovkar.rpgEngine.gui.Canvas;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.MainWindow;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.PlayerInteraction;
 import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
-import cz.cvut.fel.syrovkar.rpgEngine.init.Init;
 import cz.cvut.fel.syrovkar.rpgEngine.reference.Constants;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.*;
 
@@ -53,7 +52,15 @@ public class Game implements Runnable {
      */
     private static volatile boolean isPaused = false;
 
+    /**
+     * Not really used here.
+     */
     private Player player;
+
+    /**
+     *
+     */
+
 
     /**
      * Runs the Game. Do not use.
@@ -62,17 +69,7 @@ public class Game implements Runnable {
         isRunning = true;
         canvas = MainWindow.canvas;
 
-        LOG.info("Creating GameRegistry...");
-
-        gameRegistry = new GameRegistry();
-
-        LOG.info("GameRegistry created, starting Init...");
-
-        Init.init();
-
-        LOG.info("Init done...");
-
-        player = gameRegistry.getPlayer();
+        //player = gameRegistry.getPlayer();
     }
 
     private double delta = 1;
@@ -98,6 +95,14 @@ public class Game implements Runnable {
                     LOG.info("Canvas is ready...");
                     isReady = true;
                 }
+            }
+
+            if (!GameRegistry.isLoaded || gameRegistry == null) {
+                canvas.getDrawingGraphics().drawString("Loading", Constants.WINDOW_WIDTH / 2, Constants.WINDOW_HEIGHT / 2);
+                canvas.update();
+                continue;
+            } else {
+                player = gameRegistry.getPlayer();
             }
 
             time = System.nanoTime();

@@ -18,9 +18,9 @@ public class LocationsInit {
     /**
      * Parses all files in "locations/"
      */
-    public static void init() {
+    public static void init(GameRegistry gameRegistry) {
         for (File f : FileHelper.getFilesFromDirectory("locations/")) {
-            LocationsParser.parse(f);
+            LocationsParser.parse(f, gameRegistry);
         }
     }
 }

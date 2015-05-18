@@ -1,9 +1,9 @@
 package cz.cvut.fel.syrovkar.rpgEngine.utils.xmlHelpers;
 
-import cz.cvut.fel.syrovkar.rpgEngine.Game;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Attribute;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.EnemyArchetype;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.EnemyDrop;
+import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.FileHelper;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.ai.WalkerEnemyAI;
 import org.w3c.dom.Document;
@@ -34,7 +34,7 @@ public class EnemyParser {
      *
      * @param file .xml file with EnemyArchetype
      */
-    public static void parse(File file) {
+    public static void parse(File file, GameRegistry gameRegistry) {
         try {
 
             LOG.finer("Parsing EnemyArchetype file " + file.getName());
@@ -82,7 +82,7 @@ public class EnemyParser {
 
             //if not ai, then walker ai
 
-            Game.gameRegistry.addEnemyArchetype(new EnemyArchetype(name, id, texture, attributes, drops, new WalkerEnemyAI()));
+            gameRegistry.addEnemyArchetype(new EnemyArchetype(name, id, texture, attributes, drops, new WalkerEnemyAI()));
 
         } catch (Exception e) {
             LOG.severe("Parsing of " + file.getName() + " failed.");

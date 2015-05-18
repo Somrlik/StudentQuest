@@ -20,6 +20,8 @@ public class GameRegistry {
 
     private static final Logger LOG = Logger.getLogger(GameRegistry.class.getName());
 
+    public static volatile boolean isLoaded = false;
+
     private WorldMap world;
 
     private List<ItemArchetype> itemsArchetypes;

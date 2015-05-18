@@ -18,9 +18,9 @@ public class ItemsInit {
     /**
      * Parses all files in "items/"
      */
-    public static void init() {
+    public static void init(GameRegistry gameRegistry) {
         for (File f : FileHelper.getFilesFromDirectory("items/")) {
-            ItemsParser.parse(f);
+            ItemsParser.parse(f, gameRegistry);
         }
     }
 }

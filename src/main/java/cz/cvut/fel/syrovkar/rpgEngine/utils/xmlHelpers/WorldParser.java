@@ -1,7 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.utils.xmlHelpers;
 
-import cz.cvut.fel.syrovkar.rpgEngine.Game;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.WorldMap;
+import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -29,7 +29,7 @@ public class WorldParser {
      *
      * @param file usually world.xml
      */
-    public static void parse(File file) {
+    public static void parse(File file, GameRegistry gameRegistry) {
 
         LOG.finer("Parsing world: " + file.getName());
 
@@ -68,7 +68,7 @@ public class WorldParser {
 
         WorldMap wm = new WorldMap(i, j);
 
-        Game.gameRegistry.setWorld(wm);
+        gameRegistry.setWorld(wm);
 
     }
 

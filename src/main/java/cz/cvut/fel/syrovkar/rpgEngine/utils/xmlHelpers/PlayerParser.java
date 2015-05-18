@@ -3,6 +3,7 @@ package cz.cvut.fel.syrovkar.rpgEngine.utils.xmlHelpers;
 import cz.cvut.fel.syrovkar.rpgEngine.Game;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Attribute;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Location;
+import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.FileHelper;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -29,7 +30,7 @@ public class PlayerParser {
      *
      * @param file Usually player.xml
      */
-    public static void parse(File file) {
+    public static void parse(File file, GameRegistry gameRegistry) {
 
         LOG.finest("Parsing Payer file " + file.getName());
 
@@ -70,26 +71,26 @@ public class PlayerParser {
                 }
             }
 
-            Game.gameRegistry.getPlayer().setTexture(texture);
-            Game.gameRegistry.getPlayer().setX(posX);
-            Game.gameRegistry.getPlayer().setY(posY);
+            gameRegistry.getPlayer().setTexture(texture);
+            gameRegistry.getPlayer().setX(posX);
+            gameRegistry.getPlayer().setY(posY);
 
             if (attributes != null) {
                 for (Attribute a : attributes) {
-                    Game.gameRegistry.getPlayer().setValueByAttrName(a.getName(), a.getValue());
+                    gameRegistry.getPlayer().setValueByAttrName(a.getName(), a.getValue());
                 }
             }
 
-            Location spawnLocation = Game.gameRegistry.getWorld().getLocationWithId(spawn);
+            Location spawnLocation = gameRegistry.getWorld().getLocationWithId(spawn);
             if (spawnLocation == null) {
                 LOG.severe("Unable to set player's spawn point... Trying to exit...");
                 Game.exitFail();
                 return;
             }
             spawnLocation.setIsPlayerHere(true);
-            Game.currentLocation = spawnLocation;
-            Game.gameRegistry.getWorld().setCurrentI(spawnLocation.getI());
-            Game.gameRegistry.getWorld().setCurrentJ(spawnLocation.getJ());
+            Game.currentLocation = spawnLocation; ///!!!!!!!! TODO
+            gameRegistry.getWorld().setCurrentI(spawnLocation.getI());
+            gameRegistry.getWorld().setCurrentJ(spawnLocation.getJ());
 
         } catch (Exception e) {
             LOG.severe("Parsing of " + file.getName() + " failed.");

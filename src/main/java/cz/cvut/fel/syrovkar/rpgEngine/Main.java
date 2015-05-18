@@ -1,6 +1,8 @@
 package cz.cvut.fel.syrovkar.rpgEngine;
 
 import cz.cvut.fel.syrovkar.rpgEngine.gui.MainWindow;
+import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
+import cz.cvut.fel.syrovkar.rpgEngine.init.Init;
 
 import javax.swing.*;
 import java.util.logging.ConsoleHandler;
@@ -40,6 +42,17 @@ public class Main {
         Thread gameThread = new Thread(game);
         gameThread.start();
 
+        GameRegistry gameRegistry = new GameRegistry();
+
+        LOG.info("GameRegistry created, starting Init...");
+
+        Init.init(gameRegistry);
+
+        LOG.info("Init done, giving GameRegistry to Game");
+
+        GameRegistry.isLoaded = true;
+
+        Game.gameRegistry = gameRegistry;
 
         LOG.info("Main thread's work done...");
     }

@@ -1,9 +1,9 @@
 package cz.cvut.fel.syrovkar.rpgEngine.utils.xmlHelpers;
 
-import cz.cvut.fel.syrovkar.rpgEngine.Game;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.EnemyArchetype;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.ItemArchetype;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Location;
+import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.FileHelper;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Enemy;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Entity;
@@ -36,7 +36,7 @@ public class LocationsParser {
      *
      * @param file .xml file with Location
      */
-    public static void parse(File file) {
+    public static void parse(File file, GameRegistry gameRegistry) {
         try {
 
             LOG.finer("Parsing Location file " + file.getName());
@@ -144,7 +144,7 @@ public class LocationsParser {
                         int sizY = Integer.parseInt(eElement.getElementsByTagName("siz-y").item(0).getTextContent());
 
                         EnemyArchetype enemyArchetype = null;
-                        for (EnemyArchetype ea : Game.gameRegistry.getEnemyArchetypes()) {
+                        for (EnemyArchetype ea : gameRegistry.getEnemyArchetypes()) {
                             if (ea.getId().equals(archetype)) enemyArchetype = ea;
                         }
 
@@ -184,7 +184,7 @@ public class LocationsParser {
                         int sizY = Integer.parseInt(eElement.getElementsByTagName("siz-y").item(0).getTextContent());
 
                         ItemArchetype itemArchetype = null;
-                        for (ItemArchetype ia : Game.gameRegistry.getItemsArchetypes()) {
+                        for (ItemArchetype ia : gameRegistry.getItemsArchetypes()) {
                             if (ia.getId().equals(archetype)) itemArchetype = ia;
                         }
 
@@ -197,7 +197,7 @@ public class LocationsParser {
 
             LOG.finest("Items done...");
 
-            Game.gameRegistry.getWorld().setLocationAt(mapX, mapY, loc);
+            gameRegistry.getWorld().setLocationAt(mapX, mapY, loc);
 
         } catch (Exception e) {
             LOG.severe("Parsing of " + file.getName() + " failed.");
