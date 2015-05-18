@@ -252,6 +252,9 @@ public class Game implements Runnable {
         if ((player.getY() + player.getySize() > canvas.getHeight() + 1)) {
             switchLocations(Direction.DOWN);
         }
+
+        System.out.println(player.toString());
+
     }
 
     public static void pause() {

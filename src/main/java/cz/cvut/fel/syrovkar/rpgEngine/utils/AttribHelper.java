@@ -49,7 +49,7 @@ public class AttribHelper {
             }
         }
 
-        LoggingHelper.LOGGER.warning("Attribute with name '" + name + "' cannot be changed, because it does not exist.");
+        LOG.warning("Attribute with name '" + name + "' cannot be changed, because it does not exist.");
     }
 
     /**
@@ -64,7 +64,7 @@ public class AttribHelper {
         HashSet<Attribute> attributeList = attributableObject.getAttributes();
 
         if (!attributeList.add(new Attribute(name, value)))
-            LoggingHelper.LOGGER.warning("Attribute of same name '" + name + "' already exists. Ignoring new attribute.");
+            LOG.warning("Attribute of same name '" + name + "' already exists. Ignoring new attribute.");
 
     }
 

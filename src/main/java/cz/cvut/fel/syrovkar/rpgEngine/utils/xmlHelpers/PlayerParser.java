@@ -77,7 +77,7 @@ public class PlayerParser {
 
             if (attributes != null) {
                 for (Attribute a : attributes) {
-                    gameRegistry.getPlayer().setValueByAttrName(a.getName(), a.getValue());
+                    gameRegistry.getPlayer().addAttribute(a.getName(), a.getValue());
                 }
             }
 
@@ -88,7 +88,7 @@ public class PlayerParser {
                 return;
             }
             spawnLocation.setIsPlayerHere(true);
-            Game.currentLocation = spawnLocation; ///!!!!!!!! TODO
+            Game.currentLocation = spawnLocation;
             gameRegistry.getWorld().setCurrentI(spawnLocation.getI());
             gameRegistry.getWorld().setCurrentJ(spawnLocation.getJ());
 
