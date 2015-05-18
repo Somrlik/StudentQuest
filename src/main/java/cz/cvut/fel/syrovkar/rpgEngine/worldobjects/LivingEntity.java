@@ -29,6 +29,9 @@ public class LivingEntity extends Entity {
     public void draw(Graphics g, double delta) {
         //super.draw(g, delta);
 
+        x += xVelocity * (delta);
+        y += yVelocity * (delta);
+
         if (hasTexture) {
             int angle = 0;
             switch (direction) {
@@ -50,9 +53,10 @@ public class LivingEntity extends Entity {
 
         } else g.fillRect((int) x, (int) y, (int) xSize, (int) ySize);
 
-        x += xVelocity * (delta);
-        y += yVelocity * (delta);
-        //g.drawString("Entity with speed " + Double.toString(xVelocity) + " " + Double.toString(yVelocity), (int) x, (int) y + 10);
+        this.hitbox.setX((int) this.getX());
+        this.hitbox.setY((int) this.getY());
+
+        g.drawString("Entity with speed " + Double.toString(xVelocity) + " " + Double.toString(yVelocity), (int) x, (int) y + 10);
     }
 
     /**
@@ -63,6 +67,7 @@ public class LivingEntity extends Entity {
     public void slowDown(double delta) {
         yVelocity = 0;
         xVelocity = 0;
+        LOG.finest(getId() + " stopped.");
     }
 
     /**
@@ -71,6 +76,7 @@ public class LivingEntity extends Entity {
      * @param delta Time difference between frames of the Game
      */
     public void stopInX(double delta) {
+        LOG.finest(getId() + " stopped in X.");
         xVelocity = 0;
     }
 
@@ -79,6 +85,7 @@ public class LivingEntity extends Entity {
      * @param delta Time difference between frames of the Game
      */
     public void stopInY(double delta) {
+        LOG.finest(getId() + " stopped in Y.");
         yVelocity = 0;
     }
 
@@ -89,6 +96,26 @@ public class LivingEntity extends Entity {
      */
     public void move(Direction direction, double delta) {
 
+        this.direction = direction;
+        switch (direction) {
+            case UP:
+                yVelocity = -64;
+                break;
+            case DOWN:
+                yVelocity = 64;
+                break;
+            case LEFT:
+                xVelocity = -64;
+                break;
+            case RIGHT:
+                xVelocity = 64;
+                break;
+        }
+
+        LOG.finest("Moving " + getId() + " from x:" + x + " y:" + y + "with Xspeed: " + xVelocity + " Yspeed: " + yVelocity);
+
+        this.hitbox.setX((int) this.getX());
+        this.hitbox.setY((int) this.getY());
     }
 
     public double getxVelocity() {

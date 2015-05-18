@@ -30,8 +30,8 @@
     <enemies>
         <enemy>
             <archetype>goblin</archetype>
-            <pos-x>300</pos-x>
-            <pos-y>600</pos-y>
+            <pos-x>0</pos-x>
+            <pos-y>0</pos-y>
             <siz-x>40</siz-x>
             <siz-y>40</siz-y>
         </enemy>

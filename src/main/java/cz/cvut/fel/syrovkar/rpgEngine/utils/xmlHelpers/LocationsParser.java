@@ -151,6 +151,8 @@ public class LocationsParser {
                         Enemy enemy = new Enemy(enemyArchetype, posX, posY, sizX, sizY);
                         enemy.setCollides(true);
 
+                        enemy.getItsAi().setItsEntity(enemy);
+
                         loc.addEnemy(enemy);
                     }
                 }

@@ -37,7 +37,7 @@ public class Player extends LivingEntity {
         return inventory.isInInventory(iaId);
     }
 
-    @Override
+    /*@Override
     public void move(Direction direction, double delta) {
         this.direction = direction;
         switch (direction) {
@@ -60,7 +60,7 @@ public class Player extends LivingEntity {
         this.hitbox.setX((int) this.getX());
         this.hitbox.setY((int) this.getY());
 
-    }
+    }*/
 
     @Override
     public boolean collideWith(Entity e, double delta) {

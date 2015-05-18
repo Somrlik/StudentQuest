@@ -165,6 +165,7 @@ public class Game implements Runnable {
 
         for (Enemy e : currentLocation.getEnemies()) {
             e.draw(screen, delta);
+
         }
 
         for (Item i : currentLocation.getItems()) {

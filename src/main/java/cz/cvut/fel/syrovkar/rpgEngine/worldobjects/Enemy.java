@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  * Basic Enemy class.
- *
+ * <p/>
  * Created by Karel on 24. 2. 2015.
  */
 public class Enemy extends LivingEntity {
@@ -41,6 +41,10 @@ public class Enemy extends LivingEntity {
 
     }
 
+    public EnemyAI getItsAi() {
+        return itsAi;
+    }
+
     /**
      * Constructs items to drop after the death of the Enemy
      *
@@ -61,7 +65,38 @@ public class Enemy extends LivingEntity {
      * @param delta Time difference between two frames fo the Game
      */
     public void updateAI(double delta) {
-        itsAi.doSomething(delta);
+        itsAi.doSomething(this, delta);
     }
+
+    /**
+     * Movement of Enemy
+     *
+     * @param direction direction of movement
+     * @param delta Time difference between two frames fo the Game
+     */
+/*    @Override
+    public void move(Direction direction, double delta) {
+
+        this.direction = direction;
+        switch (direction) {
+            case UP:
+                yVelocity = -64;
+                break;
+            case DOWN:
+                yVelocity = 64;
+                break;
+            case LEFT:
+                xVelocity = -64;
+                break;
+            case RIGHT:
+                xVelocity = 64;
+                break;
+        }
+
+        LOG.finest("Moving"+ getId() +" from x:" + x + " y:" + y + "with Xspeed: " + xVelocity + " Yspeed: " + yVelocity);
+
+        this.hitbox.setX((int) this.getX());
+        this.hitbox.setY((int) this.getY());
+    }*/
 
 }
