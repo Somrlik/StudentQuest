@@ -19,6 +19,11 @@ public class Main {
 
     private static final Logger LOG = Logger.getLogger(Main.class.getName());
 
+    /**
+     * Well...
+     *
+     * @param args Array of arguments
+     */
     public static void main(String[] args) {
 
         Handler handler = new ConsoleHandler();

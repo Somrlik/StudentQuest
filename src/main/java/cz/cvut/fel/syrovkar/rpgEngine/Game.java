@@ -57,10 +57,6 @@ public class Game implements Runnable {
      */
     private Player player;
 
-    /**
-     *
-     */
-
 
     /**
      * Runs the Game. Do not use.
@@ -74,15 +70,14 @@ public class Game implements Runnable {
 
     private double delta = 1;
 
+    /**
+     * Game mainloop.
+     */
     @Override
     public void run() {
 
         long time;
         double timeDiff;
-
-        /**
-         * Game mainloop.
-         */
 
         LOG.info("Running Game mainloop...");
 
@@ -98,6 +93,7 @@ public class Game implements Runnable {
             }
 
             if (!GameRegistry.isLoaded || gameRegistry == null) {
+                // Your IDE is lying - NullPointer is impossible
                 canvas.getDrawingGraphics().drawString("Loading", Constants.WINDOW_WIDTH / 2, Constants.WINDOW_HEIGHT / 2);
                 canvas.update();
                 continue;
@@ -186,6 +182,11 @@ public class Game implements Runnable {
 
     }
 
+    /**
+     * Does enemy logic - AI, pathing etc.
+     *
+     * @param delta Time difference between frames of the Game
+     */
     private void enemyLogic(double delta) {
         for (Enemy enemy : currentLocation.getEnemies()) {
             enemy.updateAI(delta);
@@ -253,31 +254,47 @@ public class Game implements Runnable {
             switchLocations(Direction.DOWN);
         }
 
-        System.out.println(player.toString());
-
     }
 
+    /**
+     * Pauses the Game
+     */
     public static void pause() {
         isPaused = true;
         LOG.info("Paused game");
     }
 
+    /**
+     * Unpauses the Game.
+     */
     public static void unpause() {
         isPaused = false;
         LOG.info("Unpaused game");
     }
 
+    /**
+     * Standard exit procedure.
+     */
     public static synchronized void exit() {
         Game.pause();
         isRunning = false;
     }
 
+    /**
+     * Exiting when something failed horribly.
+     */
     public static void exitFail() {
+        LOG.severe("ExitFail called, something terrible happened!");
         Game.pause();
         isRunning = false;
         MainWindow.frame.dispatchEvent(new WindowEvent(MainWindow.frame, WindowEvent.WINDOW_CLOSING));
     }
 
+    /**
+     * Switches locations with respect to WorldMap
+     *
+     * @param direction Which Direction the player goes
+     */
     private void switchLocations(Direction direction) {
         Game.pause();
         WorldMap worldMap = gameRegistry.getWorld();

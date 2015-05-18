@@ -17,10 +17,13 @@ public class MainWindow {
 
     private static final Logger LOG = Logger.getLogger(MainWindow.class.getName());
 
-    public static JFrame frame = new JFrame("Game");
+    public static JFrame frame = new JFrame(Constants.WINDOW_TITLE);
 
     public static volatile Canvas canvas = new Canvas(frame);
 
+    /**
+     * Nothing more than initialization and listeners
+     */
     public MainWindow() {
         frame.add(canvas);
         frame.pack();

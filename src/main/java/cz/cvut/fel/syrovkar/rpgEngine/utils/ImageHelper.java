@@ -5,12 +5,21 @@ import java.awt.image.BufferedImage;
 import java.util.logging.Logger;
 
 /**
+ * Class for helping with Images
+ *
  * Created by Karel on 18. 5. 2015.
  */
 public class ImageHelper {
 
     private static final Logger LOG = Logger.getLogger(ImageHelper.class.getName());
 
+    /**
+     * Rotates a BufferedImage
+     *
+     * @param src     Source image
+     * @param degrees Angle in degrees
+     * @return Rotated image
+     */
     public static BufferedImage rotateImage(BufferedImage src, double degrees) {
         double radians = Math.toRadians(degrees);
 

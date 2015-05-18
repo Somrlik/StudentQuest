@@ -2,7 +2,6 @@ package cz.cvut.fel.syrovkar.rpgEngine.init;
 
 import cz.cvut.fel.syrovkar.rpgEngine.utils.FileHelper;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.xmlHelpers.PlayerParser;
-import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Player;
 
 import java.util.logging.Logger;
 
@@ -20,7 +19,7 @@ public class PlayerInit {
      */
     public static void init(GameRegistry gameRegistry) {
 
-        Player player = gameRegistry.getPlayer();
+        //Player player = gameRegistry.getPlayer();
 
         PlayerParser.parse(FileHelper.getFileFromURI("player.xml"), gameRegistry);
 

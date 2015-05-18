@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.logging.Logger;
 
 /**
- * Used for interactive Entities in the Location.
+ * Used for interactive Entities in the Location. These can move.
  *
  * Created by Karel on 1. 4. 2015.
  */

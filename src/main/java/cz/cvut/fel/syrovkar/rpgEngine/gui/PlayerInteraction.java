@@ -14,9 +14,21 @@ public class PlayerInteraction implements MouseListener, KeyListener, MouseMotio
 
     private static final Logger LOG = Logger.getLogger(PlayerInteraction.class.getName());
 
+    /**
+     * True if the UP key is pressed
+     */
     public static boolean isUpPressed = false;
+    /**
+     * True if the DOWN key is pressed
+     */
     public static boolean isDownPressed = false;
+    /**
+     * True if the LEFT key is pressed
+     */
     public static boolean isLeftPressed = false;
+    /**
+     * True if the RIGHT key is pressed
+     */
     public static boolean isRightPressed = false;
 
     @Override

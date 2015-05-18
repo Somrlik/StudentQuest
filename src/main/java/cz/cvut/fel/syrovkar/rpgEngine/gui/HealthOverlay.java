@@ -6,6 +6,8 @@ import java.awt.*;
 import java.util.logging.Logger;
 
 /**
+ * Draws health on the screen.
+ *
  * Created by Karel on 18. 5. 2015.
  */
 public class HealthOverlay implements Overlay {

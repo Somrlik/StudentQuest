@@ -18,7 +18,7 @@ public class Canvas extends java.awt.Canvas {
     BufferStrategy strategy = null;
 
     /**
-     * @param frame Parent JFrame to display the Canvas
+     * @param frame Parent JFrame to display the Canvas on
      */
     public Canvas(JFrame frame) {
         JPanel panel = (JPanel) frame.getContentPane();

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 /**
+ * Inventory of the player. Stores ItemArchetypes.
+ *
  * Created by Karel on 7. 5. 2015.
  */
 public class Inventory {
@@ -19,6 +21,11 @@ public class Inventory {
         this.items = new ArrayList<ItemArchetype>();
     }
 
+    /**
+     * Adds Item to the Inventory
+     *
+     * @param i ItemArchetype to be added
+     */
     public void addItem(ItemArchetype i) {
         if (i != null) {
             items.add(i);
@@ -29,12 +36,21 @@ public class Inventory {
         LOG.severe("Failed to add item into inventory.");
     }
 
+    /**
+     * Removes item from the inventory
+     *
+     * @param i Item to remove
+     */
     public void removeItem(ItemArchetype i) {
         if (i != null) {
             items.remove(i);
         }
     }
 
+    /**
+     * @param itemId Item id of ItemArchetype to check
+     * @return True if Item is in inventory, false otherwise
+     */
     public boolean isInInventory(String itemId) {
         for (ItemArchetype i : items) {
             if (i.getId().equals(itemId)) {

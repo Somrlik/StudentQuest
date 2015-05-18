@@ -64,6 +64,13 @@ public class Player extends LivingEntity {
         return false;
     }
 
+    /**
+     * Detects collisions between Player and Items
+     *
+     * @param i     Item to collide with
+     * @param delta Time difference between two frames of the Game
+     * @return True if collides, false otherwise
+     */
     public boolean collideWith(Item i, double delta) {
         if (super.collideWith(i, delta)) {
 

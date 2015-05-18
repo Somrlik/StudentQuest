@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.logging.Logger;
 
 /**
- * Adds drops into BasicArchetype
+ * Adds drops (Items to spawn after kill) and AI into BasicArchetype
  *
  * Created by Karel on 28. 4. 2015.
  */
@@ -31,10 +31,16 @@ public class EnemyArchetype extends BasicArchetype {
         LOG.finer("Created new EnemyArchetype: " + this.toString());
     }
 
+    /**
+     * @return ArrayList of drops
+     */
     public ArrayList<EnemyDrop> getDrops() {
         return drops;
     }
 
+    /**
+     * @return Type of AI
+     */
     public EnemyAI getItsAI() {
         return itsAI;
     }

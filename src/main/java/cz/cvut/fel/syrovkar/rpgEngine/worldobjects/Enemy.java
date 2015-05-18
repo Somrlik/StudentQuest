@@ -41,6 +41,11 @@ public class Enemy extends LivingEntity {
 
     }
 
+    /**
+     * Constructs items to drop after the death of the Enemy
+     *
+     * @return List of ItemArchetypes to drop on the ground
+     */
     public List<ItemArchetype> makeDrops() {
         ArrayList<ItemArchetype> ret = new ArrayList<ItemArchetype>();
         for (EnemyDrop ed : archetype.getDrops()) {
@@ -50,6 +55,11 @@ public class Enemy extends LivingEntity {
         return ret;
     }
 
+    /**
+     * Update AI of this Enemy
+     *
+     * @param delta Time difference between two frames fo the Game
+     */
     public void updateAI(double delta) {
         itsAi.doSomething(delta);
     }
