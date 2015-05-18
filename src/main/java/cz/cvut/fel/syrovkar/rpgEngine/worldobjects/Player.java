@@ -36,8 +36,6 @@ public class Player extends Character {
 
         this.hitbox.setX((int) this.getX());
         this.hitbox.setY((int) this.getY());
-        this.hitbox.setSizeX((int) this.getxSize());
-        this.hitbox.setSizeY((int) this.getySize());
 
     }
 

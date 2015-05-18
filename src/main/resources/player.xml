@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <player>
-    <spawn>town11</spawn>
+    <spawn>map00</spawn>
     <pos-x>400</pos-x>
     <pos-y>400</pos-y>
+    <texture>player.png</texture>
 </player>

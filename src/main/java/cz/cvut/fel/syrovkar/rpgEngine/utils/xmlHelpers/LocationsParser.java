@@ -54,8 +54,6 @@ public class LocationsParser {
             nl = doc.getElementsByTagName("id");
             if (nl.item(0) != null) id = nl.item(0).getTextContent();
 
-            Location loc = new Location(name, id);
-
             int mapX = -1, mapY = -1;
 
             nl = doc.getElementsByTagName("map-x");
@@ -63,6 +61,14 @@ public class LocationsParser {
 
             nl = doc.getElementsByTagName("map-y");
             if (nl.item(0) != null) mapY = Integer.parseInt(nl.item(0).getTextContent());
+
+            Color clr = new Color(0xFFFFFF);
+            nl = doc.getElementsByTagName("background");
+            if (nl.item(0) != null) clr = new Color(Integer.decode(nl.item(0).getTextContent()));
+
+            Location loc = new Location(name, id, mapX, mapY);
+
+            loc.setBackground(clr);
 
             //* entities parsing
 

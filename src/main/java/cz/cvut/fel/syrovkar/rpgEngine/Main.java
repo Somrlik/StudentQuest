@@ -23,7 +23,7 @@ public class Main {
         handler.setLevel(Level.ALL);
 
         Logger.getLogger("cz.cvut.fel.syrovkar").setUseParentHandlers(false);
-        Logger.getLogger("cz.cvut.fel.syrovkar").setLevel(Level.ALL);
+        Logger.getLogger("cz.cvut.fel.syrovkar").setLevel(Level.FINE);
         Logger.getLogger("cz.cvut.fel.syrovkar").addHandler(handler);
 
 
@@ -40,11 +40,6 @@ public class Main {
         Thread gameThread = new Thread(game);
         gameThread.start();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         LOG.info("Main thread's work done...");
     }

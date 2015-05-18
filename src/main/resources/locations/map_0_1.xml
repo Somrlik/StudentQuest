@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <location>
-    <name>Town 1-1</name>
-    <id>town11</id>
-    <map-x>5</map-x>
-    <map-y>5</map-y>
+    <name>Map 0-1</name>
+    <id>map01</id>
+    <map-x>0</map-x>
+    <map-y>1</map-y>
+    <background>0x0F542C</background>
 
     <entities>
         <entity> <!-- Static stuff -->

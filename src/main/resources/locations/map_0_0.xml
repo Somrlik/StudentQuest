@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<location>
+    <name>Map 0-0</name>
+    <id>map00</id>
+    <map-x>0</map-x>
+    <map-y>0</map-y>
+    <background>0x0F542C</background>
+
+    <entities>
+        <entity> <!-- Static stuff -->
+            <name>tree1</name>
+            <texture>trees/tree71.png</texture>
+            <collision>true</collision>
+            <pos-x>30</pos-x>
+            <pos-y>60</pos-y>
+            <siz-x>90</siz-x>
+            <siz-y>90</siz-y>
+        </entity>
+        <entity>
+            <name>tree2</name>
+            <texture>trees/tree70.png</texture>
+            <collision>true</collision>
+            <pos-x>200</pos-x>
+            <pos-y>300</pos-y>
+            <siz-x>100</siz-x>
+            <siz-y>100</siz-y>
+        </entity>
+    </entities>
+
+    <enemies>
+        <enemy>
+            <archetype>goblin</archetype>
+            <pos-x>300</pos-x>
+            <pos-y>600</pos-y>
+            <siz-x>40</siz-x>
+            <siz-y>40</siz-y>
+        </enemy>
+    </enemies>
+
+    <items>
+        <item>
+            <archetype>woodenSword</archetype>
+            <pos-x>200</pos-x>
+            <pos-y>400</pos-y>
+            <siz-x>20</siz-x>
+            <siz-y>20</siz-y>
+        </item>
+    </items>
+</location>

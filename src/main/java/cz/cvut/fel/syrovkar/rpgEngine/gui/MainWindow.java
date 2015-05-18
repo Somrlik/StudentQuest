@@ -17,7 +17,7 @@ public class MainWindow {
 
     private static final Logger LOG = Logger.getLogger(MainWindow.class.getName());
 
-    static JFrame frame = new JFrame("Game");
+    public static JFrame frame = new JFrame("Game");
 
     public static volatile Canvas canvas = new Canvas(frame);
 

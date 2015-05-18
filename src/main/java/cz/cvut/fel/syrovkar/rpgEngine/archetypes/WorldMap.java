@@ -16,14 +16,16 @@ public class WorldMap {
 
     private int i, j;
 
+    private int currentI, currentJ;
+
     public WorldMap(int i, int j) {
         this.locationsGrid = new ArrayList<Location>(i * j); //10*10
 
         this.i = i;
         this.j = j;
 
-        for (int a = 0; a < 100; a++) {
-            locationsGrid.add(new Location("Dummy Location", "dummy"));
+        for (int a = 0; a < i * j; a++) {
+            locationsGrid.add(new Location("Dummy Location", "dummy", -1, -1));
         }
 
 
@@ -31,11 +33,11 @@ public class WorldMap {
     }
 
     public Location getLocationAt(int i, int j) {
-        if (i > this.i || j > this.j || i < 0 || i < 0) {
+        if (i > this.i || j > this.j || i < 0 || j < 0 || i * this.i + j >= this.i * this.j) {
             LOG.fine("Failed to getLocationAt i:" + i + " j: " + j);
             return null;
         }
-        return locationsGrid.get(i * 10 + j);
+        return locationsGrid.get(i * this.i + j);
     }
 
     public void setLocationAt(int i, int j, Location loc) {
@@ -45,7 +47,7 @@ public class WorldMap {
             return;
         }
 
-        locationsGrid.set(i * 10 + j, loc);
+        locationsGrid.set(i * this.i + j, loc);
 
         LOG.finer("Location at i:" + i + " j:" + j + " set with id = " + loc.getId());
     }
@@ -56,5 +58,21 @@ public class WorldMap {
         }
         LOG.info("Unable to find location with id " + id);
         return null;
+    }
+
+    public int getCurrentI() {
+        return currentI;
+    }
+
+    public void setCurrentI(int currentI) {
+        this.currentI = currentI;
+    }
+
+    public int getCurrentJ() {
+        return currentJ;
+    }
+
+    public void setCurrentJ(int currentJ) {
+        this.currentJ = currentJ;
     }
 }

@@ -1,6 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine;
 
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Location;
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.WorldMap;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.Canvas;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.MainWindow;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.PlayerInteraction;
@@ -10,6 +11,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.reference.Constants;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.*;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.util.logging.Logger;
 
 /**
@@ -45,6 +47,11 @@ public class Game implements Runnable {
      * Current location of the Player
      */
     public static Location currentLocation;
+
+    /**
+     * True if the game is paused
+     */
+    private static volatile boolean isPaused = false;
 
     private Player player;
 
@@ -95,7 +102,9 @@ public class Game implements Runnable {
 
             time = System.nanoTime();
 
-            gameLogic(delta);
+            if (!isPaused) {
+                gameLogic(delta);
+            }
 
             update();
 
@@ -125,9 +134,9 @@ public class Game implements Runnable {
 
         screen.clearRect(-1, -1, Constants.WINDOW_WIDTH + 1, Constants.WINDOW_HEIGHT + 1);
 
-        screen.drawString("FPS: " + Double.toString(1 / delta), 10, 10);
-
-        player.draw(screen, delta);
+        screen.setColor(currentLocation.getBackground());
+        screen.fillRect(canvas.getX(), canvas.getY(), Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
+        screen.setColor(Color.black);
 
         for (Entity e : currentLocation.getEntities()) {
             e.draw(screen, delta);
@@ -140,6 +149,10 @@ public class Game implements Runnable {
         for (Item i : currentLocation.getItems()) {
             i.draw(screen, delta);
         }
+
+        player.draw(screen, delta);
+
+        screen.drawString("FPS: " + Double.toString(1 / delta), 10, 10);
 
         canvas.update();
 
@@ -207,36 +220,116 @@ public class Game implements Runnable {
         if (!(PlayerInteraction.isRightPressed || PlayerInteraction.isLeftPressed)) player.stopInX(delta);
 */
         if (!(PlayerInteraction.isRightPressed || PlayerInteraction.isDownPressed || PlayerInteraction.isLeftPressed || PlayerInteraction.isUpPressed))
-            gameRegistry.getPlayer().slowDown(delta);
+            player.slowDown(delta);
 
         /* LOCATIONS SWITCHING */
 
         if (player.getX() < -1) {
-            player.stopInX(delta);
-            player.setX(0);
+            switchLocations(Direction.LEFT);
         }
 
         if (player.getY() < -1) {
-            player.stopInX(delta);
-            player.setY(0);
+            switchLocations(Direction.UP);
         }
 
         if ((player.getX() + player.getxSize() > canvas.getWidth() + 1)) {
-            player.stopInX(delta);
-            player.setX(canvas.getWidth() - player.getxSize());
+            switchLocations(Direction.RIGHT);
         }
         if ((player.getY() + player.getySize() > canvas.getHeight() + 1)) {
-            player.stopInY(delta);
-            player.setY(canvas.getHeight() - player.getySize());
+            switchLocations(Direction.DOWN);
         }
+    }
 
+    public static void pause() {
+        isPaused = true;
+        LOG.info("Paused game");
+    }
 
+    public static void unpause() {
+        isPaused = false;
+        LOG.info("Unpaused game");
     }
 
     public static synchronized void exit() {
-
-
+        Game.pause();
         isRunning = false;
+    }
+
+    public static void exitFail() {
+        Game.pause();
+        isRunning = false;
+        MainWindow.frame.dispatchEvent(new WindowEvent(MainWindow.frame, WindowEvent.WINDOW_CLOSING));
+    }
+
+    private void switchLocations(Direction direction) {
+        Game.pause();
+        WorldMap worldMap = gameRegistry.getWorld();
+        Location loc = null;
+        switch (direction) {
+            case UP:
+                loc = worldMap.getLocationAt(worldMap.getCurrentI() - 1, worldMap.getCurrentJ());
+                break;
+            case DOWN:
+                loc = worldMap.getLocationAt(worldMap.getCurrentI() + 1, worldMap.getCurrentJ());
+                break;
+            case RIGHT:
+                loc = worldMap.getLocationAt(worldMap.getCurrentI(), worldMap.getCurrentJ() + 1);
+                break;
+            case LEFT:
+                loc = worldMap.getLocationAt(worldMap.getCurrentI(), worldMap.getCurrentJ() - 1);
+                break;
+        }
+        if (loc != null) {
+            currentLocation.setIsPlayerHere(false);
+            currentLocation = loc;
+            currentLocation.setIsPlayerHere(true);
+            worldMap.setCurrentI(currentLocation.getI());
+            worldMap.setCurrentJ(currentLocation.getJ());
+
+            switch (direction) {
+                case UP:
+                    player.setY(canvas.getHeight() - player.getySize() - 5);
+                    player.stopInY(delta);
+                    break;
+                case DOWN:
+                    player.setY(5);
+                    player.stopInY(delta);
+                    break;
+                case RIGHT:
+                    player.setX(5);
+                    player.stopInX(delta);
+                    break;
+                case LEFT:
+                    player.setX(canvas.getWidth() - player.getxSize() - 5);
+                    player.stopInX(delta);
+                    break;
+            }
+
+            LOG.fine("Changed location successfully, currently on " + currentLocation.getId() + " with i: " + currentLocation.getI() + "/" + worldMap.getCurrentI() + "j: " + currentLocation.getJ() + "/" + worldMap.getCurrentJ());
+            Game.unpause();
+            return;
+        }
+        LOG.fine("Didn't change location (is there any in the map?)");
+
+        switch (direction) {
+            case UP:
+                player.setY(1);
+                player.stopInY(delta);
+                break;
+            case DOWN:
+                player.setY(canvas.getHeight() - player.getySize() - 1);
+                player.stopInY(delta);
+                break;
+            case RIGHT:
+                player.setX(canvas.getWidth() - player.getxSize() - 1);
+                player.stopInX(delta);
+                break;
+            case LEFT:
+                player.setX(1);
+                player.stopInX(delta);
+                break;
+        }
+        Game.unpause();
     }
 }
 

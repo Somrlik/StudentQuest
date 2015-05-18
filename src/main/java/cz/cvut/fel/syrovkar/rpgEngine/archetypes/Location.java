@@ -4,6 +4,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Enemy;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Entity;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Item;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
@@ -35,15 +36,22 @@ public class Location {
 
     boolean isPlayerHere = false;
 
+    private Color background = new Color(0xFFFFFF);
+
+    private int i;
+    private int j;
+
     /**
      * Creates a new location.
      *
      * @param name name of Location
      * @param id unique id of Location
      */
-    public Location(String name, String id) {
+    public Location(String name, String id, int i, int j) {
         this.name = name;
         this.id = id;
+        this.i = i;
+        this.j = j;
 
         //LOG.finer("Created new Location: " + this.toString());
     }
@@ -123,6 +131,22 @@ public class Location {
      */
     public void setIsPlayerHere(boolean isPlayerHere) {
         this.isPlayerHere = isPlayerHere;
+    }
+
+    public Color getBackground() {
+        return background;
+    }
+
+    public void setBackground(Color background) {
+        this.background = background;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public int getJ() {
+        return j;
     }
 
     @Override
