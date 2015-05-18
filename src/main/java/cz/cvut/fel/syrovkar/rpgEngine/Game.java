@@ -4,6 +4,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Location;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.WorldMap;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.Canvas;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.MainWindow;
+import cz.cvut.fel.syrovkar.rpgEngine.gui.Overlay;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.PlayerInteraction;
 import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 import cz.cvut.fel.syrovkar.rpgEngine.reference.Constants;
@@ -57,7 +58,6 @@ public class Game implements Runnable {
      */
     private Player player;
 
-
     /**
      * Runs the Game. Do not use.
      */
@@ -79,7 +79,7 @@ public class Game implements Runnable {
         long time;
         double timeDiff;
 
-        LOG.info("Running Game mainloop...");
+        LOG.info("Running Loading mainloop...");
 
         while (isRunning) {
 
@@ -99,7 +99,15 @@ public class Game implements Runnable {
                 continue;
             } else {
                 player = gameRegistry.getPlayer();
+                isRunning = false;
             }
+        }
+
+        LOG.info("Running Game mainloop...");
+
+        isRunning = true;
+
+        while (isRunning) {
 
             time = System.nanoTime();
 
@@ -153,7 +161,13 @@ public class Game implements Runnable {
 
         player.draw(screen, delta);
 
-        screen.drawString("FPS: " + Double.toString(1 / delta), 10, 10);
+        // Overlays
+
+        for (Overlay o : gameRegistry.getOverlays()) {
+            if (o.isOpened()) {
+                o.draw(screen, delta);
+            }
+        }
 
         canvas.update();
 

@@ -16,7 +16,7 @@ public class HealthOverlay implements Overlay {
 
     @Override
     public boolean shouldTheGameBePaused() {
-        return true;
+        return false;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class HealthOverlay implements Overlay {
         double percent = Double.parseDouble(currentHealth) / Double.parseDouble(maxHealth);
 
         g.setColor(Color.black);
-        g.fillRect(20, 20, 100, 30);
+        g.fillRect(20, 20, 110, 30);
         g.setColor(Color.red);
         g.fillRect(25, 25, (int) percent * 100, 20);
 
@@ -39,6 +39,6 @@ public class HealthOverlay implements Overlay {
 
     @Override
     public boolean isOpened() {
-        return false;
+        return true;
     }
 }

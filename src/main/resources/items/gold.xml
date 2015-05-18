@@ -9,6 +9,10 @@
             <name>Price</name>
             <value>1</value>
         </attribute>
+        <attribute>
+            <name>Amount</name>
+            <value>1</value>
+        </attribute>
     </attributes>
 
 </item>

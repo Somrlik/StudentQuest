@@ -1,5 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.gui;
 
+import cz.cvut.fel.syrovkar.rpgEngine.reference.Constants;
+
 import java.awt.event.*;
 import java.util.logging.Logger;
 
@@ -31,6 +33,16 @@ public class PlayerInteraction implements MouseListener, KeyListener, MouseMotio
      */
     public static boolean isRightPressed = false;
 
+    /**
+     * True if ATTACK key is pressed
+     */
+    public static boolean isAttackPressed = false;
+
+    /**
+     * True if INVENTORY key is pressed
+     */
+    public static boolean isInventoryPressed = false;
+
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
         //System.out.println(e);
@@ -44,21 +56,29 @@ public class PlayerInteraction implements MouseListener, KeyListener, MouseMotio
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_UP:
+            case Constants.UP_MOVEMENT_KEY:
                 isUpPressed = true;
                 LOG.finest("Pressed UP");
                 break;
-            case KeyEvent.VK_DOWN:
+            case Constants.DOWN_MOVEMENT_KEY:
                 isDownPressed = true;
                 LOG.finest("Pressed DOWN");
                 break;
-            case KeyEvent.VK_LEFT:
+            case Constants.LEFT_MOVEMENT_KEY:
                 isLeftPressed = true;
                 LOG.finest("Pressed LEFT");
                 break;
-            case KeyEvent.VK_RIGHT:
+            case Constants.RIGHT_MOVEMENT_KEY:
                 isRightPressed = true;
                 LOG.finest("Pressed RIGHT");
+                break;
+            case Constants.INVENTORY_KEY:
+                isInventoryPressed = true;
+                LOG.finest("Inventory key pressed");
+                break;
+            case Constants.ATTACK_KEY:
+                isAttackPressed = true;
+                LOG.finest("Attack key pressed");
                 break;
         }
     }
@@ -66,21 +86,29 @@ public class PlayerInteraction implements MouseListener, KeyListener, MouseMotio
     @Override
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_UP:
+            case Constants.UP_MOVEMENT_KEY:
                 isUpPressed = false;
                 LOG.finest("Released UP");
                 break;
-            case KeyEvent.VK_DOWN:
+            case Constants.DOWN_MOVEMENT_KEY:
                 LOG.finest("Released DOWN");
                 isDownPressed = false;
                 break;
-            case KeyEvent.VK_LEFT:
+            case Constants.LEFT_MOVEMENT_KEY:
                 LOG.finest("Released LEFT");
                 isLeftPressed = false;
                 break;
-            case KeyEvent.VK_RIGHT:
+            case Constants.RIGHT_MOVEMENT_KEY:
                 LOG.finest("Released RIGHT");
                 isRightPressed = false;
+                break;
+            case Constants.INVENTORY_KEY:
+                isInventoryPressed = false;
+                LOG.finest("Inventory key released");
+                break;
+            case Constants.ATTACK_KEY:
+                isAttackPressed = false;
+                LOG.finest("Attack key released");
                 break;
         }
     }

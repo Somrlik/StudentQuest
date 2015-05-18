@@ -50,6 +50,10 @@ public class Init {
         PlayerInit.init(gameRegistry);
         LOG.fine("Player init ended...");
 
+        LOG.fine("Misc init started..");
+        MiscInit.init(gameRegistry);
+        LOG.fine("Misc init ended...");
+
         LOG.info("Init done...");
 
     }

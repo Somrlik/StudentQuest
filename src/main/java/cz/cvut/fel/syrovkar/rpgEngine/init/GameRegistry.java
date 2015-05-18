@@ -3,6 +3,7 @@ package cz.cvut.fel.syrovkar.rpgEngine.init;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.EnemyArchetype;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.ItemArchetype;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.WorldMap;
+import cz.cvut.fel.syrovkar.rpgEngine.gui.Overlay;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Player;
 
 import java.util.ArrayList;
@@ -28,6 +29,8 @@ public class GameRegistry {
 
     private List<EnemyArchetype> enemyArchetypes;
 
+    private List<Overlay> overlays;
+
     private Player player;
 
     /**
@@ -38,6 +41,8 @@ public class GameRegistry {
         itemsArchetypes = new ArrayList<ItemArchetype>();
 
         enemyArchetypes = new ArrayList<EnemyArchetype>();
+
+        overlays = new ArrayList<Overlay>();
 
         player = new Player(20, 20, 40, 40);
 
@@ -106,6 +111,14 @@ public class GameRegistry {
             if (ia.getId().equals(id)) return ia;
         }
         return null;
+    }
+
+    public void addOverlay(Overlay overlay) {
+        overlays.add(overlay);
+    }
+
+    public List<Overlay> getOverlays() {
+        return overlays;
     }
 
     @Override

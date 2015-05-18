@@ -4,33 +4,32 @@ import java.awt.*;
 import java.util.logging.Logger;
 
 /**
- * Displays inventory screen for player.
- *
- * Created by Karel on 7. 5. 2015.
+ * FPS meter overlay
+ * <p/>
+ * Created by Karel on 18. 5. 2015.
  */
-public class InventoryScreen implements Overlay {
+public class FPSMeter implements Overlay {
 
-    private static final Logger LOG = Logger.getLogger(InventoryScreen.class.getName());
-
-    private boolean isOpen = false;
+    private static final Logger LOG = Logger.getLogger(FPSMeter.class.getName());
 
     @Override
     public boolean shouldTheGameBePaused() {
-        return true;
+        return false;
     }
 
     @Override
     public void draw(Graphics g, double delta) {
-
+        g.setColor(Color.black);
+        g.drawString("FPS: " + Double.toString(1 / delta), 10, 10);
     }
 
     @Override
     public boolean listensToInput() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isOpened() {
-        return false;
+        return true;
     }
 }
