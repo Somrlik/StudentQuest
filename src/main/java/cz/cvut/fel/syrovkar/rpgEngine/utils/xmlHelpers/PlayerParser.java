@@ -6,6 +6,8 @@ import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Location;
 import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.FileHelper;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.imageio.ImageIO;
@@ -68,6 +70,28 @@ public class PlayerParser {
                 } else {
                     LOG.finest("Loaded texture for player from file " + textureURL);
                     texture = ImageIO.read(textureFile);
+                }
+            }
+
+
+            nl = doc.getElementsByTagName("items");
+            if (nl.item(0) != null) {
+                nl = nl.item(0).getChildNodes();
+                if (nl.item(0) != null) {
+                    for (int temp = 0; temp < nl.getLength(); temp++) {
+
+                        Node nNode = nl.item(temp);
+
+                        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                            Element eElement = (Element) nNode;
+
+                            gameRegistry.getPlayer().addToInventory(gameRegistry.getItemArchetypeById(eElement.getElementsByTagName("archetype").item(0).getTextContent()));
+
+                            LOG.finer("Added " + eElement.getElementsByTagName("archetype").item(0).getTextContent() + " to player's inventory");
+
+                        }
+                    }
                 }
             }
 

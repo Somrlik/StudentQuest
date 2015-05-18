@@ -20,4 +20,10 @@
         </attribute>
     </attributes>
 
+    <items>
+        <item>
+            <archetype>woodenSword</archetype>
+        </item>
+    </items>
+
 </player>

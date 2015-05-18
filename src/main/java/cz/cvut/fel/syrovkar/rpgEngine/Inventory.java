@@ -15,6 +15,7 @@ public class Inventory {
     private static final Logger LOG = Logger.getLogger(Inventory.class.getName());
 
     ArrayList<ItemArchetype> items;
+
     private int size = 0;
 
     public Inventory() {

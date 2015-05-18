@@ -1,5 +1,8 @@
 package cz.cvut.fel.syrovkar.rpgEngine.worldobjects;
 
+import cz.cvut.fel.syrovkar.rpgEngine.Inventory;
+import cz.cvut.fel.syrovkar.rpgEngine.archetypes.ItemArchetype;
+
 import java.util.logging.Logger;
 
 /**
@@ -11,8 +14,23 @@ public class Player extends LivingEntity {
 
     private static final Logger LOG = Logger.getLogger(Player.class.getName());
 
+    private Inventory inventory;
+
     public Player(int x, int y, int xSize, int ySize) {
         super("Player", "player", x, y, xSize, ySize);
+        inventory = new Inventory();
+    }
+
+    public void addToInventory(ItemArchetype ia) {
+        inventory.addItem(ia);
+    }
+
+    public void removeFromInventory(ItemArchetype ia) {
+        inventory.removeItem(ia);
+    }
+
+    public boolean isInInventory(String iaId) {
+        return inventory.isInInventory(iaId);
     }
 
     @Override

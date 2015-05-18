@@ -18,7 +18,7 @@ public class AttributesParser {
     private static final Logger LOG = Logger.getLogger(AttributesParser.class.getName());
 
     /**
-     * Parses Attribute s from NodeList of nodes.
+     * Parses Attributes from NodeList of nodes.
      *
      * @param nodeList NodeList beginning with "&lt;attributes&gt;"
      * @return HashSet of attributes parsed
