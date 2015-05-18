@@ -17,6 +17,7 @@ public class Player extends Character {
 
     @Override
     public void move(Direction direction, double delta) {
+        this.direction = direction;
         switch (direction) {
             case UP:
                 yVelocity = -64;
@@ -49,11 +50,11 @@ public class Player extends Character {
             if (xVelocity == 0) {
                 y += (yVelocity > 0) ? -1 : +1;
                 yVelocity = 0;
-                this.hitbox.setY((int) y);
+                this.hitbox.setY(y);
             } else { // yVelocity == 0
                 x += (xVelocity > 0) ? -1 : +1;
                 xVelocity = 0;
-                this.hitbox.setX((int) x);
+                this.hitbox.setX(x);
             }
 
             LOG.finer("New Player's x: " + x + "y: " + y);

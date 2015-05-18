@@ -7,6 +7,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.utils.AttribHelper;
 import cz.cvut.fel.syrovkar.rpgEngine.utils.CanHaveAttributes;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.HashSet;
 import java.util.logging.Logger;
 
@@ -39,7 +40,7 @@ public class Entity implements Drawable, CanHaveAttributes {
 
     protected boolean hasTexture = false;
 
-    protected Image texture = null;
+    protected BufferedImage texture = null;
 
     private HashSet<Attribute> attributes = new HashSet<Attribute>();
 
@@ -145,9 +146,17 @@ public class Entity implements Drawable, CanHaveAttributes {
             LOG.warning("Failed to load texture for " + this.getId());
             return;
         }
-        texture = tex.getScaledInstance((int) this.xSize, (int) this.ySize, Image.SCALE_DEFAULT);
-        LOG.finest("Loaded texture for " + this.getId());
+
+        BufferedImage bimage = new BufferedImage(tex.getWidth(null), tex.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D bGr = bimage.createGraphics();
+        bGr.drawImage(tex, 0, 0, null);
+        bGr.dispose();
+
+        LOG.finer("Loaded texture for " + this.getId());
         this.hasTexture = true;
+
+        texture = bimage;
     }
 
     /**

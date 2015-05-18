@@ -7,11 +7,11 @@ package cz.cvut.fel.syrovkar.rpgEngine.archetypes;
  */
 public class CollisionBox {
 
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 
-    private int sizeX;
-    private int sizeY;
+    private double sizeX;
+    private double sizeY;
 
     public CollisionBox(double x, double y, double sizeX, double sizeY) {
         this.x = (int) x;
@@ -20,36 +20,20 @@ public class CollisionBox {
         this.sizeY = (int) sizeY;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
-    }
-
-    public int getSizeX() {
-        return sizeX;
-    }
-
-    public void setSizeX(int sizeX) {
-        this.sizeX = sizeX;
-    }
-
-    public int getSizeY() {
-        return sizeY;
-    }
-
-    public void setSizeY(int sizeY) {
-        this.sizeY = sizeY;
     }
 
     public boolean collidesWith(CollisionBox other) {
