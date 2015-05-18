@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
  *
  * Created by Karel on 7. 4. 2015.
  */
-public class Constants {
+public final class Constants {
 
     /**
      * Width of the window of the Game.

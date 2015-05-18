@@ -3,6 +3,7 @@ package cz.cvut.fel.syrovkar.rpgEngine;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.ItemArchetype;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -59,5 +60,9 @@ public class Inventory {
             }
         }
         return false;
+    }
+
+    public List<ItemArchetype> getItemArchetypes() {
+        return items;
     }
 }

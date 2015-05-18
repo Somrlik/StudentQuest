@@ -24,6 +24,9 @@
         <item>
             <archetype>woodenSword</archetype>
         </item>
+        <item>
+            <archetype>gold</archetype>
+        </item>
     </items>
 
 </player>

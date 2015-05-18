@@ -46,7 +46,7 @@ public class Canvas extends java.awt.Canvas {
      */
     public void startDoubleBuffer() {
         // create the buffering strategy which will allow AWT
-        // to manage our accelerated graphics
+        // to manage accelerated graphics
         createBufferStrategy(2);
         strategy = getBufferStrategy();
     }

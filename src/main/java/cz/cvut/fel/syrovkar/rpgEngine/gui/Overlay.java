@@ -15,6 +15,7 @@ public interface Overlay {
     boolean shouldTheGameBePaused();
 
     /**
+     * Only called when isOpened() is true
      * @param g     Graphics to draw on
      * @param delta Time interval between frames of the Game
      */
@@ -23,7 +24,7 @@ public interface Overlay {
     /**
      * @return If this overlay needs some inputs from PlayerInteraction
      */
-    boolean listensToInput();
+    boolean listenToInput();
 
     /**
      * @return True if this overlay is displayed, false otherwise

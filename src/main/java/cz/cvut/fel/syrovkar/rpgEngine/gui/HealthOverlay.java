@@ -33,7 +33,7 @@ public class HealthOverlay implements Overlay {
     }
 
     @Override
-    public boolean listensToInput() {
+    public boolean listenToInput() {
         return false;
     }
 

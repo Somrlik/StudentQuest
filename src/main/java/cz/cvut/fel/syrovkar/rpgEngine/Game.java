@@ -96,7 +96,6 @@ public class Game implements Runnable {
                 // Your IDE is lying - NullPointer is impossible
                 canvas.getDrawingGraphics().drawString("Loading", Constants.WINDOW_WIDTH / 2, Constants.WINDOW_HEIGHT / 2);
                 canvas.update();
-                continue;
             } else {
                 player = gameRegistry.getPlayer();
                 isRunning = false;
@@ -113,7 +112,14 @@ public class Game implements Runnable {
 
             if (!isPaused) {
                 gameLogic(delta);
+            } else {
+                for (LivingEntity e : currentLocation.getEnemies()) {
+                    e.slowDown(delta);
+                }
+                player.slowDown(delta);
             }
+
+            overlayLogic(delta);
 
             update();
 
@@ -126,6 +132,12 @@ public class Game implements Runnable {
         }
 
         LOG.info("Mainloop ended...");
+    }
+
+    private void overlayLogic(double delta) {
+        for (Overlay o : gameRegistry.getOverlays()) {
+            o.listenToInput();
+        }
     }
 
     /**

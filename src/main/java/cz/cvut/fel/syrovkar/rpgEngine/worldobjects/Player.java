@@ -21,6 +21,10 @@ public class Player extends LivingEntity {
         inventory = new Inventory();
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+
     public void addToInventory(ItemArchetype ia) {
         inventory.addItem(ia);
     }
@@ -65,7 +69,7 @@ public class Player extends LivingEntity {
             LOG.fine("Player collided with " + e.getId());
             LOG.finer("Original Player's x: " + x + " y:" + y);
 
-            // TODO: Fix getting stuck in entites
+            // TODO: Fix getting stuck in entities
 
             x += -((xVelocity * 8) * delta);
             y += -((yVelocity * 8) * delta);

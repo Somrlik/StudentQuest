@@ -159,6 +159,10 @@ public class Entity implements Drawable, CanHaveAttributes {
         texture = bimage;
     }
 
+    public BufferedImage getTexture() {
+        return texture;
+    }
+
     /**
      * @return True if collision is on, false otherwise
      */

@@ -24,7 +24,7 @@ public class FPSMeter implements Overlay {
     }
 
     @Override
-    public boolean listensToInput() {
+    public boolean listenToInput() {
         return false;
     }
 
