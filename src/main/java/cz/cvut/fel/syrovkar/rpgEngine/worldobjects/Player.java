@@ -41,31 +41,31 @@ public class Player extends Character {
     }
 
     @Override
-    public boolean collideWith(Entity e) {
-        if (super.collideWith(e)) {
+    public boolean collideWith(Entity e, double delta) {
+        if (super.collideWith(e, delta)) {
 
             LOG.fine("Player collided with " + e.getId());
             LOG.finer("Original Player's x: " + x + " y:" + y);
 
-            if (xVelocity == 0) {
-                y += (yVelocity > 0) ? -1 : +1;
-                yVelocity = 0;
-                this.hitbox.setY(y);
-            } else { // yVelocity == 0
-                x += (xVelocity > 0) ? -1 : +1;
-                xVelocity = 0;
-                this.hitbox.setX(x);
-            }
+            // TODO: Fix getting stuck in entites
 
-            LOG.finer("New Player's x: " + x + "y: " + y);
+            x += -((xVelocity * 8) * delta);
+            y += -((yVelocity * 8) * delta);
+
+            this.hitbox.setX(x);
+            this.hitbox.setY(y);
+
+            //xVelocity = yVelocity = 0;
+
+            LOG.finer("New Player's x: " + x + " y: " + y);
 
             return true;
         }
         return false;
     }
 
-    public boolean collideWith(Item i) {
-        if (super.collideWith(i)) {
+    public boolean collideWith(Item i, double delta) {
+        if (super.collideWith(i, delta)) {
 
             LOG.fine("Player collided with " + i.getId());
 

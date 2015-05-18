@@ -169,13 +169,14 @@ public class Game implements Runnable {
 
         // Collision
         for (Entity e : currentLocation.getEntities()) {
-            player.collideWith(e);
+            player.collideWith(e, delta);
         }
 
         // Picking up items
         for (Item i : currentLocation.getItems()) {
-            player.collideWith(i);
+            player.collideWith(i, delta);
         }
+
     }
 
     /**

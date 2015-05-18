@@ -174,7 +174,7 @@ public class Entity implements Drawable, CanHaveAttributes {
         this.collides = collides;
     }
 
-    public boolean collideWith(Entity e) {
+    public boolean collideWith(Entity e, double delta) {
         return false;
     }
 

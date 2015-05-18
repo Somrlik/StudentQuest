@@ -1,5 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.archetypes;
 
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Direction;
+
 /**
  * For easier handling of collisions
  * <p/>
@@ -37,9 +39,17 @@ public class CollisionBox {
     }
 
     public boolean collidesWith(CollisionBox other) {
-        return this.x < other.x + other.sizeX &&
-                this.x + this.sizeX > other.x &&
-                this.y < other.y + other.sizeY &&
-                this.y + this.sizeY > other.y;
+        return this.x <= other.x + other.sizeX &&
+                this.x + this.sizeX >= other.x &&
+                this.y <= other.y + other.sizeY &&
+                this.y + this.sizeY >= other.y;
+    }
+
+    public Direction collidesWithInDirection(CollisionBox other) {
+        if (this.x <= other.x + other.sizeX) return Direction.LEFT;
+        if (this.y <= other.y + other.sizeY) return Direction.UP;
+        if (this.y + this.sizeY >= other.y) return Direction.DOWN;
+        if (this.x + this.sizeX >= other.x) return Direction.RIGHT;
+        return null;
     }
 }

@@ -100,7 +100,7 @@ public class LivingEntity extends Entity {
     }
 
     @Override
-    public boolean collideWith(Entity e) {
+    public boolean collideWith(Entity e, double delta) {
         return this.hitbox.collidesWith(e.hitbox);
     }
 
