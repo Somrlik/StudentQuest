@@ -84,6 +84,10 @@ public class Player extends LivingEntity {
 
             LOG.finer("New Player's x: " + x + " y: " + y);
 
+            if (e.isInteractible()) {
+                ((InteractibleEntity) e).interact(this);
+            }
+
             return true;
         }
         return false;

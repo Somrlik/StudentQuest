@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<item>
+    <name>Iron sword</name>
+    <id>ironSword</id>
+    <texture>items/ironSword.png</texture>
+
+    <attributes>
+        <attribute>
+            <name>Price</name>
+            <value>50</value>
+        </attribute>
+        <attribute>
+            <name>Attack</name>
+            <value>10</value>
+        </attribute>
+    </attributes>
+
+</item>

@@ -201,15 +201,11 @@ public class Game implements Runnable {
         for (Entity e : currentLocation.getEntities()) {
             player.collideWith(e, delta);
         }
-/*
-        // Picking up items
-        for (Item i : currentLocation.getItems()) {
-            player.collideWith(i, delta);
-        }
-*/
+
         for (Item item : currentLocation.getItems()) {
             player.collideWith(item, delta);
         }
+        // Synchro
         if (GameRegistry.itemsToDelete != null) {
             currentLocation.getItems().removeAll(GameRegistry.itemsToDelete);
             GameRegistry.itemsToDelete = null;

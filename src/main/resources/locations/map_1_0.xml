@@ -25,6 +25,24 @@
             <siz-x>40</siz-x>
             <siz-y>40</siz-y>
         </entity>
+        <entity>
+            <name>chest1</name>
+            <texture>rustyChest.png</texture>
+            <collision>true</collision>
+            <pos-x>300</pos-x>
+            <pos-y>500</pos-y>
+            <siz-x>50</siz-x>
+            <siz-y>50</siz-y>
+            <interactivity>
+                <type>chest</type>
+                <key>rustyKey</key>
+                <inventory>
+                    <item>
+                        <archetype>ironSword</archetype>
+                    </item>
+                </inventory>
+            </interactivity>
+        </entity>
     </entities>
 
     <enemies>

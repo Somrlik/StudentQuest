@@ -110,6 +110,10 @@ public class LocationsParser {
 
                         e.setTexture(texture);
 
+                        if (eElement.getElementsByTagName("interactivity").item(0) != null) {
+                            e = InteractivityParser.parse(eElement.getElementsByTagName("interactivity"), e, gameRegistry);
+                        }
+
                         loc.addEntity(e);
 
                         LOG.finest("Added Entity " + e.toString());

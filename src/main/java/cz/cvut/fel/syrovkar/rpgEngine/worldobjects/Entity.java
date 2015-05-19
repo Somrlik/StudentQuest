@@ -178,7 +178,19 @@ public class Entity implements Drawable, CanHaveAttributes {
         this.collides = collides;
     }
 
+    /**
+     * @param e     Other Entity
+     * @param delta Time difference between two frames
+     * @return True if collision happened, false otherwise
+     */
     public boolean collideWith(Entity e, double delta) {
+        return false;
+    }
+
+    /**
+     * @return True if this Entity can be interacted with
+     */
+    public boolean isInteractible() {
         return false;
     }
 

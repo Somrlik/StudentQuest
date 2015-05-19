@@ -39,11 +39,11 @@
 
     <items>
         <item>
-            <archetype>woodenSword</archetype>
+            <archetype>rustyKey</archetype>
             <pos-x>200</pos-x>
             <pos-y>400</pos-y>
-            <siz-x>20</siz-x>
-            <siz-y>20</siz-y>
+            <siz-x>40</siz-x>
+            <siz-y>40</siz-y>
         </item>
     </items>
 </location>

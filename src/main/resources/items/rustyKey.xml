@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<item>
+    <name>Rusty Key</name>
+    <id>rustyKey</id>
+    <texture>items/rustyKey.png</texture>
+
+    <attributes>
+        <attribute>
+            <name>Price</name>
+            <value>1</value>
+        </attribute>
+        <attribute>
+            <name>Can open</name>
+            <value>Rusty chest</value>
+        </attribute>
+    </attributes>
+
+</item>

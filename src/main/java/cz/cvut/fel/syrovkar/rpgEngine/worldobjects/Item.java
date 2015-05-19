@@ -31,6 +31,7 @@ public class Item extends Entity {
     }
 
     public synchronized void destroy() {
+
         List<Item> secondList = new ArrayList<Item>();
         for (Iterator<Item> iterator = Game.currentLocation.getItems().iterator(); iterator.hasNext(); ) {
             Item item = iterator.next();
@@ -39,12 +40,13 @@ public class Item extends Entity {
             }
         }
         GameRegistry.itemsToDelete = secondList;
-        /*
+
+/*
         for(Item i : Game.currentLocation.getItems()) {
             if (i == this) {
-                Game.currentLocation.removeItem(i);
+                Game.currentLocation.getItems().remove(i);
             }
         }
-        */
+*/
     }
 }
