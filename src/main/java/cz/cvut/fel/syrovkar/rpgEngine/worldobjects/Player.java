@@ -1,5 +1,6 @@
 package cz.cvut.fel.syrovkar.rpgEngine.worldobjects;
 
+import cz.cvut.fel.syrovkar.rpgEngine.Game;
 import cz.cvut.fel.syrovkar.rpgEngine.Inventory;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.ItemArchetype;
 
@@ -71,8 +72,10 @@ public class Player extends LivingEntity {
 
             // TODO: Fix getting stuck in entities
 
-            x += -((xVelocity * 8) * delta);
-            y += -((yVelocity * 8) * delta);
+            x += -((xVelocity * 4) * delta);
+            y += -((yVelocity * 4) * delta);
+
+            xVelocity = yVelocity = 0;
 
             this.hitbox.setX(x);
             this.hitbox.setY(y);
@@ -97,6 +100,10 @@ public class Player extends LivingEntity {
         if (super.collideWith(i, delta)) {
 
             LOG.fine("Player collided with " + i.getId());
+
+            Game.gameRegistry.getPlayer().addToInventory(Game.gameRegistry.getItemArchetypeById(i.getId()));
+
+            i.destroy();
 
             return true;
         }

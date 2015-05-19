@@ -1,8 +1,13 @@
 package cz.cvut.fel.syrovkar.rpgEngine.worldobjects;
 
+import cz.cvut.fel.syrovkar.rpgEngine.Game;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Attribute;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.ItemArchetype;
+import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -25,4 +30,21 @@ public class Item extends Entity {
         }
     }
 
+    public synchronized void destroy() {
+        List<Item> secondList = new ArrayList<Item>();
+        for (Iterator<Item> iterator = Game.currentLocation.getItems().iterator(); iterator.hasNext(); ) {
+            Item item = iterator.next();
+            if (item == this) {
+                secondList.add(item);
+            }
+        }
+        GameRegistry.itemsToDelete = secondList;
+        /*
+        for(Item i : Game.currentLocation.getItems()) {
+            if (i == this) {
+                Game.currentLocation.removeItem(i);
+            }
+        }
+        */
+    }
 }

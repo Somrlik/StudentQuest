@@ -4,6 +4,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.archetypes.EnemyArchetype;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.ItemArchetype;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.WorldMap;
 import cz.cvut.fel.syrovkar.rpgEngine.gui.Overlay;
+import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Item;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Player;
 
 import java.util.ArrayList;
@@ -32,6 +33,8 @@ public class GameRegistry {
     private List<Overlay> overlays;
 
     private Player player;
+
+    public static List<Item> itemsToDelete = null;
 
     /**
      * Do not use.

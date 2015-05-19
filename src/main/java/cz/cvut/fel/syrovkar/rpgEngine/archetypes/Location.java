@@ -103,6 +103,10 @@ public class Location {
         this.items.add(i);
     }
 
+    public synchronized void removeItem(Item i) {
+        this.items.remove(i);
+    }
+
     /**
      * @return A nice name of this Location
      */
