@@ -30,7 +30,7 @@ public class Main {
         handler.setLevel(Level.ALL);
 
         Logger.getLogger("cz.cvut.fel.syrovkar").setUseParentHandlers(false);
-        Logger.getLogger("cz.cvut.fel.syrovkar").setLevel(Level.SEVERE);
+        Logger.getLogger("cz.cvut.fel.syrovkar").setLevel(Level.FINER);
         Logger.getLogger("cz.cvut.fel.syrovkar").addHandler(handler);
 
         LOG.info("Starting Main thread...");

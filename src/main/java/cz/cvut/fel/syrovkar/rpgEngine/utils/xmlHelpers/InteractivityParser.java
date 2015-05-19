@@ -41,7 +41,12 @@ public class InteractivityParser {
                 }
             }
 
-            return new Chest(e.getName(), e.getId(), e.getX(), e.getY(), e.getxSize(), e.getySize(), archetypes, key);
+            Chest chest = new Chest(e.getName(), e.getId(), e.getX(), e.getY(), e.getxSize(), e.getySize(), archetypes, key);
+
+            chest.setTexture(e.getTexture());
+
+            return chest;
+
         } else return e;
     }
 }

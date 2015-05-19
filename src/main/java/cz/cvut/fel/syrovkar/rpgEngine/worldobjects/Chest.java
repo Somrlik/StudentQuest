@@ -32,6 +32,7 @@ public class Chest extends InteractibleEntity {
     }
 
     private void open(Player player) {
+        LOG.finer("Chest opened: " + this.getId());
         for (ItemArchetype ia : items) {
             player.addToInventory(ia);
         }
