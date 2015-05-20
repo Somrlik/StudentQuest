@@ -43,6 +43,17 @@ public class FileHelper {
         }
     }
 
+    /*
+    public static File getFileFromURI(String URI) {
+        System.out.println("/"+URI);
+        InputStream in = FileHelper.class.getResourceAsStream("/"+URI);
+        System.out.println(in);
+        File file = new File("");
+
+        return null;
+    }
+    */
+
     /**
      * Gets list of all files from directory
      *

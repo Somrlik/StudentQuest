@@ -115,5 +115,16 @@ public class Player extends LivingEntity {
         return false;
     }
 
+    public void attack(double delta) {
+        int damage = 0;
+        damage += Integer.parseInt(getValueByAttrName("Attack"));
+        for (ItemArchetype ia : inventory.getItemArchetypes()) {
+            if (ia.getValueByAttrName("Attack") != null) {
+                damage += Integer.parseInt(ia.getValueByAttrName("Attack"));
+            }
+        }
+        HurtingEntity hurt = new HurtingEntity("Attacking Entity", this.getId() + this.getName() + "sHurtEntity", (int) x, (int) y, 20, 20, damage);
+
+    }
 
 }

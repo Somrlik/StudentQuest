@@ -1,9 +1,11 @@
 package cz.cvut.fel.syrovkar.rpgEngine.worldobjects.ai;
 
-import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Direction;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Enemy;
 
 import java.util.logging.Logger;
+
+import static cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Direction.DOWN;
+import static cz.cvut.fel.syrovkar.rpgEngine.worldobjects.Direction.UP;
 
 /**
  * AI that walks in a circle
@@ -43,12 +45,16 @@ public class WalkerEnemyAI implements EnemyAI {
     @Override
     public void doSomething(Enemy itsEntity, double delta) {
 
-        if (itsEntity.getY() > alreadyMoved++) {
-            itsEntity.move(Direction.UP, delta);
-        } else {
-            itsEntity.move(Direction.DOWN, delta);
+        if (alreadyMoved < walkX) {
+            itsEntity.move(UP, delta);
+            alreadyMoved++;
+        } else if (-alreadyMoved > walkX) {
+            itsEntity.move(DOWN, delta);
             alreadyMoved--;
+        } else {
+            alreadyMoved = 0;
         }
+
 
     }
 }

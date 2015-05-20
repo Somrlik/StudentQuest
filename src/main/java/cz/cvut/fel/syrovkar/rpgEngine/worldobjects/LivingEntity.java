@@ -56,7 +56,7 @@ public class LivingEntity extends Entity {
         this.hitbox.setX((int) this.getX());
         this.hitbox.setY((int) this.getY());
 
-        g.drawString("Entity with speed " + Double.toString(xVelocity) + " " + Double.toString(yVelocity), (int) x, (int) y + 10);
+        //g.drawString("Entity with speed " + Double.toString(xVelocity) + " " + Double.toString(yVelocity), (int) x, (int) y + 10);
     }
 
     /**
@@ -131,6 +131,10 @@ public class LivingEntity extends Entity {
         return this.hitbox.collidesWith(e.hitbox);
     }
 
-
-
+    /**
+     * @return Direction of LivingEntity
+     */
+    public Direction getDirection() {
+        return direction;
+    }
 }

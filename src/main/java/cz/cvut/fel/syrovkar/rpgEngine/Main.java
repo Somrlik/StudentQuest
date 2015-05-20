@@ -19,6 +19,8 @@ public class Main {
 
     private static final Logger LOG = Logger.getLogger(Main.class.getName());
 
+    private static final Level logLevel = Level.SEVERE;
+
     /**
      * Well...
      *
@@ -30,13 +32,13 @@ public class Main {
         handler.setLevel(Level.ALL);
 
         Logger.getLogger("cz.cvut.fel.syrovkar").setUseParentHandlers(false);
-        Logger.getLogger("cz.cvut.fel.syrovkar").setLevel(Level.FINER);
+        Logger.getLogger("cz.cvut.fel.syrovkar").setLevel(logLevel);
         Logger.getLogger("cz.cvut.fel.syrovkar").addHandler(handler);
 
         LOG.info("Starting Main thread...");
 
         SwingUtilities.invokeLater(new Runnable() {
-            @Override
+            //@Override
             public void run() {
                 new MainWindow();
             }
@@ -59,7 +61,6 @@ public class Main {
         Game.gameRegistry = gameRegistry;
 
         LOG.info("Main thread's work done...");
-
 
     }
 

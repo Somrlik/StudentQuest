@@ -205,10 +205,20 @@ public class Game implements Runnable {
         for (Item item : currentLocation.getItems()) {
             player.collideWith(item, delta);
         }
+
+        for (Enemy e : currentLocation.getEnemies()) {
+            player.collideWith(e, delta);
+        }
+
         // Synchro
         if (GameRegistry.itemsToDelete != null) {
             currentLocation.getItems().removeAll(GameRegistry.itemsToDelete);
             GameRegistry.itemsToDelete = null;
+        }
+
+        if (GameRegistry.enemiesToDelete != null) {
+            currentLocation.getEnemies().removeAll(GameRegistry.enemiesToDelete);
+            GameRegistry.enemiesToDelete = null;
         }
 
     }

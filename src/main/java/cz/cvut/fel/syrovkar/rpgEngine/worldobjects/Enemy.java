@@ -5,6 +5,7 @@ import cz.cvut.fel.syrovkar.rpgEngine.archetypes.Attribute;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.EnemyArchetype;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.EnemyDrop;
 import cz.cvut.fel.syrovkar.rpgEngine.archetypes.ItemArchetype;
+import cz.cvut.fel.syrovkar.rpgEngine.init.GameRegistry;
 import cz.cvut.fel.syrovkar.rpgEngine.worldobjects.ai.EnemyAI;
 
 import java.util.ArrayList;
@@ -66,37 +67,26 @@ public class Enemy extends LivingEntity {
      */
     public void updateAI(double delta) {
         itsAi.doSomething(this, delta);
+        if ("0".equals(this.getValueByAttrName("Health"))) {
+            this.die();
+        }
     }
 
     /**
-     * Movement of Enemy
-     *
-     * @param direction direction of movement
-     * @param delta Time difference between two frames fo the Game
+     * Called upon death of the Enemy
      */
-/*    @Override
-    public void move(Direction direction, double delta) {
+    public void die() {
+        List<Enemy> enemies = new ArrayList<Enemy>();
+        enemies.add(this);
+        GameRegistry.enemiesToDelete = enemies;
 
-        this.direction = direction;
-        switch (direction) {
-            case UP:
-                yVelocity = -64;
-                break;
-            case DOWN:
-                yVelocity = 64;
-                break;
-            case LEFT:
-                xVelocity = -64;
-                break;
-            case RIGHT:
-                xVelocity = 64;
-                break;
+        List<ItemArchetype> drops = makeDrops();
+        if (!drops.isEmpty()) {
+            for (ItemArchetype drop : drops) {
+                Game.currentLocation.addItem(new Item(Game.gameRegistry.getItemArchetypeById(drop.getId()), (int) this.getX(), (int) this.getY(), 40, 40));
+            }
         }
 
-        LOG.finest("Moving"+ getId() +" from x:" + x + " y:" + y + "with Xspeed: " + xVelocity + " Yspeed: " + yVelocity);
-
-        this.hitbox.setX((int) this.getX());
-        this.hitbox.setY((int) this.getY());
-    }*/
+    }
 
 }
