@@ -152,6 +152,7 @@ public class Game implements Runnable {
         }
 */
         Graphics2D screen = canvas.getDrawingGraphics();
+        if (screen == null) return;
 
         screen.clearRect(-1, -1, Constants.WINDOW_WIDTH + 1, Constants.WINDOW_HEIGHT + 1);
 

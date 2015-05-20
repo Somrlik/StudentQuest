@@ -1,5 +1,7 @@
 package cz.cvut.fel.syrovkar.rpgEngine.gui;
 
+import cz.cvut.fel.syrovkar.rpgEngine.Game;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -65,6 +67,9 @@ public class Canvas extends java.awt.Canvas {
      */
     public Graphics2D getDrawingGraphics() {
         if (strategy == null) {
+            return null;
+        }
+        if (!Game.isRunning) {
             return null;
         }
         return (Graphics2D) strategy.getDrawGraphics();

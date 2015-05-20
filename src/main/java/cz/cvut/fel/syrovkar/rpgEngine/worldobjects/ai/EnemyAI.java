@@ -30,4 +30,9 @@ public interface EnemyAI {
      */
     void doSomething(Enemy itsEntity, double delta);
 
+    /**
+     * Gets new instance of AI
+     */
+    EnemyAI getNewInstance();
+
 }

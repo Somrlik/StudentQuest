@@ -45,17 +45,26 @@ public class WalkerEnemyAI implements EnemyAI {
     @Override
     public void doSomething(Enemy itsEntity, double delta) {
 
-        if (alreadyMoved < walkX) {
+        if (alreadyMoved == 0) {
             itsEntity.move(UP, delta);
             alreadyMoved++;
-        } else if (-alreadyMoved > walkX) {
-            itsEntity.move(DOWN, delta);
-            alreadyMoved--;
-        } else {
-            alreadyMoved = 0;
+            return;
         }
 
-
+        if (alreadyMoved > walkX && alreadyMoved < walkX * 2) {
+            itsEntity.move(DOWN, delta);
+            alreadyMoved++;
+        } else if (alreadyMoved > walkX * 2) {
+            alreadyMoved = 0;
+        } else {
+            itsEntity.move(UP, delta);
+            alreadyMoved++;
+        }
     }
+
+    public EnemyAI getNewInstance() {
+        return new WalkerEnemyAI();
+    }
+
 }
 

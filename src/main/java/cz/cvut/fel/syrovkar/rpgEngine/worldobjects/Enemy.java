@@ -36,7 +36,7 @@ public class Enemy extends LivingEntity {
             this.addAttribute(a.getName(), a.getValue());
         }
 
-        itsAi = archetype.getItsAI();
+        itsAi = archetype.getItsAI().getNewInstance();
 
         itsAi.setItsEntity(this);
 
